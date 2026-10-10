@@ -58,7 +58,7 @@ skills/cyber-age-sop/
 
 project-sop/
 ├── README.md
-├── ArkBridge参考样板.md
+├── reference-project-template.md
 ├── cyber-age-project-sop类型定义.md
 └── cyber-age-project-sop完整鏈路.md
 
@@ -67,9 +67,9 @@ project-sop/
 └── release.yml
 ```
 
-The ArkBridge document is a structure-only reference. It does not publish
-ArkBridge devices, topology, implementation details, private evidence, or
-field conclusions.
+The reference-project document is a structure-only reference. It does not
+publish any project's devices, topology, implementation details, private
+evidence, or field conclusions.
 
 ## Runtime Skill
 
@@ -83,16 +83,16 @@ Copy that directory into the skill directory used by your agent runtime, or
 adapt the files to the runtime's supported Skill format. The Skill itself does
 not require a network connection, external account, field device, or secret.
 
-The Skill keeps `guided-thinking` separate. It does not automatically imitate
-facilitation or coaching. If a user explicitly asks for guided or layered
-facilitation, hand that work to the appropriate facilitation tool.
+The Skill keeps facilitation and coaching separate. It does not automatically
+imitate either one. If a user explicitly asks for guided or layered
+facilitation, hand that work to the appropriate dedicated tool.
 
 ## Project SOP Documents
 
 The `project-sop/` documents define the durable project layer:
 
-- `ArkBridge参考样板.md`: what can be reused from the reference project's
-  presentation structure and what must never be copied.
+- `reference-project-template.md`: what can be reused from a representative
+  project's presentation structure and what must never be copied.
 - `cyber-age-project-sop类型定义.md`: project type, task profiles, metadata,
   evidence contracts, and minimum records.
 - `cyber-age-project-sop完整鏈路.md`: the complete route from anchor through
@@ -132,11 +132,11 @@ Use the evidence labels in `acceptance-and-evidence.md` when reporting results.
 
 ## Versioning
 
-The current repository release is `0.1.2`.
+The current repository release is `0.1.3`.
 
 - Runtime Skill version: `0.2`
 - Project SOP document version: `0.1`
-- Repository release version: `0.1.2`
+- Repository release version: `0.1.3`
 
 Changes that alter routing, evidence boundaries, or safety gates should include
 updated regression cases and a changelog entry.

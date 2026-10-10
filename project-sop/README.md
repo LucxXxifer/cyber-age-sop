@@ -7,13 +7,13 @@ This directory contains the durable project-record layer that accompanies the
 
 | Document | Purpose |
 |---|---|
-| `ArkBridge参考样板.md` | Reusable presentation structure and explicit non-copy rules |
+| `reference-project-template.md` | Reusable presentation structure and explicit non-copy rules |
 | `cyber-age-project-sop类型定义.md` | Project type, task profiles, metadata, and evidence contract |
 | `cyber-age-project-sop完整鏈路.md` | End-to-end lifecycle from anchor to review |
 
-The documents use ArkBridge as a presentation reference only. They do not
-transfer ArkBridge's devices, topology, code, release history, dates, or field
-observations to another project.
+The documents use a representative project as a presentation reference only.
+They do not transfer any project's devices, topology, code, release history,
+dates, or field observations to another project.
 
 ## Use Order
 

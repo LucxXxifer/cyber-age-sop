@@ -22,12 +22,12 @@ privacy: public-reference
 |---|---|
 | `cyber-age-sop.skill` | 在對話或執行期間做錨定、分型、交付、驗證和復盤 |
 | `cyber-age-project-sop` | 在 Obsidian 保存項目類型、Profile、產物和跨項目調用規則 |
-| `guided-thinking` | 只在本人明確要求引導、深挖或剝洋蔥式提問時使用 |
+| 專用引導工具 | 只在本人明確要求引導、深挖或分層提問時使用 |
 | 項目主頁 | 以讀者能理解的方式保存項目背景、決定、結果和限制 |
 | 證據附錄 | 保存原始來源、測試、部署、發布和矛盾記錄 |
 
 因此，這一頁定義「項目要怎樣被管理和保存」，不替使用者下產品方向，也不把
-`guided-thinking` 模擬成項目問卷。
+引導工具模擬成項目問卷。
 
 ## 2. 何時使用
 
@@ -139,17 +139,17 @@ Trivial fast path 可以只在對話中留下變更、檢查和剩餘不確定�
   只能停在規劃。
 - Follow-up discovery 不能自動擴大本輪範圍。
 
-## 9. 與 ArkBridge 參考樣板的關係
+## 9. 與參考項目樣板的關係
 
-使用 ArkBridge 時只借用結構和語意：
+使用參考項目樣板時只借用結構和語意：
 
 ```text
-ArkBridge 參考樣板
+參考項目樣板
 → 目標項目重新做 Anchor
 → 選擇自己的 Task Profile
 → 產出自己的決定、實現和證據
 → 依目標項目的規模裁剪頁面
 ```
 
-詳細的禁止複製清單在 [[ArkBridge参考样板|ArkBridge 參考樣板]]；
+詳細的禁止複製清單在 [[reference-project-template|參考項目樣板]]；
 整個執行順序在 [[cyber-age-project-sop完整鏈路|cyber-age-project-sop 完整鏈路]]。

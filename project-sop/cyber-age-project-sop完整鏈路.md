@@ -275,7 +275,7 @@ Agent 不能自行改變目標、接觸未授權設備或秘密，也不能把 F
 
 建立新項目時按以下順序調用：
 
-1. 讀 [[ArkBridge参考样板|ArkBridge 參考樣板]]，只借用結構和證據語意。
+1. 讀 [[reference-project-template|參考項目樣板]]，只借用結構和證據語意。
 2. 讀 [[cyber-age-project-sop类型定义|類型定義]]，判斷項目和本輪 Task Profile。
 3. 讀本頁，按風險選 fast、standard 或 full 路徑。
 4. 讀目標項目的原始材料，重新建立 Anchor。

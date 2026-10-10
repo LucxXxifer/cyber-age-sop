@@ -1,22 +1,18 @@
 ---
-vault: Cyber-Age
 note_type: reference_project_template
 scope: cross-project-presentation
-reference_project_id: CA-0001
-reference_project_name: ArkBridge
 reference_sop_version: "0.2"
-reference_profile: ui-doc
 reuse_mode: structure-only
 status: active
 updated: 2026-10-11
 privacy: public-reference
 ---
 
-# ArkBridge 參考樣板
+# 參考項目樣板
 
-這一頁只保存 `CA-0001 ArkBridge` 已經示範過的**呈現方法、證據語意和文件組織方式**。
-它不是 ArkBridge 的技術摘要，也不是下一個項目的內容模板。跨項目使用時，必須重新讀取
-目標項目的原始材料、選擇目標 Profile，再填入新的事實和證據。
+這一頁只保存一個代表性項目已經示範過的**呈現方法、證據語意和文件組織方式**。
+它不是任何特定項目的技術摘要，也不是下一個項目的內容模板。跨項目使用時，必須
+重新讀取目標項目的原始材料、選擇目標 Profile，再填入新的事實和證據。
 
 ## 1. 可以借用什麼
 
@@ -79,7 +75,7 @@ privacy: public-reference
 
 ## 2. 參考的閱讀層次
 
-ArkBridge 示範了以下閱讀層次。其他項目可以採用相同邏輯，但不必複製檔名：
+代表性項目示範了以下閱讀層次。其他項目可以採用相同邏輯，但不必複製檔名：
 
 | 閱讀層 | 要回答的問題 | 可替換的項目 |
 |---|---|---|
@@ -96,24 +92,23 @@ ArkBridge 示範了以下閱讀層次。其他項目可以採用相同邏輯，�
 
 ## 3. 明確不能借用什麼
 
-下列內容必須由目標項目重新提供，不能因為它出現在 ArkBridge 中就帶入新項目：
+下列內容必須由目標項目重新提供，不能因為它出現在參考材料中就帶入新項目：
 
 - 設備、品牌、硬件型號、主機名稱、拓撲或現場環境；
 - 任何具體技術、命令、套件、架構、版本、release 或數字；
-- ArkBridge 的日期、里程碑、測試結果、部署觀察和現場結論；
-- ArkBridge 的原話、失敗經過、圖表、圖片或外部鏈接，除非只是明確標示的引用來源；
-- ArkBridge 的項目規模、文件數量、成熟度或社區狀態；
+- 參考項目的日期、里程碑、測試結果、部署觀察和現場結論；
+- 參考項目的原話、失敗經過、圖表、圖片或外部鏈接，除非只是明確標示的引用來源；
+- 參考項目的規模、文件數量、成熟度或社區狀態；
 - 「已部署」「已驗證」「可用」等結論，除非目標項目有自己的證據；
-- `CA-0001`。目標項目必須使用自己的 Project ID；
-- ArkBridge 的 `ui-doc` Profile。這只是本參考項目的 Profile，不是全局預設。
+- 參考項目的 Project ID。目標項目必須使用自己的 Project ID；
+- 參考項目的 Task Profile。這只是參考材料的 Profile，不是全局預設。
 
 ## 4. 跨項目調用方式
 
 開始整理新項目前，先把以下欄位寫入新項目的 Anchor 或 Agent Brief：
 
 ```yaml
-reference_project: CA-0001
-reference_name: ArkBridge
+reference_type: representative-project
 reference_sop_version: "0.2"
 reference_profile: ui-doc
 reuse:
@@ -123,15 +118,15 @@ reuse:
   - evidence-tier wording
   - category -> project home -> evidence appendix navigation
 do_not_reuse:
-  - ArkBridge devices, topology, technologies, dates, versions
-  - ArkBridge field conclusions or test outcomes
-  - ArkBridge project identity or Project ID
+  - reference project devices, topology, technologies, dates, versions
+  - reference project field conclusions or test outcomes
+  - reference project identity or Project ID
 target_profile:
 target_project_id:
 ```
 
 `target_profile` 和 `target_project_id` 必須由新項目重新決定；空白時不能直接開始
-套用 ArkBridge 的頁面內容。
+套用參考項目的頁面內容。
 
 ## 5. 參考頁驗收
 
@@ -140,10 +135,10 @@ target_project_id:
 - 主頁先說明目標項目的場景，而不是先堆技術名稱；
 - 設計者原話、Agent 建議、程式結果和現場觀察有不同標記；
 - 每個重要結論都能回到目標項目的來源或驗證記錄；
-- 目標項目沒有出現 ArkBridge 專屬資料；
+- 目標項目沒有出現參考項目的專屬資料；
 - 目標項目使用自己的 Project ID、分類和 Profile；
 - 未驗證內容明確寫成 `Not verified` 或「尚未驗證」；
-- 小項目沒有被迫建立 ArkBridge 同等數量的頁面；
+- 小項目沒有被迫建立參考項目同等數量的頁面；
 - 項目主頁、分類頁和證據附錄之間的鏈接可用。
 
 ## 6. 與 Cyber-Age SOP 的關係
@@ -151,7 +146,7 @@ target_project_id:
 這一頁是參考材料，不取代流程判斷：
 
 ```text
-ArkBridge 參考樣板
+參考項目樣板
 → 借用呈現結構和證據語意
 → 讀取目標項目材料
 → 由 cyber-age-project-sop 選擇 Profile 和交付深度
@@ -162,3 +157,4 @@ ArkBridge 參考樣板
 
 - [[cyber-age-project-sop类型定义|cyber-age-project-sop 類型定義]]
 - [[cyber-age-project-sop完整鏈路|cyber-age-project-sop 完整鏈路]]
+

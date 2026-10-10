@@ -57,7 +57,7 @@ skills/cyber-age-sop/
 
 project-sop/
 ├── README.md
-├── ArkBridge参考样板.md
+├── reference-project-template.md
 ├── cyber-age-project-sop类型定义.md
 └── cyber-age-project-sop完整鏈路.md
 
@@ -66,8 +66,8 @@ project-sop/
 └── release.yml
 ```
 
-ArkBridge 文件只作「結構參考」。公開包沒有加入 ArkBridge 的設備、拓撲、
-實現細節、私人證據或現場結論。
+參考項目文件只作「結構參考」。公開包沒有加入任何項目的設備、拓撲、實現細節、
+私人證據或現場結論。
 
 ## 使用 Skill
 
@@ -80,14 +80,14 @@ skills/cyber-age-sop/
 可以把這個目錄複製到你的 Agent runtime 所使用的 Skill 目錄，或按目標 runtime
 支援的格式調整。Skill 本身不需要網路、外部帳戶、現場設備或秘密。
 
-Skill 會把 `guided-thinking` 保持為獨立能力，不會自動模擬引導或 coaching。
-如果使用者明確要求分層提問、剝洋蔥式引導或反思，應交給相應的引導工具處理。
+Skill 會把引導和 coaching 保持為獨立能力，不會自動模擬它們。如果使用者明確要求
+分層提問、深入引導或反思，應交給相應的專用工具處理。
 
 ## Project SOP 文件
 
 `project-sop/` 保存可跨 session 使用的項目層：
 
-- `ArkBridge参考样板.md`：說明可以借用哪些呈現結構，以及哪些內容不可複製。
+- `reference-project-template.md`：說明可以借用哪些呈現結構，以及哪些內容不可複製。
 - `cyber-age-project-sop类型定义.md`：定義項目類型、Task Profile、metadata、
   證據契約和最小記錄。
 - `cyber-age-project-sop完整鏈路.md`：從 Anchor、交付到驗證、項目主頁和復盤的
@@ -125,11 +125,11 @@ repository checks 通過，只能證明指定 commit 的公開包結構有效，
 
 ## 版本
 
-目前 repository release 是 `0.1.2`：
+目前 repository release 是 `0.1.3`：
 
 - Runtime Skill version：`0.2`
 - Project SOP document version：`0.1`
-- Repository release version：`0.1.2`
+- Repository release version：`0.1.3`
 
 如果修改路由、證據邊界或安全閘門，應同步更新 regression cases 和 CHANGELOG。
 

@@ -15,21 +15,21 @@ evidence after execution.
 
 ## Hard Boundary
 
-This skill is independent from `guided-thinking`.
+This skill is independent from dedicated facilitation tools.
 
-- Do not invoke `guided-thinking` automatically.
+- Do not invoke a facilitation tool automatically.
 - Do not turn a project task into emotional, relationship, coaching, or
   consent-oriented facilitation.
 - Borrow only the project-useful principles: preserve the user's wording,
   separate facts from assumptions, ask one high-impact question at a time, and
   converge when the next decision is clear.
-- If the user asks for 大师级引导、 大師級引導、引导大师、引導大師,
-  guided thinking, or layered/peeling-the-onion questioning, hand the
-  facilitation to `guided-thinking`. Do not imitate that skill's voice or
-  continue project anchoring. Resume only when the user returns with a
+- If the user asks for guided, reflective, or layered questioning, hand the
+  facilitation to the appropriate dedicated tool. Do not imitate that tool's
+  voice or continue project anchoring. Resume only when the user returns with a
   `Thought Brief` or explicitly asks to run the project SOP.
-- If `guided-thinking` is unavailable, state that the requested handoff cannot
-  be performed here; do not silently substitute a coaching-style interaction.
+- If the requested facilitation tool is unavailable, state that the handoff
+  cannot be performed here; do not silently substitute a coaching-style
+  interaction.
 
 `prompt-refiner` is an optional packaging tool, not a mandatory stage. The SOP
 may create an Agent Brief directly when the task is already precise.

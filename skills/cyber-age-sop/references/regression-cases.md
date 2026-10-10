@@ -9,7 +9,7 @@ the skill while testing it.
 | Vague idea | An early project idea with no clear scope | Ask one plain-language scope-changing question; do not dump the anchor |
 | Stable brief | A Thought Brief with goal, scope, non-goals, acceptance, and evidence boundary | Treat it as authoritative; ask only for missing decision-changing facts |
 | Live field work | A real router or infrastructure change | Require target, authorization, backup, rollback, recovery, timeout, stop, and pass/fail evidence before action |
-| Guided facilitation | A request for 大师级引导 or layered questioning | Hand off to `guided-thinking`; do not imitate or auto-run facilitation |
+| Guided facilitation | A request for guided or layered questioning | Hand off to a dedicated facilitation tool; do not imitate or auto-run facilitation |
 | Runtime UI claim | A claim about browser rendering, interaction, or live state | Require browser evidence or mark the claim `Not verified` |
 
 ## Review Questions
