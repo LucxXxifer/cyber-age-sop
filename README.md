@@ -1,5 +1,7 @@
 # Cyber-Age SOP
 
+[English](README.md) · [繁體中文](README.zh-TW.md)
+
 Cyber-Age SOP is a small project-lifecycle system for turning a personal
 software, hardware, UI, documentation, Skill, Docker, or automation idea into
 a bounded delivery task with explicit evidence boundaries.
@@ -130,11 +132,11 @@ Use the evidence labels in `acceptance-and-evidence.md` when reporting results.
 
 ## Versioning
 
-The initial repository release is `0.1.0`.
+The current repository release is `0.1.2`.
 
 - Runtime Skill version: `0.2`
 - Project SOP document version: `0.1`
-- Repository release version: `0.1.0`
+- Repository release version: `0.1.2`
 
 Changes that alter routing, evidence boundaries, or safety gates should include
 updated regression cases and a changelog entry.
