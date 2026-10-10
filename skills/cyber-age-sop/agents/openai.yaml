@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cyber-Age SOP"
+  short_description: "Run the Cyber-Age project SOP"
+  default_prompt: "Use Cyber-Age SOP to anchor this project, choose the right task profile, and prepare a verified delivery path."

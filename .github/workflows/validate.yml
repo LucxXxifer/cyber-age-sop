@@ -1,0 +1,42 @@
+name: Validate public package
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Validate package
+        run: python scripts/validate_public_package.py
+
+      - name: Build source archive
+        run: |
+          mkdir -p dist
+          git archive \
+            --format=tar.gz \
+            --prefix=cyber-age-sop/ \
+            --output="dist/cyber-age-sop-${GITHUB_SHA}.tar.gz" \
+            HEAD
+
+      - name: Upload source archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: cyber-age-sop-source
+          path: dist/cyber-age-sop-${{ github.sha }}.tar.gz
+          if-no-files-found: error
