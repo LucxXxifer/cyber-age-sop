@@ -2,9 +2,14 @@
 
 [English](README.md) · [繁體中文](README.zh-TW.md)
 
-Cyber-Age SOP is a small project-lifecycle system for turning a personal
-software, hardware, UI, documentation, Skill, Docker, or automation idea into
-a bounded delivery task with explicit evidence boundaries.
+Cyber-Age SOP is a deep discovery and boundary-clarification framework for
+designers, project owners, and Agents. It helps turn a software, hardware, UI,
+documentation, Skill, Docker, automation, creative, media, or game idea into
+clear decisions, a bounded task, and explicit evidence boundaries.
+
+It is not a project-management platform and it is not a domain solution. It
+does not replace a software engine, creative tool, media generator, game
+engine, or specialist review.
 
 It has two coordinated layers:
 
@@ -18,7 +23,8 @@ OpenAI, Codex, Obsidian, or GitHub project.
 
 ## What It Solves
 
-The workflow is designed to prevent common project failures:
+The framework is designed to surface the designer's intent, assumptions, and
+boundaries before execution. It helps prevent common project failures:
 
 - a small task expanding into an unbounded rewrite;
 - an unclear idea being turned into a long questionnaire;
@@ -44,6 +50,102 @@ real situation or existing material
 
 The workflow is adaptive. A one-file typo may use the trivial fast path. A
 multi-file, UI/runtime, build/release, or field task uses the deeper contract.
+
+## Where It Fits
+
+Cyber-Age SOP can be applied beyond small coding tasks when the work can be
+framed as:
+
+```text
+understand intent
+→ surface assumptions
+→ clarify boundaries
+→ make design decisions
+→ hand off bounded work
+→ verify what the evidence actually proves
+```
+
+Examples include:
+
+| Scale or domain | What the SOP coordinates |
+|---|---|
+| Small task | A bounded change, one check, and a small report |
+| Standard project | Anchor, Profile, Agent Brief, verification, and project record |
+| Large system | Workstreams, dependencies, architecture decisions, milestones, release gates, and integration evidence |
+| Program of projects | Parent goal, child projects, shared decisions, cross-project risks, and staged delivery |
+| System / infrastructure | Architecture, environments, permissions, backup, rollback, recovery, and long-running evidence |
+| Art and design | Creative brief, references, direction, iterations, selection criteria, and provenance |
+| AI image / animation / audio | Prompt or production versions, assets, review gates, output checks, and rights boundaries |
+| AI game | Game design, core loop, playable vertical slice, playtest, platform matrix, and release evidence |
+
+Large work can be decomposed instead of being forced into one oversized brief:
+
+```text
+Program
+→ Workstream
+→ Project
+→ Task
+→ Evidence
+```
+
+The core runtime currently ships `code`, `ui-doc`, and `field` task profiles.
+The project-SOP layer also describes `skill-agent-workflow`, `docker-service`,
+and `experiment-tool`. System architecture, creative production, media
+generation, and game-development profiles are extension directions, not claims
+that the current runtime already contains specialized domain logic.
+
+## What It Can and Cannot Do
+
+### It can assist with
+
+- turn an unclear idea into a bounded Project Anchor;
+- choose a smaller path or a full path based on risk and scope;
+- hand confirmed decisions to an Agent through an Agent Brief;
+- clarify what specialized tools need to receive without pretending to be those tools;
+- separate code, build/release, field, and long-running evidence;
+- organize large work into workstreams, tasks, milestones, and review gates when
+  the project owner chooses to use that structure;
+- preserve the difference between a generated asset, a reviewed asset, and a
+  production-accepted result;
+- leave a durable project page and evidence appendix in a knowledge base.
+
+### It cannot
+
+- replace a software, game, rendering, audio, image, or animation engine;
+- decide whether an artwork is beautiful, a song is good, or a game is fun;
+- prove that every Agent runtime interprets the Skill identically;
+- turn a local test or generated file into field acceptance;
+- provide authorization, backup, rollback, or recovery for a live operation by
+  itself;
+- guarantee long-term stability, compatibility, quality, or user adoption;
+- replace domain experts, human review, rights checks, or production QA.
+
+For AI creative work, the SOP can frame and clarify the production chain, not
+the aesthetic judgment:
+
+```text
+creative brief
+→ references and rights boundary
+→ prompt / model / asset versions
+→ small vertical slice
+→ generation and editing
+→ human review
+→ output and playback checks
+→ release or archive
+```
+
+## GitHub and Obsidian
+
+The two locations have different jobs:
+
+| Location | Role |
+|---|---|
+| GitHub | Public Skill package, versioned documents, validator, Actions, releases, and contribution history |
+| Obsidian | Human-readable project story, decisions, milestones, evidence map, unresolved questions, and private context |
+
+GitHub answers “what can others install, inspect, validate, and fork?”.
+Obsidian answers “why was this designed, what happened, and what remains
+unproven?”. Neither location replaces the other.
 
 ## Repository Layout
 
@@ -132,11 +234,11 @@ Use the evidence labels in `acceptance-and-evidence.md` when reporting results.
 
 ## Versioning
 
-The current repository release is `0.1.3`.
+The current repository release is `0.1.4`.
 
 - Runtime Skill version: `0.2`
 - Project SOP document version: `0.1`
-- Repository release version: `0.1.3`
+- Repository release version: `0.1.4`
 
 Changes that alter routing, evidence boundaries, or safety gates should include
 updated regression cases and a changelog entry.

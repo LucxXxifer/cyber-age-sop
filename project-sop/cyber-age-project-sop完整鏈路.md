@@ -39,6 +39,25 @@ privacy: public-reference
 
 如果工作在途中擴大、觸及權限或改變行為，立即從 fast path 回到 standard 或 full。
 
+### 規模判斷
+
+```text
+fast
+→ 一個小切片、一個主要驗收
+
+standard
+→ 一個項目、幾個相關產物
+
+large
+→ 多個工作流、依賴、里程碑和整合驗證
+
+program
+→ 多個項目共享上層目標、決定、風險和發布節奏
+```
+
+大項目仍然使用同一套證據邊界，但透過 Workstream 和 Task 拆開，不把所有內容
+塞進一份 Agent Brief。
+
 ## 1. Project Anchor
 
 ### 輸入

@@ -13,8 +13,9 @@ privacy: public-reference
 
 ## 1. 它是什麼
 
-`cyber-age-project-sop` 是 Cyber-Age 中可長期保存的**項目類型與交付契約**。
-它把一個項目從「我想做什麼」整理到「怎樣交接、怎樣驗證、怎樣留下可讀記錄」。
+`cyber-age-project-sop` 是 Cyber-Age 中可長期保存的**需求探索、邊界釐清和交付契約**。
+它把一個項目從「我想做什麼」整理到「哪些假設要檢查、怎樣作決定、怎樣交接、
+怎樣驗證、怎樣留下可讀記錄」。
 
 它建立在已安裝的 `cyber-age-sop` skill 之上，但不是第二個 runtime skill：
 
@@ -26,8 +27,10 @@ privacy: public-reference
 | 項目主頁 | 以讀者能理解的方式保存項目背景、決定、結果和限制 |
 | 證據附錄 | 保存原始來源、測試、部署、發布和矛盾記錄 |
 
-因此，這一頁定義「項目要怎樣被管理和保存」，不替使用者下產品方向，也不把
-引導工具模擬成項目問卷。
+因此，這一頁定義「項目怎樣被理解、釐清、交接和保存」，不替使用者下產品方向，
+也不把引導工具模擬成項目問卷。
+
+它不是平台，也不是任何領域的解決方案。它只提供一個可以套用到不同領域的框架。
 
 ## 2. 何時使用
 
@@ -38,6 +41,7 @@ privacy: public-reference
 - 需要把人做的決定交給 Agent 實施的工作；
 - 需要區分 code、build/release、field 和 long-running 證據的工作；
 - 需要在 Obsidian 形成可重用項目主頁和證據鏈的工作。
+- 需要先深度挖掘設計者／使用者需求，再交給 Agent 或領域工具的工作。
 
 不適用於：
 
@@ -45,6 +49,7 @@ privacy: public-reference
 - 沒有項目交付物的自由對話；
 - 已明確且只涉及一個低風險錯字的 trivial fast path；
 - 沒有授權卻要求操作真實設備、外部帳戶或生產環境的工作。
+- 需要由它直接生成圖像、動畫、音樂、遊戲或其他領域成品的期待。
 
 ## 3. 三種入口
 
@@ -60,6 +65,14 @@ privacy: public-reference
 
 一個項目可以有多個 Task，但每個 Task 先選一個主要 Profile：
 
+項目另可標記規模：
+
+```yaml
+project_scale: fast | standard | large | program
+```
+
+`project_scale` 描述需要多少協調，不等於項目質量或成熟度。
+
 | Profile | 先固定什麼 | 主要驗收 | 適合的主頁重點 |
 |---|---|---|---|
 | `code` | 行為、允許文件、測試和 diff | targeted/full tests、lint、build、diff | 問題、決定、實現、限制 |
@@ -71,6 +84,15 @@ privacy: public-reference
 
 Profile 是任務的證據契約，不是項目的永久標籤。項目可以在不同階段拆成不同
 Task，例如先做 `code`，再做 `field`，最後做 `ui-doc`。
+
+以下是可在這個核心之上擴展的領域 Profile，不代表目前 runtime 已經內置領域引擎：
+
+| 擴展 Profile | 可以協調什麼 | 仍需要外部工具或人工判斷 |
+|---|---|---|
+| `system-architecture` | 架構、工作流、依賴、風險和整合閘門 | 領域架構工具、性能測試和安全審查 |
+| `creative-production` | Creative Brief、參考素材、風格規則、迭代和選稿 | 生成工具、藝術指導和人工審美 |
+| `media-generation` | Prompt、模型、資產版本、輸出規格和來源 | image、animation、audio 或 video engine |
+| `game-development` | Game Design、核心循環、Vertical Slice、Playtest 和發布 | 遊戲引擎、平台測試和玩家評價 |
 
 ## 5. 項目記錄的最小結構
 
@@ -103,6 +125,7 @@ project_id: <target-project-id>
 project_sop_type: cyber-age-project-sop
 project_name:
 category:
+project_scale:
 stage:
 status:
 task_profile:

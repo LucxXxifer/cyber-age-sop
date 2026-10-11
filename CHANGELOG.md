@@ -2,6 +2,18 @@
 
 All notable changes to this repository are documented here.
 
+## [0.1.4] - 2026-10-11
+
+### Changed
+
+- Clarify that Cyber-Age SOP is a deep discovery, design-boundary, and
+  handoff framework rather than a project-management platform or domain
+  solution.
+- Explain how the framework can be applied to large systems, creative work,
+  AI-generated media, and games without replacing domain engines or human
+  review.
+- Clarify the separate roles of GitHub and Obsidian.
+
 ## [0.1.3] - 2026-10-11
 
 ### Changed
