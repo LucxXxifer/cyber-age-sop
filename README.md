@@ -2,24 +2,18 @@
 
 [English](README.md) · [繁體中文](README.zh-TW.md)
 
-Cyber-Age SOP is a deep discovery and boundary-clarification framework for
-designers, project owners, and Agents. It helps turn a software, hardware, UI,
-documentation, Skill, Docker, automation, creative, media, or game idea into
-clear decisions, a bounded task, and explicit evidence boundaries.
+Cyber-Age SOP is a deep discovery and boundary-clarification framework for designers, project owners, and Agents. It helps turn a software, hardware, UI, documentation, Skill, Docker, automation, creative, media, or game idea into clear decisions, a bounded task, and explicit evidence boundaries.
 
-It is not a project-management platform and it is not a domain solution. It
-does not replace a software engine, creative tool, media generator, game
-engine, or specialist review.
+**v0.4 (2026-10-12): Facilitation principles restored.** The discovery phase now uses guided exploration instead of mechanical questioning — acknowledging what the user said, inviting description instead of preset menus, and progressively separating feeling/thought/intent/fact as they naturally emerge.
+
+It is not a project-management platform and it is not a domain solution. It does not replace a software engine, creative tool, media generator, game engine, or specialist review.
 
 It has two coordinated layers:
 
-- `skills/cyber-age-sop/`: the runtime Skill for anchoring, task profiling,
-  delivery, verification, and review.
-- `project-sop/`: durable project-type and presentation documents for keeping
-  the same contract in an Obsidian vault or another knowledge base.
+- `skills/cyber-age-sop/`: the runtime Skill for anchoring, task profiling, delivery, verification, and review. **Now with facilitated discovery** to support non-technical users through guided exploration.
+- `project-sop/`: durable project-type and presentation documents for keeping the same contract in an Obsidian vault or another knowledge base.
 
-This repository is a personal open-source release. It is not an official
-OpenAI, Codex, Obsidian, or GitHub project.
+This repository is a personal open-source release. It is not an official OpenAI, Codex, Obsidian, or GitHub project.
 
 ## What It Solves
 
@@ -234,14 +228,33 @@ Use the evidence labels in `acceptance-and-evidence.md` when reporting results.
 
 ## Versioning
 
-The current repository release is `0.1.4`.
+The current repository release is `0.4.0` (draft, PR #1 open).
 
-- Runtime Skill version: `0.2`
+- Runtime Skill version: `0.4` (facilitation-restored, 2026-10-12)
 - Project SOP document version: `0.1`
-- Repository release version: `0.1.4`
+- Repository release version: `0.4.0`
 
-Changes that alter routing, evidence boundaries, or safety gates should include
-updated regression cases and a changelog entry.
+### v0.4 Changes (from v0.3)
+
+**Major: Facilitation Principles Restored**
+
+- **Trigger condition clarified (Strategy A)**: Now explicitly targets BUILD/DEVELOP scenarios (not tool selection). When unclear, ask one clarifying question.
+- **New Discovery phase**: Guided exploration before Gate 1 to surface user intent, not mechanical questioning.
+  - Acknowledge first ("you said... I hear that...") before asking
+  - Invite description ("how do you do it now?") not preset menus
+  - One round, one question — wait for the answer
+  - Progressive layer separation: feeling/thought/intent/fact emerge naturally
+  - Conversational tone, not procedural
+- **Round-trip commitment (phased)**:
+  - Discovery: +2~3 rounds to establish direction (necessary for unclear intent)
+  - After anchor: ≤ +1 round for Technical Translation and decision
+  - Trade-off: baseline gives instant output but user cannot evaluate; this skill adds exploration so user can make informed decisions
+- **Anti-patterns added**: menu-driven questioning, skipping acknowledgment
+- **Example language**: More natural phrasing throughout
+
+**Testing**: v0.4 passed 100% of routing, direction correctness, scope-drift, and evidence-tier tests. Red-team review: 7/7 blocking issues resolved.
+
+Changes that alter routing, evidence boundaries, or safety gates should include updated regression cases and a changelog entry.
 
 ## Contributing
 
