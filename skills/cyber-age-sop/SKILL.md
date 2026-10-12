@@ -149,6 +149,65 @@ As the conversation progresses, start filling the anchor **progressively** (not 
 
 Stop discovery when you have enough to proceed to MVP Framing. Don't keep asking if the next question won't change the direction.
 
+## Visual Aids (Optional)
+
+Visual aids help non-technical users **see** their product structure through simple ASCII diagrams.
+
+### When User Asks Directly
+
+If user says "画个图" / "帮我画流程图" / "能用图说明吗", generate visual aid immediately with ASCII art.
+
+### When to Suggest (Requires User Confirmation)
+
+Suggest visual aids when complexity justifies it:
+
+| Scenario | Signal | Suggestion Template |
+|---|---|---|
+| Complex flow | 3+ steps or "如果...那么..." branches | "听起来流程有几个分支，我可以画个简单流程图帮你看清楚，要吗？" |
+| Multi-role | Mentions "管理员"/"用户"/"访客" etc. | "涉及不同角色的权限，我可以画个图说明谁能做什么，需要吗？" |
+| Multi-module | Mentions "前端"/"后端"/"数据库" or "分几个部分" | "系统有几个模块，我可以画个架构图展示它们的关系，要不要？" |
+| Layout | "页面分成..."/"左边...右边..." | "可以用简单布局图展示页面结构，需要吗？" |
+
+**Important:**
+- Wait for user confirmation ("好"/"要"/"画吧") before generating
+- If user says "不用"/"先不要" or changes topic → skip silently
+- Don't force visuals if user already understands
+
+See `references/visual-aids.md` for diagram templates (flow/architecture/layout).
+
+## Web Research (Optional)
+
+Web research verifies technical feasibility, obtains cost estimates, and fact-checks constraints when it would improve decision quality.
+
+### When User Asks Directly
+
+If user says "查一下 XX" / "帮我看看 XX 的文档" / "最新价格是多少", research immediately using `tavily-search` or `tavily-extract`.
+
+### When to Suggest (Requires User Confirmation)
+
+Suggest web research when it would improve decision quality:
+
+| Scenario | Signal | Suggestion Template |
+|---|---|---|
+| Uncertain feasibility | Need to say `我不知道` but can verify | "我不确定 XX 是否支持这个功能，我可以查一下官方文档，要吗？" |
+| Cost estimation | User asks "要多少钱" + involves 3rd-party service | "成本涉及 XX 服务的最新价格，我可以查一下，需要吗？" |
+| Specific tool mentioned | User says "用 Firebase"/"用 Stripe" etc. | "你提到 XX，我可以查一下它的限制和定价，帮你判断合不合适，要吗？" |
+| Need evidence for `确定不可行` | Believe infeasible but lack source | "这个看起来不可行，但我想查证一下官方文档确认，可以吗？" |
+
+**Important:**
+- State uncertainty first ("我不确定..." / "我不知道...")
+- Then offer to research ("我可以查...")
+- Wait for confirmation ("查吧"/"好"/"要")
+- If user provides answer directly ("我预算是 XX") → use their info, skip research
+- If user says "不用"/"我知道" → continue with existing info
+
+**Citation format:**
+- `查证`：根据 [来源](URL) (YYYY-MM-DD 验证)，...
+- `经验估算`：基于类似项目经验，... (未查证)
+- `未查证估算`：可能...，需要进一步确认
+
+See `references/web-research.md` for Tavily usage and citation format.
+
 ## When User Cannot Answer (After 2 Rounds)
 
 If after 2 rounds of open exploration the user still cannot describe their situation or needs clearly:

@@ -2,6 +2,103 @@
 
 All notable changes to this repository are documented here.
 
+## [0.4.2] - 2026-10-12
+
+### Added: Visual Aids & Web Research (User-Controlled)
+
+**What:** Two optional capabilities to help non-technical users see product structure and verify technical decisions.
+
+**Why:** User feedback identified two critical gaps:
+1. Non-technical users struggle to **see** product structure from verbal descriptions
+2. Users cannot trust feasibility/cost claims without verification
+
+**Design principle:** Both features are **user-controlled** — trigger only when user asks directly OR agent suggests and user confirms. This avoids token bloat and respects user's pace.
+
+#### 1. Visual Aids (视觉化辅助)
+
+**Purpose:** Help users see product structure through simple ASCII diagrams (flow/architecture/layout).
+
+**Trigger conditions:**
+- User asks directly: "画个图" / "帮我画流程图" → generate immediately
+- Agent suggests when: complex flow (3+ steps/branches) / multi-role / multi-module / layout → wait for confirmation
+
+**Key safeguards:**
+- Agent says "我可以画个图帮你看清楚，要吗？" (offers, doesn't assume)
+- User says "好"/"要" → generate; "不用"/"先不要" or changes topic → skip silently
+- Won't force visuals if user already understands
+
+**Example suggestion:**
+```
+听起来流程有几个分支，我可以画个简单流程图帮你看清楚，要吗？
+```
+
+#### 2. Web Research (联网研究)
+
+**Purpose:** Verify technical feasibility, obtain cost estimates, fact-check constraints via Tavily search/extract.
+
+**Trigger conditions:**
+- User asks directly: "查一下 XX" / "最新价格是多少" → research immediately
+- Agent suggests when: uncertain feasibility / cost estimation needed / specific tool mentioned / need evidence for `确定不可行` → wait for confirmation
+
+**Key safeguards:**
+- Agent states uncertainty first: "我不确定 XX 是否支持...，我可以查一下，要吗？"
+- User says "查吧"/"好" → research; "不用"/"我知道" → continue with existing info
+- If user provides answer directly ("我预算是 $50/月") → use their info, skip research
+
+**Citation format:**
+- `查证`：根据 [来源](URL) (YYYY-MM-DD 验证)，...
+- `经验估算`：基于类似项目经验，... (未查证)
+- `未查证估算`：可能...，需要进一步确认
+
+**Example suggestion:**
+```
+我不确定 Firebase 是否支持这个功能，我可以查一下官方文档，要吗？
+```
+
+#### Files Changed
+
+- `SKILL.md`: Added "Visual Aids (Optional)" and "Web Research (Optional)" sections (~60 lines)
+- `references/visual-aids.md`: NEW file — complete visual aids guide (~187 lines)
+  - 3 diagram types: flow / architecture / layout
+  - ASCII templates with examples
+  - When to suggest vs when NOT to use
+  - Quality checklist
+- `references/web-research.md`: NEW file — complete web research guide (~600 lines)
+  - 4 trigger scenarios with templates
+  - Tavily skill usage (search/extract)
+  - Citation format (3 evidence quality levels)
+  - Integration with certainty labels
+- `CHANGELOG.md`: This entry
+
+**Total:** +847 lines
+
+#### Verification
+
+- ✓ Trigger logic is user-controlled (no auto-generation)
+- ✓ Suggestion templates are standardized
+- ✓ Confirmation protocol is explicit (wait for user response)
+- ✓ Skip-silently behavior defined (user declines or changes topic)
+- ✓ Citation format matches Technical Translation requirements
+- ✓ Integrated with existing certainty labels (`确定不可行` / `我不知道` / `有条件可行`)
+
+**Not verified:** Feature effectiveness with real users (planned for v0.5 baseline testing)
+
+**Remaining risk:** 
+- May still over-suggest in practice (needs real usage data)
+- Users may not understand when to accept vs decline suggestions
+- Token cost in practice unknown (design aims for low default cost)
+
+#### Context Cost
+
+| Version | Total Lines | Estimated Tokens | Increment |
+|---|---|---|---|
+| v0.4.1 | 1,040 | ~20K | baseline |
+| v0.4.2 | 1,887 | ~27K | +7K (~35%) |
+
+**Assessment:** 35% increase is within healthy range for Opus 5.5. Features are opt-in, so most conversations won't trigger both.
+
+---
+
 ## [0.4.1] - 2026-10-12
 
 ### Added: Failure Path Protocol
