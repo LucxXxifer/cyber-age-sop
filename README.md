@@ -128,18 +128,25 @@ creative brief
 → release or archive
 ```
 
-## GitHub and Obsidian
+## Repository Structure
 
-The two locations have different jobs:
+This repository contains:
 
-| Location | Role |
-|---|---|
-| GitHub | Public Skill package, versioned documents, validator, Actions, releases, and contribution history |
-| Obsidian | Human-readable project story, decisions, milestones, evidence map, unresolved questions, and private context |
+| Directory | Purpose | For whom |
+|---|---|---|
+| `skills/cyber-age-sop/` | Runtime Skill — the installable package | **Users:** Copy this to your agent runtime's skill directory |
+| `project-sop/` | Project documentation templates and patterns | **Optional:** Reference if you want to document your own projects |
+| `.github/workflows/` | Validation and release automation | **Contributors:** CI/CD for the public package |
 
-GitHub answers “what can others install, inspect, validate, and fork?”.
-Obsidian answers “why was this designed, what happened, and what remains
-unproven?”. Neither location replaces the other.
+**For users installing this skill:**
+- Copy `skills/cyber-age-sop/` to your agent runtime
+- The skill works immediately; no additional setup needed
+- `project-sop/` templates are optional — use them if you want structured project documentation
+
+**For contributors:**
+- The skill package is self-contained in `skills/cyber-age-sop/`
+- `project-sop/` documents define reusable project-record patterns
+- Keep private design notes and evidence chains separate (not in this public repo)
 
 ## Repository Layout
 
