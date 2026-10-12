@@ -4,7 +4,7 @@
 
 Cyber-Age SOP is a deep discovery and boundary-clarification framework for designers, project owners, and Agents. It helps turn a software, hardware, UI, documentation, Skill, Docker, automation, creative, media, or game idea into clear decisions, a bounded task, and explicit evidence boundaries.
 
-**v0.4 (2026-10-12): Facilitation principles restored.** The discovery phase now uses guided exploration instead of mechanical questioning — acknowledging what the user said, inviting description instead of preset menus, and progressively separating feeling/thought/intent/fact as they naturally emerge.
+**v0.4.2 (2026-10-12): Visual aids and web research (user-controlled).** The skill now supports optional visual aids (ASCII diagrams for flows/architecture/layouts) and web research (Tavily-based verification of technical feasibility and cost estimates), both triggered by user request or agent suggestion with confirmation.
 
 It is not a project-management platform and it is not a domain solution. It does not replace a software engine, creative tool, media generator, game engine, or specialist review.
 
@@ -149,8 +149,12 @@ skills/cyber-age-sop/
 ├── agents/openai.yaml
 └── references/
     ├── acceptance-and-evidence.md
+    ├── failure-path.md
     ├── regression-cases.md
-    └── task-profiles.md
+    ├── task-profiles.md
+    ├── technical-translation.md
+    ├── visual-aids.md
+    └── web-research.md
 
 project-sop/
 ├── README.md
@@ -176,12 +180,11 @@ skills/cyber-age-sop/
 ```
 
 Copy that directory into the skill directory used by your agent runtime, or
-adapt the files to the runtime's supported Skill format. The Skill itself does
-not require a network connection, external account, field device, or secret.
+adapt the files to the runtime's supported Skill format.
 
-The Skill keeps facilitation and coaching separate. It does not automatically
-imitate either one. If a user explicitly asks for guided or layered
-facilitation, hand that work to the appropriate dedicated tool.
+**Network dependency:** The Skill requires access to Tavily search/extract skills for optional web research (feasibility verification and cost estimates). All other features work without network connection, external account, field device, or secret.
+
+**Facilitation principles:** This Skill incorporates guided exploration principles (acknowledging, inviting description, progressive layering) adapted from facilitation and coaching practices. It does not replace dedicated facilitation or coaching skills, and does not automatically redirect to other skills. The guided discovery approach is built into the Discovery phase to help non-technical users surface their intent and boundaries.
 
 ## Project SOP Documents
 
@@ -228,13 +231,62 @@ Use the evidence labels in `acceptance-and-evidence.md` when reporting results.
 
 ## Versioning
 
-The current repository release is `0.4.0` (draft, PR #1 open).
+The current repository release is `0.4.2` (draft, PR #1 open).
 
-- Runtime Skill version: `0.4` (facilitation-restored, 2026-10-12)
+- Runtime Skill version: `0.4.2` (visual-aids-web-research, 2026-10-12)
 - Project SOP document version: `0.1`
-- Repository release version: `0.4.0`
+- Repository release version: `0.4.2`
 
-### v0.4 Changes (from v0.3)
+### v0.4.2 Changes (from v0.4.1)
+
+**Added: Visual Aids & Web Research (User-Controlled)**
+
+Two optional capabilities to help non-technical users see product structure and verify technical decisions:
+
+1. **Visual Aids (视觉化辅助)**
+   - Purpose: Help users see product structure through simple ASCII diagrams
+   - 3 diagram types: flow diagram / architecture diagram / interface layout
+   - Triggering: User asks directly → generate immediately; Agent suggests when complexity justifies → wait for confirmation
+   - Example suggestion: "听起来流程有几个分支，我可以画个简单流程图帮你看清楚，要吗？"
+
+2. **Web Research (联网研究)**
+   - Purpose: Verify technical feasibility, obtain cost estimates via Tavily search/extract
+   - 4 trigger scenarios: uncertain feasibility / cost estimation / specific tool mentioned / need evidence for `确定不可行`
+   - Citation format: 3 levels (查证 / 经验估算 / 未查证估算)
+   - Example suggestion: "我不确定 XX 是否支持这个功能，我可以查一下官方文档，要吗？"
+
+**Design principle:** Both features use user-controlled triggering to avoid token bloat. User asks → immediate action; Agent suggests → wait for confirmation; User declines or ignores → skip silently.
+
+**Files changed:**
+- `SKILL.md`: +60 lines (Visual Aids + Web Research sections)
+- `references/visual-aids.md`: NEW file, 187 lines
+- `references/web-research.md`: NEW file, 600 lines
+- `CHANGELOG.md`: v0.4.2 entry
+
+**Context cost:** v0.4.1 (1,040 lines, ~20K tokens) → v0.4.2 (1,887 lines, ~27K tokens), +81%
+
+### v0.4.1 Changes (from v0.4.0)
+
+**Added: Failure Path Protocol**
+
+Addresses red-team B4 blocking issue — v0.4.0 only had positive path (user can answer questions).
+
+**When User Cannot Answer (After 2 Rounds):**
+1. Try Different Angle: time perspective / problem vs goal / self vs others
+2. Offer Candidate Anchors: 3-5 specific scenarios user can pick or reject
+3. Generate Blocked Report: markdown template with certainty labels
+
+**Certainty labels:**
+- `确定不可行`: with source + date + alternative
+- `我不知道`: what external info is needed
+- `有条件可行`: list preconditions with verification method
+
+**Files changed:**
+- `SKILL.md`: +90 lines (When User Cannot Answer section)
+- `references/failure-path.md`: NEW file, 280 lines
+- `references/acceptance-and-evidence.md`: +35 lines
+
+### v0.4.0 Changes (from v0.3)
 
 **Major: Facilitation Principles Restored**
 
