@@ -1,21 +1,19 @@
 # Acceptance and Evidence Contract
 
-## Evidence tiers
+## Evidence Tiers
 
 | Tier | Proves | Does not prove |
 |---|---|---|
-| Code / fixture | behavior in the repository snapshot | device or user acceptance |
-| Build / release | an artifact was produced and checks passed | deployment success |
-| Field | the authorized environment showed the observed result | every topology or long-term stability |
-| Long-running | behavior remained stable over the stated window | unrelated environments |
+| Code / fixture | Behavior in the repository snapshot | Device or user acceptance |
+| Build / release | An artifact was produced and checks passed | Deployment success |
+| Field | The authorized environment showed the observed result | Every topology or long-term stability |
+| Long-running | Behavior remained stable over the stated window | Unrelated environments |
 
-Do not collapse these tiers into one “done” label.
+Do not collapse these tiers into one "done" label.
 
-## Required final report
+## Required Final Report
 
-Use the full report for normal, risky, multi-file, UI/runtime, build/release,
-or field tasks. Trivial fast-path work may report briefly in the conversation
-with the changed file, check result, and remaining uncertainty.
+Use the full report for normal, risky, multi-file, UI/runtime, build/release, or field tasks. Trivial fast-path work may report briefly in the conversation with the changed file, check result, and remaining uncertainty.
 
 Use these headings exactly:
 
@@ -30,20 +28,27 @@ Use these headings exactly:
 
 The report must be outside the repository. The audit should independently check:
 
-- the report exists at the requested external path;
-- the required headings are present;
-- `git diff --name-only` is inside the allowlist;
-- `git status --short --untracked-files=all` has no unexpected artifacts;
-- required validation commands have fresh output and exit status.
+- The report exists at the requested external path
+- The required headings are present
+- `git diff --name-only` is inside the allowlist
+- `git status --short --untracked-files=all` has no unexpected artifacts
+- Required validation commands have fresh output and exit status
 
-## Completion language
+## Completion Language
 
 Use precise claims:
 
-- “local tests pass” for repository checks;
-- “build artifact produced” for build checks;
-- “field observation recorded” for authorized runtime evidence;
-- “not verified” for anything outside the executed evidence.
+- "Local tests pass" for repository checks
+- "Build artifact produced" for build checks
+- "Field observation recorded" for authorized runtime evidence
+- "Not verified" for anything outside the executed evidence
 
-Do not write “works everywhere”, “all clients accepted”, “production-ready”, or
-similar claims unless the stated evidence actually covers that scope.
+Do not write "works everywhere", "all clients accepted", "production-ready", or similar claims unless the stated evidence actually covers that scope.
+
+## Anti-Pattern Detection
+
+Flag these in reviews:
+
+1. **Self-justifying completion**: "Successfully implemented X" when only attempted, not verified
+2. **Evidence tier collapse**: "Deployment successful" from local test pass
+3. **Scope drift**: Implementing follow-up discoveries without explicit user decision
