@@ -1,10 +1,25 @@
 ---
 name: cyber-age-sop
-description: Use when someone has a product-shaped goal but cannot articulate boundaries, or doesn't know how to delegate it to an agent. Not for those still exploring what they want (→ guided-thinking) or who need options first (→ brainstorming). Not for domain-specific creative execution (→ huashu-design, meigen for visual work).
+description: >
+  Use when someone wants to BUILD/DEVELOP a custom solution (tool, plugin, internal system) 
+  and needs help scoping it into a deliverable MVP. 
+  
+  TRIGGER when user explicitly says:
+  - "build/develop/create X for my team/company"
+  - "existing tools don't fit, need custom solution"
+  - "help me build X from scratch"
+  
+  DO NOT trigger when:
+  - User wants to CHOOSE between existing tools → give direct recommendation
+  - User asks "should I use A or B" → tool comparison
+  - User says "I want to use/find/get X" → likely looking for existing solution
+  
+  When unclear: ask ONE clarifying question:
+  "你是想找现成的工具使用,还是要开发一个定制的?"
 metadata:
   short-description: Turn fuzzy product ideas into bounded, verifiable MVP delivery
-  version: "0.3"
-  status: red-team-reviewed
+  version: "0.4"
+  status: facilitation-restored
 ---
 
 # Cyber-Age SOP
@@ -14,12 +29,14 @@ metadata:
 ## Routing
 
 This skill is for someone who:
-- Has a product-shaped goal ("I want to make X") but cannot scope it
+- Wants to build/develop a custom solution ("我要做一个 X 给团队用")
+- Has a product-shaped goal but cannot scope it
 - Doesn't know how to explain requirements to an agent or engineer
 - Faces technical choices but lacks the context to evaluate them
 - Needs to verify what "done" actually means
 
 **Not for:**
+- Tool selection or comparison ("该用 Notion 还是 Google Docs?") → give recommendation directly
 - Exploring what you want → use `guided-thinking`
 - Generating options to compare → use `brainstorming`
 - Visual/brand creative execution → use `huashu-design` or `meigen`
@@ -31,7 +48,7 @@ This skill is independent from `guided-thinking`.
 
 - Do not invoke `guided-thinking` automatically.
 - Do not turn a project task into emotional, relationship, coaching, or consent-oriented facilitation.
-- Borrow only project-useful principles: preserve user wording, separate facts from assumptions, ask one high-impact question at a time, converge when the next decision is clear.
+- Borrow facilitation principles: preserve user wording, acknowledge what they said before asking, separate facts from assumptions, ask one question at a time that invites description rather than menu selection.
 - If the user asks for 大师级引导、大師級引導、引导大师、引導大師, guided thinking, or layered questioning, hand off to `guided-thinking`. Resume only when they return with a Thought Brief or explicitly ask to run the project SOP.
 
 `prompt-refiner` is an optional packaging tool, not a mandatory stage.
@@ -44,7 +61,7 @@ Choose the smallest path that safely produces the requested result:
 |---|---|
 | One-file typo, formatting fix, or trivial low-risk change with known check | Trivial fast path below |
 | Clear bounded task, more than trivial | Create short Agent Brief and execute |
-| Unclear project intent or scope | Project-only anchoring below |
+| Unclear project intent or scope | Discovery exploration → Project Anchor |
 | Architecture, UI, or delivery choice unsettled | Add Shape/Decision checkpoint |
 | Code, UI/documentation, or field work with different evidence needs | Load matching task profile |
 | Existing brief needs conversion to executable prompt | Use `prompt-refiner` |
@@ -64,9 +81,77 @@ Use only when the change is small, reversible, low-risk, and well-specified. Exa
 
 Skip full Project Anchor, task profile, full Agent Brief, external report file, and SOP feedback for this path. If the task expands, affects behavior, touches permissions, or has unclear evidence, return to normal gates.
 
+## Discovery: Facilitated Exploration (before Gate 1)
+
+When project intent or scope is unclear, create space for the user to describe their situation before filling any anchor template.
+
+### Guiding Principles
+
+1. **Acknowledge first, then explore**
+   - Start by reflecting what the user said in their own words
+   - Show you heard their uncertainty or confusion
+   - Example: "你说想做一个记账工具，但不确定要做成 App 还是网页。我听到的是：你知道需要记账功能，但对实现形态还在考虑。"
+
+2. **Ask questions that invite description, not menus**
+   - ❌ Not: "你多久记一次账？A) 每次花钱 B) 每天晚上 C) 每周末"
+   - ✅ Instead: "你现在是怎么记账的？或者，是什么让你觉得需要一个记账工具？"
+   - Let the user tell their story; don't force them to pick from preset options
+
+3. **One round, one open question**
+   - Ask one question at a time
+   - Don't chain multiple questions ("你的预算多少？用户有多少？什么时候要？")
+   - Wait for the answer before deciding what to ask next
+
+4. **Separate layers progressively**
+   As the user describes, distinguish:
+   - **感受/困惑**: Their uncertainty, frustration, or confusion ("不知道该怎么做")
+   - **想法**: What they think might work ("可能做个 App？")
+   - **意图**: What they actually want to achieve ("能方便记账")
+   - **事实**: Confirmed current situation ("现在用 Excel 但经常忘记")
+
+   Don't ask about all four layers at once. Let them emerge through natural conversation.
+
+5. **Tone: conversational, not procedural**
+   - ❌ Not: "在决定技术方案之前，我需要了解一个会影响项目范围的关键问题"
+   - ✅ Instead: "在我们讨论做成什么样之前，我想先了解一下你现在的情况"
+
+### When the User Cannot Describe Clearly
+
+After **two rounds** of open exploration, if the project anchor is still unclear:
+
+1. **First, try a different angle**
+   - "我想从另一个方向了解：你平时在什么情况下会需要用到它？"
+   - "或者这样问：设想一下，如果这个工具做好了，你会在什么时候打开它？"
+
+2. **If still unclear, offer candidate anchors**
+   - Present 3-5 possible problem anchors based on what they've said
+   - Let them pick one or clarify which is closest
+   - Example: "根据你说的，可能是这几个方向中的一个：1) ... 2) ... 3) ... 哪个更接近你的想法？或者都不是？"
+
+3. **If none fit, classify and hand off**
+   - "I don't know what I want yet" → hand off to `guided-thinking`
+   - "I want to compare options first" → hand off to `brainstorming`
+   - "Definitely not feasible at MVP stage" → state this with reasoning, suggest closer alternative
+   - "I cannot determine feasibility" → mark with source and date, state what info is missing
+
+### Discovery Output
+
+As the conversation progresses, start filling the anchor **progressively** (not as a questionnaire):
+
+```markdown
+## Project Anchor (emerging)
+- Human goal: [用户原话中的目标]
+- Primary user and situation: [他们描述的使用场景]
+- Problem in one sentence: [一句话总结要解决的问题]
+- Confirmed facts: [用户已确认的现状]
+- Unverified assumptions: [还需要验证的假设]
+```
+
+Stop discovery when you have enough to proceed to MVP Framing. Don't keep asking if the next question won't change the direction.
+
 ## Gate 1: Project Anchor
 
-Use a compact anchor, not a questionnaire:
+After discovery exploration, formalize the anchor:
 
 ```markdown
 ## Project Anchor
@@ -82,20 +167,9 @@ Use a compact anchor, not a questionnaire:
 - Stop or recovery condition:
 ```
 
-**Discovery protocol**: Ask exactly one plain-language question first — the one whose answer can most change project scope, evidence, or delivery path. Fill the anchor progressively as answers arrive.
-
-**If the user cannot answer**: After two exploration passes without a workable anchor, do not report "blocked" and stop. Instead:
-
-1. Offer 3-5 candidate problem anchors based on what they said, let them pick one.
-2. If still unclear, classify the situation:
-   - "I don't know what I want yet" → hand off to `guided-thinking`
-   - "I want to compare options" → hand off to `brainstorming`
-   - "Definitely not feasible at MVP stage" → state this with reasoning and suggest closer alternative
-   - "I cannot determine feasibility" → mark with source and date, state what info is missing
+Fill this progressively based on what emerged during discovery. Skip fields already clear from the user's description. Ask only when a missing fact would change scope, evidence, or delivery path.
 
 **Certainty labels**: Use `确定不可行` (definitely not feasible) vs `我不知道` (I don't know) vs `有条件可行` (feasible with conditions). Always cite source and date for feasibility claims.
-
-Skip questions already answered by the user or existing material. Stop anchoring when the next question no longer changes this task's direction.
 
 ### MVP Framing Rules
 
@@ -205,6 +279,8 @@ Only promote a workflow change when a repeated failure or meaningful experiment 
 1. **Self-justifying completion**: Claiming success by restating what was attempted, not what was verified.
 2. **Evidence tier collapse**: Treating local test pass as field success.
 3. **Scope drift via follow-up**: Quietly implementing out-of-scope discoveries without user decision.
+4. **Menu-driven questioning**: Giving the user preset options instead of letting them describe their situation.
+5. **Skipping acknowledgment**: Jumping to questions without showing you heard what they said.
 
 ## Non-Negotiables
 
@@ -215,4 +291,9 @@ Only promote a workflow change when a repeated failure or meaningful experiment 
 - No live deployment, external publication, credential use, or destructive action without explicit authorization
 - `no local warning` ≠ `runtime success`; local success ≠ field acceptance
 - **Product-visible consequences require user decision; implementation details require disclosure and allow veto**
-- Round-trip overhead vs no-skill baseline must not exceed +1 interaction
+- **Round-trip commitment (phased)**:
+  - Discovery phase: +2~3 rounds to establish direction (necessary for unclear intent)
+  - After anchor clear: ≤ +1 round for Technical Translation and decision
+  - Trivial tasks: skip Discovery, direct execution
+  - Quality trade-off: baseline gives instant output but user cannot evaluate; this skill adds exploration rounds but user can make informed decisions
+- **Acknowledge what the user said before asking; invite description, not menu selection**
