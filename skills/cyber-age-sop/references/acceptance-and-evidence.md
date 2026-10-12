@@ -52,3 +52,42 @@ Flag these in reviews:
 1. **Self-justifying completion**: "Successfully implemented X" when only attempted, not verified
 2. **Evidence tier collapse**: "Deployment successful" from local test pass
 3. **Scope drift**: Implementing follow-up discoveries without explicit user decision
+
+## Blocked Path Acceptance
+
+When a Discovery process results in a Blocked Report (user cannot articulate needs after facilitated exploration):
+
+### Verified
+
+- ✓ Attempted at least 2 rounds of open exploration
+- ✓ Tried different angles (time perspective / problem vs goal / self vs others)
+- ✓ Offered candidate anchors (if applicable) — specific, diverse, with rejection option
+- ✓ Generated Blocked Report with:
+  - What was explored
+  - What is still unclear
+  - Why cannot proceed
+  - Suggested next steps (guided-thinking / try existing tools / consult experts)
+- ✓ Applied correct certainty label with required evidence:
+  - `确定不可行`: source + date + specific reason
+  - `我不知道`: what info is needed + why it determines feasibility
+  - `有条件可行`: conditions explicitly listed + switch cost stated
+
+### Not Verified
+
+- Future feasibility (may change with more information or context)
+- User's eventual decision (they may gain clarity later through other means)
+- Whether suggested next steps will actually resolve the blockage
+
+### Remaining Risk
+
+- User may still be unclear after following suggested next steps
+- Handed-off skill (guided-thinking) may also reach a blocked state
+- User may abandon the exploration entirely
+
+### When NOT to Use Blocked Report
+
+❌ **Do not use Blocked Report when:**
+- You haven't tried 2 rounds of open exploration yet
+- You haven't tried different angles
+- One more clarifying question would likely resolve it
+- User is describing their needs, just slowly or in non-linear fashion

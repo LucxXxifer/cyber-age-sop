@@ -2,6 +2,48 @@
 
 All notable changes to this repository are documented here.
 
+## [0.4.1] - 2026-10-12
+
+### Added: Failure Path Protocol
+
+**What:** Complete protocol for handling situations where users cannot articulate their needs after facilitated exploration.
+
+**Why:** Red-team review (B4 blocking issue) identified that v0.4.0 only had a positive path — it assumed users could always answer open questions. Non-technical users often say "I don't know" or "You decide for me."
+
+#### New: Three-Step Escalation
+
+1. **Try Different Angle**: Reframe from time/problem-goal/self-others perspectives
+2. **Offer Candidate Anchors**: 3-5 specific, diverse scenarios as exploration aids (not preset solutions)
+3. **Generate Blocked Report**: Document what was explored, what's unclear, suggest next steps
+
+#### New: Certainty Labels
+
+When stating feasibility, use one of three explicit labels:
+
+- `确定不可行`: verified blocker (requires source + date + specific reason)
+- `我不知道`: need external info (state what info + why it determines feasibility)
+- `有条件可行`: feasible with conditions (list conditions + switch cost)
+
+#### Files Changed
+
+- `SKILL.md`: Added "When User Cannot Answer (After 2 Rounds)" section (~90 lines)
+- `references/failure-path.md`: New file — complete protocol documentation (~280 lines)
+- `references/acceptance-and-evidence.md`: Added "Blocked Path Acceptance" section (~35 lines)
+
+#### Verification
+
+- ✓ Logical completeness: covers all blocked-path scenarios (cannot answer / rejects options / needs feasibility statement)
+- ✓ Consistency with guided-thinking principles (acknowledge first / preserve autonomy / explicit uncertainty)
+- ✓ Consistency with red-team B4 requirements (candidate anchors / blocked report / certainty labels)
+
+**Not verified:** Protocol effectiveness with real users (planned for v0.5 baseline testing)
+
+**Remaining risk:** 
+- Protocol may still be too structured for some facilitation scenarios
+- Certainty labels may be applied inconsistently without real usage examples
+
+---
+
 ## [0.4.0] - 2026-10-12
 
 ### Major: Facilitation Principles Restored

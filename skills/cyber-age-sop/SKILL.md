@@ -149,6 +149,88 @@ As the conversation progresses, start filling the anchor **progressively** (not 
 
 Stop discovery when you have enough to proceed to MVP Framing. Don't keep asking if the next question won't change the direction.
 
+## When User Cannot Answer (After 2 Rounds)
+
+If after 2 rounds of open exploration the user still cannot describe their situation or needs clearly:
+
+### Step 1: Try a Different Angle
+
+Shift the frame to help them see it differently:
+
+**Time perspective:**
+> "我想从另一个方向了解：你现在怎么做这件事的？如果有这个工具，会有什么不同？"
+
+**Problem vs goal:**
+> "换个角度：现在遇到的问题是什么？希望达到什么效果？"
+
+**Self vs others:**
+> "或者这样想：你自己会怎么用？其他人会怎么用？"
+
+### Step 2: Offer Candidate Anchors (If Still Unclear)
+
+If the different angle doesn't help, offer **3-5 candidate anchors** based on common patterns:
+
+> "听起来可能是以下几种情况之一，看看哪个更接近你的需求：
+> 
+> A) [具体场景 1 - 包含规模/用户/频率]
+> B) [具体场景 2 - 不同的方向]
+> C) [具体场景 3 - 另一种可能]
+> 
+> 或者都不太对？可以说说哪个比较接近，或者差在哪里。"
+
+**Important rules:**
+- Make anchors **specific** (not "做个工具" but "公司内部任务分配系统，5-10人用")
+- Make them **diverse** (cover different scales, approaches, or domains)
+- Allow rejection (user can say "都不太对")
+- These are **exploration aids**, not preset solutions
+
+### Step 3: Generate Blocked Report (If None Fit)
+
+If none of the candidate anchors fit, generate a **Blocked Report**:
+
+```markdown
+## Blocked Report
+
+**What we explored:**
+- [尝试过的角度 1]
+- [尝试过的角度 2]
+- [提供过的候选锚点]
+
+**What is still unclear:**
+- [仍不清楚的关键点 - 具体说明]
+
+**Suggested next steps:**
+1. 使用 `guided-thinking` 进行更深入的意图探索
+2. 先尝试现成工具（[具体建议]），在使用中明确真正需要什么
+3. 咨询 [具体领域] 的领域专家
+
+**Certainty label:** `我不知道` (需要更多信息才能判断可行性)
+```
+
+### Certainty Labels (When Stating Feasibility)
+
+When you need to state whether something is feasible:
+
+| Label | Meaning | When to Use | Required Evidence |
+|---|---|---|---|
+| `确定不可行` | Clear blocker exists | Verified technical/cost/legal constraint | Source + date + specific reason |
+| `我不知道` | Need external info | Feasibility depends on unknown factors | State what info is needed |
+| `有条件可行` | Feasible if conditions met | User must decide on prerequisites | List conditions explicitly |
+
+**Examples:**
+
+✅ **Correct usage:**
+- `确定不可行`：根据 [Chrome Extension Manifest V3 文档](URL)，无法在后台持续运行脚本（2026-10-12 验证）
+- `我不知道`：需要确认你的预算范围和团队技术背景才能判断是用现成工具还是自建
+- `有条件可行`：如果你能接受每月 $20 云服务费用 + 每周 1 小时维护时间，可以用 Firebase 方案
+
+❌ **Wrong usage:**
+- "应该可以"（模糊，未标注不确定性）
+- "大概能做"（猜测，无证据）
+- "这个很简单"（未考虑维护成本和使用者背景）
+
+**Never guess feasibility.** If uncertain, use `我不知道` and state what information is needed to determine feasibility.
+
 ## Gate 1: Project Anchor
 
 After discovery exploration, formalize the anchor:
