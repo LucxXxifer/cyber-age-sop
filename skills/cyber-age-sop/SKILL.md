@@ -18,8 +18,8 @@ description: >
   "你是想找现成的工具使用,还是要开发一个定制的?"
 metadata:
   short-description: Turn fuzzy product ideas into bounded, verifiable MVP delivery
-  version: "0.4"
-  status: facilitation-restored
+  version: "0.4.4"
+  status: decision-brief
 ---
 
 # Cyber-Age SOP
@@ -61,12 +61,14 @@ Choose the smallest path that safely produces the requested result:
 |---|---|
 | One-file typo, formatting fix, or trivial low-risk change with known check | Trivial fast path below |
 | Clear bounded task, more than trivial | Create short Agent Brief and execute |
-| Unclear project intent or scope | Discovery exploration → Project Anchor |
+| Unclear project intent or scope | Discovery exploration → Project Anchor → Technical Translation → **Decision Brief** |
 | Architecture, UI, or delivery choice unsettled | Add Shape/Decision checkpoint |
 | Code, UI/documentation, or field work with different evidence needs | Load matching task profile |
 | Existing brief needs conversion to executable prompt | Use `prompt-refiner` |
 
 Do not force every project through every artifact.
+
+**The Decision Brief (Gate 3.5) is the main artifact for non-technical users.** For a build-from-scratch project, the conversation is not the deliverable — the saved Brief is. Produce it unless the user explicitly opts out.
 
 ## Trivial Fast Path
 
@@ -353,6 +355,166 @@ Read [references/technical-translation.md](references/technical-translation.md) 
 - **Implementation details** → agent proposes, must disclose, user can veto
 
 All agent implementation choices must be disclosed and allow veto.
+
+## Gate 3.5: Decision Brief (可帶走的產出)
+
+**這是本 skill 對非技術使用者的核心交付物。**
+
+Anchor、Technical Translation、MVP 邊界的內容目前散落在對話中。對話關掉就沒有了。決策一旦形成，就必須落成一個使用者可以保存、可以給別人看、三個月後可以回頭查的檔案。
+
+### 何時產出
+
+- Discovery + Technical Translation + MVP Framing 完成後
+- 使用者做出方向決定後（或明確選擇「先不做」）
+- **一律產出**，除非使用者明確說「不用給我檔案」
+
+### 產出位置
+
+寫在 repository 外，由使用者指定或預設到：
+
+```
+~/<專案名>-decision-brief.md
+```
+
+不要在 repo 內建立此檔案（沿用 Non-Negotiables 的既有規則）。
+
+### 格式
+
+```markdown
+# Decision Brief — [專案名]
+
+**日期**: YYYY-MM-DD
+**狀態**: [決定要做 / 先驗證需求 / 暫緩 / 不做]
+
+---
+
+## 1. 我要解決什麼（使用者原話優先）
+
+> [直接引用使用者的關鍵原話]
+
+**一句話問題**: [用一句話總結]
+
+**誰會用、什麼時候用**: [使用者 + 場景]
+
+---
+
+## 2. 已確認的事實 vs 還沒驗證的假設
+
+**已確認**:
+- [使用者明確說過的現況]
+
+**未驗證（做之前應該確認）**:
+- [假設 1] — 驗證方式: [怎麼確認]
+- [假設 2] — 驗證方式: [怎麼確認]
+
+---
+
+## 3. 建議方案
+
+**推薦**: [方案名]
+
+**為什麼**:
+- [理由 1，用產品後果描述，不用技術術語]
+- [理由 2]
+
+**什麼情況下這個推薦是錯的**:
+- [具體可判斷的條件]
+
+**帶價（time / cost / maintenance）**:
+- 時間: [估算] — 來源: [查證/經驗估算/未查證估算]，[日期]
+- 成本: [估算] — 來源: [同上]
+- 維護: [具體描述，不是「中等」]
+
+**如果之後要換方案**:
+- 需要重做: [什麼]
+- 估算工作量: [多少]
+
+---
+
+## 4. 第一版做什麼、不做什麼
+
+**核心不變量**（這一版不可以換掉的東西）:
+> [使用者真正想改變的是 X，這一版不可以換成 Y]
+
+**第一版包含**:
+- [功能 1]（拿掉它使用者會立刻發現）
+- [功能 2]
+
+**第一版不包含**（明確的非目標）:
+- [功能 3] — 拿掉不會被發現
+- [功能 4]
+
+**每一刀失去了什麼**:
+- 少了 [功能 3] → 失去 [能力] → 可接受因為 [理由]
+
+**底線條件**: 第一版必須讓使用者在真實場景碰過 [那個問題]，不是任何一個可示範的切片。
+
+---
+
+## 5. 我自己可以驗證的證據
+
+| 這一層 | 能證明 | 不能證明 |
+|---|---|---|
+| [本地測試 / 實際使用 / 現場] | [什麼] | [什麼] |
+
+**驗收訊號**: [什麼情況算成功]
+**停止條件**: [什麼情況該放棄或換方向]
+
+---
+
+## 6. 下一步
+
+**你現在可以做的事**（按建議順序）:
+
+1. **[立即可做]** — 成本 [X]，時間 [Y]
+   - 目的: 驗證 [哪個假設]
+   - 如果結果是 [A] → 繼續
+   - 如果結果是 [B] → 換方向
+
+2. **[需要決定後做]** — 交給:
+   - `cli-creator`（如果決定是做 CLI 工具）
+   - `agents-sdk`（如果決定是做 Agent app）
+   - 或其他開發者／Agent
+
+**這個 Brief 的保存位置**: [路徑]
+**建議回顧時間**: [X 週後]
+
+---
+
+## 附錄：Agent Brief（如果決定要做）
+
+[若已進入實作決策，附上完整 Agent Brief]
+```
+
+### 品質檢查
+
+產出前確認：
+
+- [ ] 使用者原話被保留（不是被改寫成產品術語）
+- [ ] 已確認事實與未驗證假設分開
+- [ ] 有明確推薦，不是選單
+- [ ] 每個估算都有來源標記
+- [ ] 核心不變量寫下來了
+- [ ] 每一刀失去什麼說清楚了
+- [ ] 下一步是可執行的，不是「再想想」
+- [ ] 檔案寫在 repo 外
+
+### 最小版本
+
+如果對話很短、專案很小，Decision Brief 可以只有：
+
+```markdown
+# Decision Brief — [專案名]
+
+**問題**: [一句話]
+**推薦**: [方案] 因為 [理由]
+**不做**: [非目標]
+**下一步**: [一個可執行的動作]
+```
+
+**不要為了填滿模板而填。空欄位比假內容好。**
+
+See [references/decision-brief-template.md](references/decision-brief-template.md) for the template, checklist, and anti-patterns.
 
 ## Gate 4: Delivery Contract
 

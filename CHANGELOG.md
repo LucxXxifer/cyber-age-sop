@@ -2,6 +2,28 @@
 
 All notable changes to this repository are documented here.
 
+## [0.4.4] - 2026-10-13
+
+### Added: Decision Brief (Gate 3.5)
+
+Anchor, Technical Translation, and MVP scope used to stay in the chat and were lost when it closed. The skill now writes a Decision Brief file outside the repository after the user picks a direction, unless the user opts out.
+
+- Minimal version (problem, recommendation, non-goals, next step) for short conversations
+- Full version: user's words, facts vs assumptions, recommendation with sourced estimates and switch cost, version 1 scope, evidence, next steps and hand-off
+- Path Selection now routes unclear build requests to the Brief
+
+Files: `SKILL.md` (Gate 3.5, version 0.4.4), new `references/decision-brief-template.md`.
+
+Not verified: whether real users save or reuse the Brief (v0.5 feedback collection).
+
+## [0.4.3] - 2026-10-13
+
+### Changed: Minimal web research fallback
+
+- `references/web-research.md` cut from 541 to ~180 lines
+- Fallback order: available tools → model knowledge with its cutoff date → state the limitation
+- No static URL lists or answer databases in the skill
+
 ## [0.4.2] - 2026-10-12
 
 ### Added: Visual Aids & Web Research (User-Controlled)

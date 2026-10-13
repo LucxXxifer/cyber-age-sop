@@ -6,17 +6,20 @@ Cyber-Age SOP 是一套用來深度挖掘設計者／項目負責人需求、釐
 再輔佐 Agent 交付的流程框架。它可以處理 software、hardware、UI、
 documentation、Skill、Docker、automation、藝術、AI 媒體或遊戲想法。
 
+**v0.4.4（2026-10-13）：Decision Brief。** 完成需求探索和技術翻譯後，Skill 會在
+repository 外寫一份 Decision Brief，讓不會寫程式的使用者可以保存、分享，或直接交給
+開發者／Agent。
+
 它不是項目管理平台，也不是任何領域的解決方案；不會取代 software engine、
 生成工具、遊戲引擎、媒體工具或專業審核。
 
-這個 repository 是個人開源項目，不是 OpenAI、Codex、Obsidian 或 GitHub 的官方項目。
+這個 repository 是個人開源項目，不是 OpenAI、Codex 或 GitHub 的官方項目。
 
 ## 兩個層次
 
 - `skills/cyber-age-sop/`：給 Agent runtime 使用的 Skill，負責項目錨定、任務
   Profile、交付、驗證和復盤。
-- `project-sop/`：可長期保存的項目類型、呈現方式和完整鏈路文件，可放入
-  Obsidian 或其他知識庫。
+- `project-sop/`：可長期保存的項目類型、呈現方式和完整鏈路文件，可放入任何知識庫。
 
 ## 它解決什麼問題
 
@@ -128,19 +131,6 @@ Project-SOP 層另外描述 `skill-agent-workflow`、`docker-service` 和
 → 發布或歸檔
 ```
 
-## GitHub 與 Obsidian
-
-兩個位置負責不同事情：
-
-| 位置 | 作用 |
-|---|---|
-| GitHub | 公開 Skill 包、版本文件、validator、Actions、release 和貢獻歷史 |
-| Obsidian | 人可閱讀的項目故事、決定、里程碑、證據地圖、未決事項和私人上下文 |
-
-GitHub 回答「其他人可以安裝、檢查、驗證和 fork 什麼？」；
-Obsidian 回答「為什麼這樣設計、發生過什麼、還有哪些沒有被證明？」。
-兩者不能互相取代。
-
 ## 目錄
 
 ```text
@@ -149,8 +139,13 @@ skills/cyber-age-sop/
 ├── agents/openai.yaml
 └── references/
     ├── acceptance-and-evidence.md
+    ├── decision-brief-template.md
+    ├── failure-path.md
     ├── regression-cases.md
-    └── task-profiles.md
+    ├── task-profiles.md
+    ├── technical-translation.md
+    ├── visual-aids.md
+    └── web-research.md
 
 project-sop/
 ├── README.md
@@ -175,10 +170,14 @@ skills/cyber-age-sop/
 ```
 
 可以把這個目錄複製到你的 Agent runtime 所使用的 Skill 目錄，或按目標 runtime
-支援的格式調整。Skill 本身不需要網路、外部帳戶、現場設備或秘密。
+支援的格式調整。
 
-Skill 會把引導和 coaching 保持為獨立能力，不會自動模擬它們。如果使用者明確要求
-分層提問、深入引導或反思，應交給相應的專用工具處理。
+**網路依賴：** 不強制需要。runtime 有搜尋或網頁讀取工具時，Skill 可用來查證可行性
+和價格；沒有時就用模型知識回答，並標明知識截止日期。
+
+**引導原則：** Skill 在 Discovery 階段內建了引導式探索（先承接、邀請描述、逐層區分），
+借鑒自引導與 coaching 實務，但不取代專門的引導或 coaching skill，也不會自動轉介到
+其他 skill。
 
 ## Project SOP 文件
 
@@ -198,7 +197,7 @@ GitHub Actions 會檢查：
 
 - Skill frontmatter；
 - Markdown code fence 是否成對；
-- 公開包內的 Obsidian-style links；
+- 公開包內的 Markdown 內部連結；
 - 常見秘密和本地路徑模式；
 - 可重現的 source archive。
 
@@ -222,11 +221,13 @@ repository checks 通過，只能證明指定 commit 的公開包結構有效，
 
 ## 版本
 
-目前 repository release 是 `0.1.4`：
+目前 repository release 是 `0.4.4`：
 
-- Runtime Skill version：`0.2`
+- Runtime Skill version：`0.4.4`
 - Project SOP document version：`0.1`
-- Repository release version：`0.1.4`
+- Repository release version：`0.4.4`
+
+各版本變更見 [CHANGELOG.md](CHANGELOG.md)。
 
 如果修改路由、證據邊界或安全閘門，應同步更新 regression cases 和 CHANGELOG。
 

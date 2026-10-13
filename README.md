@@ -4,7 +4,7 @@
 
 Cyber-Age SOP is a deep discovery and boundary-clarification framework for designers, project owners, and Agents. It helps turn a software, hardware, UI, documentation, Skill, Docker, automation, creative, media, or game idea into clear decisions, a bounded task, and explicit evidence boundaries.
 
-**v0.4.3 (2026-10-13): Simplified web research with model knowledge fallback.** The skill uses a minimal 3-tier fallback strategy: available tools → model knowledge → graceful failure. No static knowledge databases are maintained; the skill defines process flow, and the model provides knowledge.
+**v0.4.4 (2026-10-13): Decision Brief.** After discovery and technical translation, the skill writes a Decision Brief file (outside the repository) that a non-technical user can save, share, and hand to a developer or Agent.
 
 It is not a project-management platform and it is not a domain solution. It does not replace a software engine, creative tool, media generator, game engine, or specialist review.
 
@@ -156,6 +156,7 @@ skills/cyber-age-sop/
 ├── agents/openai.yaml
 └── references/
     ├── acceptance-and-evidence.md
+    ├── decision-brief-template.md
     ├── failure-path.md
     ├── regression-cases.md
     ├── task-profiles.md
@@ -189,7 +190,7 @@ skills/cyber-age-sop/
 Copy that directory into the skill directory used by your agent runtime, or
 adapt the files to the runtime's supported Skill format.
 
-**Network dependency:** The Skill requires access to Tavily search/extract skills for optional web research (feasibility verification and cost estimates). All other features work without network connection, external account, field device, or secret.
+**Network dependency:** None required. When the runtime offers a web search or fetch tool, the Skill can use it to check feasibility and prices; otherwise it answers from model knowledge and states the knowledge cutoff.
 
 **Facilitation principles:** This Skill incorporates guided exploration principles (acknowledging, inviting description, progressive layering) adapted from facilitation and coaching practices. It does not replace dedicated facilitation or coaching skills, and does not automatically redirect to other skills. The guided discovery approach is built into the Discovery phase to help non-technical users surface their intent and boundaries.
 
@@ -238,11 +239,19 @@ Use the evidence labels in `acceptance-and-evidence.md` when reporting results.
 
 ## Versioning
 
-The current repository release is `0.4.3` (draft, PR #1 open).
+The current repository release is `0.4.4`.
 
-- Runtime Skill version: `0.4.3` (minimal-web-research-fallback, 2026-10-13)
+- Runtime Skill version: `0.4.4` (decision-brief, 2026-10-13)
 - Project SOP document version: `0.1`
-- Repository release version: `0.4.3`
+- Repository release version: `0.4.4`
+
+### v0.4.4 Changes (from v0.4.3)
+
+**Added: Decision Brief (Gate 3.5)**
+
+- The skill writes a Decision Brief file outside the repository once the user picks a direction, unless the user opts out
+- Minimal version (problem, recommendation, non-goals, next step) or full version (user's words, facts vs assumptions, sourced estimates, switch cost, version 1 scope, evidence, next steps)
+- New `references/decision-brief-template.md`
 
 ### v0.4.3 Changes (from v0.4.2)
 
