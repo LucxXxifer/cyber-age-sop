@@ -4,16 +4,16 @@
 
 Cyber-Age SOP is a deep discovery and boundary-clarification framework for designers, project owners, and Agents. It helps turn a software, hardware, UI, documentation, Skill, Docker, automation, creative, media, or game idea into clear decisions, a bounded task, and explicit evidence boundaries.
 
-**v0.4.2 (2026-10-12): Visual aids and web research (user-controlled).** The skill now supports optional visual aids (ASCII diagrams for flows/architecture/layouts) and web research (Tavily-based verification of technical feasibility and cost estimates), both triggered by user request or agent suggestion with confirmation.
+**v0.4.3 (2026-10-13): Simplified web research with model knowledge fallback.** The skill uses a minimal 3-tier fallback strategy: available tools → model knowledge → graceful failure. No static knowledge databases are maintained; the skill defines process flow, and the model provides knowledge.
 
 It is not a project-management platform and it is not a domain solution. It does not replace a software engine, creative tool, media generator, game engine, or specialist review.
 
 It has two coordinated layers:
 
 - `skills/cyber-age-sop/`: the runtime Skill for anchoring, task profiling, delivery, verification, and review. **Now with facilitated discovery** to support non-technical users through guided exploration.
-- `project-sop/`: durable project-type and presentation documents for keeping the same contract in an Obsidian vault or another knowledge base.
+- `project-sop/`: durable project-type and presentation documents for keeping the same contract in a knowledge base.
 
-This repository is a personal open-source release. It is not an official OpenAI, Codex, Obsidian, or GitHub project.
+This repository is a personal open-source release. It is not an official OpenAI, Codex, or GitHub project.
 
 ## What It Solves
 
@@ -213,7 +213,7 @@ GitHub Actions validates:
 
 - required Skill frontmatter;
 - balanced Markdown code fences;
-- internal Obsidian-style links in the public package;
+- internal markdown links in the public package;
 - common secret and local-path patterns;
 - a reproducible source archive.
 
@@ -238,11 +238,40 @@ Use the evidence labels in `acceptance-and-evidence.md` when reporting results.
 
 ## Versioning
 
-The current repository release is `0.4.2` (draft, PR #1 open).
+The current repository release is `0.4.3` (draft, PR #1 open).
 
-- Runtime Skill version: `0.4.2` (visual-aids-web-research, 2026-10-12)
+- Runtime Skill version: `0.4.3` (minimal-web-research-fallback, 2026-10-13)
 - Project SOP document version: `0.1`
-- Repository release version: `0.4.2`
+- Repository release version: `0.4.3`
+
+### v0.4.3 Changes (from v0.4.2)
+
+**Simplified: Minimal Web Research with Model Knowledge Fallback**
+
+Core principle: **Skill defines process flow, model provides knowledge.**
+
+**Changes:**
+- Simplified `references/web-research.md` from 541 lines to ~180 lines (-66%)
+- Removed all static knowledge database concepts (no URL lists, no experience answer database)
+- Defined 3-tier fallback strategy:
+  1. Try available tools (tavily-search, WebSearch, WebFetch)
+  2. Use model knowledge with clear timestamp: "基於模型知識（截至 2026-06），[答案]。建議查閱: [URL]"
+  3. Graceful failure with research directions
+
+**Key insight from agent/IDE research:**
+- All platforms have model's built-in knowledge (training data up to 2026-06)
+- Model already knows common service docs, API limits, typical timelines
+- **No need for skill to duplicate this knowledge**
+
+**Design philosophy:**
+- ✅ Skill responsibility: define trigger conditions, tool detection, fallback order, citation format
+- ✅ Model responsibility: provide knowledge, generate doc URLs, estimate timelines
+- ❌ Skill does NOT maintain static knowledge databases
+
+**Files changed:**
+- `references/web-research.md`: -361 lines (-66%)
+
+**Context cost:** v0.4.2 (1,887 lines) → v0.4.3 (~1,526 lines), -19%
 
 ### v0.4.2 Changes (from v0.4.1)
 
