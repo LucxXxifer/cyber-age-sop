@@ -4,6 +4,8 @@
 
 Cyber-Age SOP is a deep discovery and boundary-clarification framework for designers, project owners, and Agents. It helps turn a software, hardware, UI, documentation, Skill, Docker, automation, creative, media, or game idea into clear decisions, a bounded task, and explicit evidence boundaries.
 
+**v0.4.5 (2026-10-15): Integration Readiness Gate.** Decision Briefs now distinguish an Agent proposal from a user-approved decision. Platform, tenant, API, identity, and sensitive-data work gets an explicit readiness level, and unknown integration facts become bounded read-only discovery tasks instead of guessed build contracts.
+
 **v0.4.4 (2026-10-13): Decision Brief.** After discovery and technical translation, the skill writes a Decision Brief file (outside the repository) that a non-technical user can save, share, and hand to a developer or Agent.
 
 It is not a project-management platform and it is not a domain solution. It does not replace a software engine, creative tool, media generator, game engine, or specialist review.
@@ -162,7 +164,8 @@ skills/cyber-age-sop/
     ├── task-profiles.md
     ├── technical-translation.md
     ├── visual-aids.md
-    └── web-research.md
+    ├── web-research.md
+    └── implementation-readiness.md
 
 project-sop/
 ├── README.md
@@ -173,6 +176,9 @@ project-sop/
 .github/workflows/
 ├── validate.yml
 └── release.yml
+
+scripts/
+└── validate_implementation_readiness.py
 ```
 
 The reference-project document is a structure-only reference. It does not
@@ -239,11 +245,24 @@ Use the evidence labels in `acceptance-and-evidence.md` when reporting results.
 
 ## Versioning
 
-The current repository release is `0.4.4`.
+The current repository release is `0.4.5`.
 
-- Runtime Skill version: `0.4.4` (decision-brief, 2026-10-13)
+- Runtime Skill version: `0.4.5` (implementation-readiness gate, 2026-10-15)
 - Project SOP document version: `0.1`
-- Repository release version: `0.4.4`
+- Repository release version: `0.4.5`
+
+### v0.4.5 Changes (from v0.4.4)
+
+**Added: Implementation Readiness Gate**
+
+- Distinguishes `decision-ready`, `discovery-ready`, `prototype-ready`, `build-ready`, and `field-ready`
+- Keeps Agent recommendations separate from user-approved decisions
+- Requires a readiness matrix for platform, tenant, API, identity, and sensitive-data integrations
+- Turns unknown tenant or interface facts into bounded read-only discovery tasks
+- Splits multi-system work into independently verifiable Agent Briefs
+- Adds integration-readiness regression criteria and a standard-library validator
+
+This release clarifies handoff maturity. It does not select a platform, authorize tenant access, or claim that an integration is build-ready without evidence.
 
 ### v0.4.4 Changes (from v0.4.3)
 

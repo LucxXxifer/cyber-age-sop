@@ -6,6 +6,10 @@ Cyber-Age SOP 是一套用來深度挖掘設計者／項目負責人需求、釐
 再輔佐 Agent 交付的流程框架。它可以處理 software、hardware、UI、
 documentation、Skill、Docker、automation、藝術、AI 媒體或遊戲想法。
 
+**v0.4.5（2026-10-15）：Integration Readiness Gate。** Decision Brief 現在會區分
+Agent 的建議和使用者已確認的決定。涉及平台、租戶、API、身份或敏感資料時，Skill 會標示
+就緒層級；未知的整合條件會轉成有邊界的只讀盤點任務，而不是猜測可直接建置的契約。
+
 **v0.4.4（2026-10-13）：Decision Brief。** 完成需求探索和技術翻譯後，Skill 會在
 repository 外寫一份 Decision Brief，讓不會寫程式的使用者可以保存、分享，或直接交給
 開發者／Agent。
@@ -221,11 +225,24 @@ repository checks 通過，只能證明指定 commit 的公開包結構有效，
 
 ## 版本
 
-目前 repository release 是 `0.4.4`：
+目前 repository release 是 `0.4.5`：
 
-- Runtime Skill version：`0.4.4`
+- Runtime Skill version：`0.4.5`
 - Project SOP document version：`0.1`
-- Repository release version：`0.4.4`
+- Repository release version：`0.4.5`
+
+### v0.4.5 的新特徵（2026-10-15）
+
+- 新增 `decision-ready`、`discovery-ready`、`prototype-ready`、`build-ready`、
+  `field-ready` 五級交接成熟度；
+- 把 Agent 推薦與使用者已批准的決策分開；
+- 對平台、租戶、API、身份和敏感資料整合要求 Readiness Matrix；
+- 未知的租戶或接口條件改成有界限的只讀盤點，不再猜測 endpoint、schema 或權限；
+- 多系統項目拆成可獨立驗證的 Agent Brief；
+- 新增整合就緒回歸案例和 validator。
+
+這一版只澄清交接成熟度，不會自動選平台、授權租戶訪問，也不會在沒有證據時宣稱
+整合已經可以建置。
 
 各版本變更見 [CHANGELOG.md](CHANGELOG.md)。
 

@@ -26,6 +26,7 @@ Leave a field empty rather than filling it with boilerplate.
 
 Date: YYYY-MM-DD
 Status: build / validate first / postponed / not doing
+Decision state: proposed / user-approved / deferred / rejected
 
 ## 1. What I'm solving
 > [user's own words]
@@ -74,6 +75,8 @@ Review on:
 ## Appendix: Agent Brief
 [only if the decision is to build]
 ```
+
+`Recommended` is the Agent's proposal, not evidence of user approval. Use `proposed` until the user accepts, rejects, or defers the direction.
 
 ## Checklist
 

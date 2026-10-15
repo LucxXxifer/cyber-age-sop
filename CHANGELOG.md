@@ -2,6 +2,18 @@
 
 All notable changes to this repository are documented here.
 
+## [0.4.5] - 2026-10-15
+
+### Added: Integration Readiness Gate
+
+- Distinguish decision, discovery, prototype, build, and field readiness.
+- Treat a Decision Brief as a proposal unless the user explicitly confirms the direction.
+- For platform, tenant, API, identity, and sensitive-data integrations, require a verified readiness matrix before labeling work build-ready.
+- When tenant or interface facts are unknown, create a bounded read-only discovery task instead of inventing API contracts or implying the plan is ready to implement.
+- Added integration-readiness regression criteria.
+
+This is a workflow clarification. It does not select a vendor/platform, authorize tenant access, or change the SOP's discovery and MVP principles.
+
 ## [0.4.4] - 2026-10-13
 
 ### Added: Decision Brief (Gate 3.5)

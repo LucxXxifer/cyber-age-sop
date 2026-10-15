@@ -18,8 +18,8 @@ description: >
   "你是想找现成的工具使用,还是要开发一个定制的?"
 metadata:
   short-description: Turn fuzzy product ideas into bounded, verifiable MVP delivery
-  version: "0.4.4"
-  status: decision-brief
+  version: "0.4.5"
+  status: implementation-readiness
 ---
 
 # Cyber-Age SOP
@@ -362,6 +362,8 @@ All agent implementation choices must be disclosed and allow veto.
 
 Anchor、Technical Translation、MVP 邊界的內容目前散落在對話中。對話關掉就沒有了。決策一旦形成，就必須落成一個使用者可以保存、可以給別人看、三個月後可以回頭查的檔案。
 
+**建議不等於使用者已決定。** 若使用者尚未接受、拒絕或暫緩推薦，Brief 狀態必須標為 `proposed`，把下一個會改變方向的問題留給使用者；不可把 Agent 的推薦寫成已決定要做。
+
 ### 何時產出
 
 - Discovery + Technical Translation + MVP Framing 完成後
@@ -385,6 +387,7 @@ Anchor、Technical Translation、MVP 邊界的內容目前散落在對話中。�
 
 **日期**: YYYY-MM-DD
 **狀態**: [決定要做 / 先驗證需求 / 暫緩 / 不做]
+**決策狀態**: [proposed / user-approved / deferred / rejected]
 
 ---
 
@@ -497,6 +500,7 @@ Anchor、Technical Translation、MVP 邊界的內容目前散落在對話中。�
 - [ ] 核心不變量寫下來了
 - [ ] 每一刀失去什麼說清楚了
 - [ ] 下一步是可執行的，不是「再想想」
+- [ ] 把 Agent 的推薦與使用者已確認的決策分開
 - [ ] 檔案寫在 repo 外
 
 ### 最小版本
@@ -535,6 +539,18 @@ Before implementation, produce an Agent Brief containing:
 For risky or ambiguous work, list an explicit file allowlist. Do not let a follow-up discovery silently become implementation scope.
 
 Use lightweight Brief for bounded task; full Brief only when task has multiple files, multiple evidence tiers, live access, material risk, or uncertain scope.
+
+**A Decision Brief is not an implementation contract.** Keep the handoff level explicit:
+
+- `decision-ready`: the user can approve or reject a direction; platform, tenant, or interface details may still be unknown.
+- `discovery-ready`: a bounded task can inspect specified sources or a named sandbox without changing production state.
+- `prototype-ready`: a selected path and test data are available for a reversible proof of concept.
+- `build-ready`: the target, authorized environment, actual interfaces, identity/permission boundaries, required and failure behavior, and acceptance evidence are verified.
+- `field-ready`: all Gate 5 live-operation prerequisites are satisfied.
+
+Do not promote a plan to `build-ready` because it contains an architecture diagram, a proposed API name, or an implementation timeline. Unknown prerequisites remain labeled and become discovery tasks; do not invent endpoints, schemas, tenant entitlements, permissions, or user decisions.
+
+When work integrates an external platform, SaaS, HRIS, identity provider, or other permissioned system, read [references/implementation-readiness.md](references/implementation-readiness.md). For multi-system or sensitive-data work, produce an Implementation Readiness Matrix and a separate Agent Brief for each independently verifiable task. The first Brief may be discovery-only; specify its target, allowed read actions, prohibited mutations, deliverables, and stop conditions. Keep a project plan decision-ready even when implementation is not yet build-ready.
 
 ## Gate 5: Execute and Verify
 
