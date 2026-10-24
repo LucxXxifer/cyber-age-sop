@@ -6,13 +6,23 @@ Cyber-Age SOP 是一套用來深度挖掘設計者／項目負責人需求、釐
 再輔佐 Agent 交付的流程框架。它可以處理 software、hardware、UI、
 documentation、Skill、Docker、automation、藝術、AI 媒體或遊戲想法。
 
-**v0.4.5（2026-10-15）：Integration Readiness Gate。** Decision Brief 現在會區分
-Agent 的建議和使用者已確認的決定。涉及平台、租戶、API、身份或敏感資料時，Skill 會標示
-就緒層級；未知的整合條件會轉成有邊界的只讀盤點任務，而不是猜測可直接建置的契約。
+**公開測試版：[v0.5.1-beta.1](https://github.com/LucxXxifer/cyber-age-sop/releases/tag/v0.5.1-beta.1)（2026-10-24）。**
+加入一頁式 Next-Step Card、白話現況說明，以及按需連結需求、SPEC、任務、版本和證據的規則。
+本版用於收集實際回饋；跨模型穩定性、小白可用性與大型專案效益尚未驗證。
+詳見[變更與已知限制](docs/releases/v0.5.1-beta.1.md)。
 
-**v0.4.4（2026-10-13）：Decision Brief。** 完成需求探索和技術翻譯後，Skill 會在
-repository 外寫一份 Decision Brief，讓不會寫程式的使用者可以保存、分享，或直接交給
-開發者／Agent。
+**穩定版仍為 [v0.4.5](https://github.com/LucxXxifer/cyber-age-sop/releases/tag/v0.4.5)。** 測試版不取代穩定版。
+
+## 試用測試版
+
+1. 在測試版 Release 下載 **`cyber-age-sop-v0.5.1-beta.1.zip`**，不要混用 GitHub 整庫源碼 ZIP。安裝包內只有一個 `cyber-age-sop/` 目錄，包含 `SKILL.md`、references 和授權聲明。
+2. 按所用 Agent／IDE 的 Skill 安裝方式放入該目錄。本機 Codex 可放在 `~/.codex/skills/cyber-age-sop/`。升級前備份舊版，以整個目錄替換，避免版本混雜；安裝後開啟新 session。
+3. 呼叫 `$cyber-age-sop`，描述一個真的想做的小工具、程式、插件或 Skill。不必先懂技術棧；執行、搜尋和繪圖能力由所用 Agent／IDE、工具與模型提供。
+4. 記下有幫助或看不懂的位置，使用[雙語回饋指南](docs/beta-feedback.md)或 [GitHub 回饋表](https://github.com/LucxXxifer/cyber-age-sop/issues/new?template=beta-feedback.md)。
+
+例如：「用 cyber-age-sop 幫我做一個本機 Markdown 連結檢查工具。我不懂技術需求怎麼寫，請先釐清第一版範圍，確認大致結構，再在同意範圍內實作和測試。」
+
+先選本機、可恢復的工作。安裝測試版不代表授權存取真實帳號或正式服務；如需退回穩定版，以穩定版的整個 Skill 目錄替換即可。
 
 它不是項目管理平台，也不是任何領域的解決方案；不會取代 software engine、
 生成工具、遊戲引擎、媒體工具或專業審核。
@@ -145,6 +155,8 @@ skills/cyber-age-sop/
     ├── acceptance-and-evidence.md
     ├── decision-brief-template.md
     ├── failure-path.md
+    ├── implementation-readiness.md
+    ├── lifecycle-traceability.md
     ├── regression-cases.md
     ├── task-profiles.md
     ├── technical-translation.md
@@ -205,8 +217,9 @@ GitHub Actions 會檢查：
 - 常見秘密和本地路徑模式；
 - 可重現的 source archive。
 
-推送 `v*` tag 時，release workflow 會重新驗證、產生 `.tar.gz` 源碼包，並附加到
-GitHub Release。
+推送 `v*` tag 時，release workflow 會重新驗證，產生 `.tar.gz` 源碼包、可安裝 Skill
+`.zip` 和 SHA-256 校驗值，附加到 GitHub Release。帶測試後綴的 tag 會標為
+Pre-release，不取代最新穩定版。
 
 這是一個 Markdown/YAML 文件包，因此這裡的「編譯」指結構驗證和打包，不是生成二進制
 程序。
@@ -225,11 +238,23 @@ repository checks 通過，只能證明指定 commit 的公開包結構有效，
 
 ## 版本
 
-目前 repository release 是 `0.4.5`：
+目前公開測試版為 `0.5.1-beta.1`（2026-10-24），最新穩定版仍為 `0.4.5`：
 
-- Runtime Skill version：`0.4.5`
+- 此分支 Runtime Skill version：`0.5.1-beta.1`
 - Project SOP document version：`0.1`
-- Repository release version：`0.4.5`
+- Repository prerelease version：`0.5.1-beta.1`
+
+### v0.5.1-beta.1 的變更
+
+- 項目範圍釐清後，顯示一張固定八欄的 Next-Step Card；瑣碎修改跳過。
+- 用日常工作名稱說明現況，分開實作、測試、驗收與未知狀態。
+- 依賴工作引用直接前置的實際證據；沒有自動任務排程器。
+- 按需加入最小 SPEC、任務／證據索引、版本身分與人工恢復核對。
+- 符合使用者批准與 repo 規範時，可版本化長期項目文件；私人與原始證據分開保存。
+- 補充雙語安裝、回饋和已知限制。
+
+本地 `0.5.0` 與後續候選快照屬開發基線，沒有補稱為已公開的穩定版本。
+結構檢查通過不代表真人理解或端到端可靠度已驗證，詳見[測試版說明](docs/releases/v0.5.1-beta.1.md)及 [CHANGELOG](CHANGELOG.md)。
 
 ### v0.4.5 的新特徵（2026-10-15）
 

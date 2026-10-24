@@ -4,9 +4,20 @@
 
 Cyber-Age SOP is a deep discovery and boundary-clarification framework for designers, project owners, and Agents. It helps turn a software, hardware, UI, documentation, Skill, Docker, automation, creative, media, or game idea into clear decisions, a bounded task, and explicit evidence boundaries.
 
-**v0.4.5 (2026-10-15): Integration Readiness Gate.** Decision Briefs now distinguish an Agent proposal from a user-approved decision. Platform, tenant, API, identity, and sensitive-data work gets an explicit readiness level, and unknown integration facts become bounded read-only discovery tasks instead of guessed build contracts.
+**Public beta: [v0.5.1-beta.1](https://github.com/LucxXxifer/cyber-age-sop/releases/tag/v0.5.1-beta.1) (2026-10-24).** Adds one current-work Next-Step Card, clearer project-status explanations, and conditional links between needs, SPEC, tasks, versions and evidence. This is a feedback release; cross-model reliability, novice usability and large-project effectiveness remain unverified. [Changes and known limitations](docs/releases/v0.5.1-beta.1.md).
 
-**v0.4.4 (2026-10-13): Decision Brief.** After discovery and technical translation, the skill writes a Decision Brief file (outside the repository) that a non-technical user can save, share, and hand to a developer or Agent.
+**Stable release: [v0.4.5](https://github.com/LucxXxifer/cyber-age-sop/releases/tag/v0.4.5).** The beta does not replace the stable release.
+
+## Try the Beta
+
+1. Download the **`cyber-age-sop-v0.5.1-beta.1.zip`** asset from the beta release, rather than GitHub's full source ZIP. The asset contains one `cyber-age-sop/` folder, including `SKILL.md`, references and license notices.
+2. Install that folder using your Agent/IDE's Skill instructions. For a local Codex setup, place it in `~/.codex/skills/cyber-age-sop/`. Back up an existing installation and replace the whole folder to avoid mixing versions. Start a new session after installation.
+3. Invoke `$cyber-age-sop` and describe a small, real tool, program, plugin or Skill you want to build. You can start without knowing the technical stack. The Skill adds guidance; execution, search and drawing depend on your host's tools and selected model.
+4. Tell us where it helped or confused you using the [bilingual feedback guide](docs/beta-feedback.md) or [GitHub feedback form](https://github.com/LucxXxifer/cyber-age-sop/issues/new?template=beta-feedback.md).
+
+Example: "Use cyber-age-sop to help me build a local Markdown link checker. I don't know how to describe the technical requirements. Help me clarify the first version, confirm the structure, then implement and test within the agreed scope."
+
+Start with local, reversible work. A beta install grants no access to real accounts or production services. You can return to the stable release by replacing the entire Skill folder with its stable version.
 
 It is not a project-management platform and it is not a domain solution. It does not replace a software engine, creative tool, media generator, game engine, or specialist review.
 
@@ -141,8 +152,9 @@ This repository contains:
 | `.github/workflows/` | Validation and release automation | **Contributors:** CI/CD for the public package |
 
 **For users installing this skill:**
+
 - Copy `skills/cyber-age-sop/` to your agent runtime
-- The skill works immediately; no additional setup needed
+- A compatible Agent/IDE must load the Skill; tools and model access are supplied by that host
 - `project-sop/` templates are optional — use them if you want structured project documentation
 
 **For contributors:**
@@ -160,6 +172,7 @@ skills/cyber-age-sop/
     ├── acceptance-and-evidence.md
     ├── decision-brief-template.md
     ├── failure-path.md
+    ├── lifecycle-traceability.md
     ├── regression-cases.md
     ├── task-profiles.md
     ├── technical-translation.md
@@ -225,7 +238,9 @@ GitHub Actions validates:
 - a reproducible source archive.
 
 When a tag matching `v*` is pushed, the release workflow validates the package,
-creates a `.tar.gz` source archive, and attaches it to a GitHub Release.
+creates a `.tar.gz` source archive, an installable Skill `.zip` and SHA-256 checksums,
+and attaches them to a GitHub Release. Tags containing a prerelease suffix are
+marked as prereleases and do not replace the latest stable release.
 
 The package is documentation and Markdown/YAML content, so “build” here means
 validation and packaging rather than compiling a binary.
@@ -245,11 +260,22 @@ Use the evidence labels in `acceptance-and-evidence.md` when reporting results.
 
 ## Versioning
 
-The current repository release is `0.4.5`.
+The current public beta is `0.5.1-beta.1` (2026-10-24); the latest stable release remains `0.4.5`.
 
-- Runtime Skill version: `0.4.5` (implementation-readiness gate, 2026-10-15)
+- Runtime Skill version on this branch: `0.5.1-beta.1`
 - Project SOP document version: `0.1`
-- Repository release version: `0.4.5`
+- Repository prerelease version: `0.5.1-beta.1`
+
+### v0.5.1-beta.1 Changes
+
+- One eight-field Next-Step Card after the project scope is clear; trivial edits skip it.
+- Plain-language work names, explicit unknowns, and separate implementation, testing and acceptance states.
+- Direct predecessor evidence for dependent work, without a task scheduler.
+- Conditional minimum SPEC, task/evidence index, version identity and manual recovery guidance.
+- Durable project documents may be versioned when the user and repository rules permit; private/raw evidence stays separate.
+- Public-beta installation, feedback instructions and known limitations in both languages.
+
+Local `0.5.0` and later candidate snapshots were development baselines, not intervening public stable releases. Structural checks do not establish user comprehension or end-to-end reliability. See the [beta release notes](docs/releases/v0.5.1-beta.1.md) and [CHANGELOG](CHANGELOG.md) for the evidence boundary.
 
 ### v0.4.5 Changes (from v0.4.4)
 

@@ -26,13 +26,15 @@ Use these headings exactly:
 ## SOP feedback
 ```
 
-The report must be outside the repository. The audit should independently check:
+Follow the [storage policy](lifecycle-traceability.md#storage-policy): preserve the approved location; raw/sensitive/temporary evidence stays outside the repository. The audit should independently check:
 
-- The report exists at the requested external path
+- The report exists at the approved path and can actually be read
 - The required headings are present
 - `git diff --name-only` is inside the allowlist
 - `git status --short --untracked-files=all` has no unexpected artifacts
 - Required validation commands have fresh output and exit status
+
+For versioned or changed work, each completion claim must identify the applicable SPEC, the exact tested source snapshot, and the relevant evidence. An unchanged filename or base HEAD does not identify dirty/untracked contents. Keep historical results; mark affected evidence insufficient for the new revision and rerun the relevant checks before dependent work. Record who actually checked the result; the implementer's self-report is not independent acceptance.
 
 ## Completion Language
 

@@ -2,6 +2,30 @@
 
 All notable changes to this repository are documented here.
 
+## [0.5.1-beta.1] - 2026-10-24
+
+### Public beta / 公開測試版
+
+- Adds one eight-field current-work Next-Step Card after scope discovery; trivial edits skip it.
+- Explains purpose, known implementation/test/acceptance states and direct dependencies in everyday language. Missing records stay unknown.
+- Preserves decision provenance across the whole answer, separating human decisions, simulation and delegated controller instructions.
+- Adds conditional lifecycle traceability: minimum SPEC, task/evidence links, source identity, scoped evidence invalidation and manual session recovery checks.
+- Permits durable project documents inside a repository when its rules and the user allow it; keeps private/raw evidence separate.
+- Adds an installable ZIP with Apache-2.0 notices, bilingual beta instructions and a voluntary feedback template.
+- Marks prerelease tags as GitHub prereleases; the stable release stays `v0.4.5`.
+
+本版整合一頁式下一步卡、白話現況、決策來源與基本追溯的既有候選，供實際試用。
+本地 `0.5.0` 與後續快照是開發基線，並非漏列的公開穩定版本。
+這次只調整發布身分與說明，不追加新的行為規則。
+
+### Evidence and limitations / 證據與限制
+
+- Package checks and limited local pilots do not establish cross-model reliability or novice comprehension.
+- Known output risks include inferring a project stage from missing records, repeated explanations and inconsistent reviewer reasoning.
+- No new model experiments were run for this release. Full dual-route workflow validation and long-running large-project evidence remain incomplete.
+- No autonomous scheduler, adaptive Card layout, standalone Project State system or domain engine is included.
+- See [release notes](docs/releases/v0.5.1-beta.1.md) and [feedback guide](docs/beta-feedback.md).
+
 ## [0.4.5] - 2026-10-15
 
 ### Added: Integration Readiness Gate

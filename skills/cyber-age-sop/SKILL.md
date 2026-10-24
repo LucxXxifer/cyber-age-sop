@@ -18,8 +18,9 @@ description: >
   "你是想找现成的工具使用,还是要开发一个定制的?"
 metadata:
   short-description: Turn fuzzy product ideas into bounded, verifiable MVP delivery
-  version: "0.4.5"
-  status: implementation-readiness
+  version: "0.5.1-beta.1"
+  status: public-beta
+  updated: "2026-10-24"
 ---
 
 # Cyber-Age SOP
@@ -62,6 +63,7 @@ Choose the smallest path that safely produces the requested result:
 | One-file typo, formatting fix, or trivial low-risk change with known check | Trivial fast path below |
 | Clear bounded task, more than trivial | Create short Agent Brief and execute |
 | Unclear project intent or scope | Discovery exploration → Project Anchor → Technical Translation → **Decision Brief** |
+| Standard or large project after the anchor is clear | Add one current-work Next-Step Card to the Decision Brief |
 | Architecture, UI, or delivery choice unsettled | Add Shape/Decision checkpoint |
 | Code, UI/documentation, or field work with different evidence needs | Load matching task profile |
 | Existing brief needs conversion to executable prompt | Use `prompt-refiner` |
@@ -69,6 +71,49 @@ Choose the smallest path that safely produces the requested result:
 Do not force every project through every artifact.
 
 **The Decision Brief (Gate 3.5) is the main artifact for non-technical users.** For a build-from-scratch project, the conversation is not the deliverable — the saved Brief is. Produce it unless the user explicitly opts out.
+
+## Next-Step Card (standard / large paths)
+
+Once the Project Anchor is clear, standard and large paths must show one Next-Step Card at the top of the Decision Brief. It is the current work-item summary a non-technical user can read and correct. It is not a second plan, a complete task ledger, or permission to execute every task listed elsewhere.
+
+- Skip the card on the trivial fast path.
+- Keep one current card. Update that same block when the current work item, decision, evidence, or stop condition changes; do not create a separate card file.
+- Name the work in everyday language. `Task ID` may be included for the Agent or an experienced user, but it is optional and must not be required for understanding.
+- Put one of these progress labels in the `目前工作項目` field: `待開始`, `進行中`, `受阻`, `待驗收`, or `已驗收`.
+- `待驗收` means the Agent delivered something but the specified evidence has not been independently checked. Only mark `已驗收` after the evidence is actually checked.
+- Whenever the card is shown in conversation or saved in the Decision Brief, keep all eight fixed fields from the template. Do not replace fields with shorthand; write `無` when a field has no content.
+
+### Reader-facing status explanation
+
+When a non-technical owner asks where an existing project stands, explain rather than authorize execution:
+
+- Start with one plain-language sentence about the tool's purpose and confirmed operating boundary. Use everyday work names first; technical IDs are optional secondary labels.
+- Give a short factual status list before the current-work card. Distinguish implementation, historical tests and independent acceptance. Missing records mean unknown, not not-started; an existing prototype does not establish integration or acceptance.
+- For each dependent item, name its predecessor acceptance and the specific activity it blocks. Explain each link once. A missing prerequisite does not erase existing code or prove work never started; a vague "proceed in order" is insufficient.
+- Keep exactly one card with all eight existing field names, nonempty values and a progress label. It summarizes the current item, not a second project plan. Check the actual answer for omitted or duplicated fields.
+- Separate this round's deliverable and allowed actions from later demonstration or acceptance. When asked only to explain, say so in both fields; do not run tests, edit files or implement. Later expected evidence has not already been produced.
+- In the decision field, directly say whether any decision is needed now. For explanation-only work, say no new decision is needed, then identify the later decision and evidence the owner must first see. Do not reopen settled decisions or treat expected behavior as acceptance of an unperformed demonstration.
+- State observable acceptance results. Keep the stop-condition field for missing or incorrect evidence. Do not repeat the full status list after the card; accuracy and completeness take priority over brevity.
+
+Keep the user-facing summary focused on purpose, current facts, the next safe action, decisions and blockers. Preserve detailed SPEC, task/source/evidence links, hashes and change history in the existing engineering appendix. Link verified existing records instead of reprinting their full history each turn. Never invent an appendix link or claim it was saved when it was not. Do not require a non-technical owner to interpret IDs or hashes before deciding. Do not hide changed scope, unknown states, stale evidence or dependency gates to shorten the answer; no fixed word limit applies.
+
+### Decision source
+
+Use `user-approved` only for an actual human's explicit decision on the stated scope, with a traceable source. An API `user` role, a quoted instruction, a controller message or a simulated choice is not that evidence. Identify a simulated decision as `simulation-approved`; a controller's authorized instruction as `controller-authorized`, limited to its actual delegated scope. Unknown authority remains unverified. These labels record provenance, not new permissions.
+
+State the decision source and scope in one nearby sentence. Keep product direction, implementation permission, self-test, controller engineering acceptance and human product acceptance distinct. Do not add a Card field or ask again for an unchanged decision merely to fill metadata.
+
+When source evidence corrects an earlier summary's attribution, use the corrected attribution throughout the answer and metadata. Do not first say the human confirmed it and then append a disclaimer about a simulated source. Before sending, check decision, authorization and acceptance claims for the same actor, scope and evidence; retain genuine explicit human approval within its evidenced scope.
+
+### Dependency gate
+
+For dependent work, the card is also the start gate:
+
+1. The dependent task's `開始條件` must name the exact predecessor output or evidence it needs and require the predecessor to be `已驗收`.
+2. If that evidence is missing, stale, or only claimed by the Agent, keep the dependent task `待開始` or `受阻` and state the missing evidence. Do not execute it, generate its supposedly final output, or claim it is complete.
+3. After the predecessor evidence is checked, update the same Decision Brief with the dependent task as the current card, initially `待開始`. Start it only after its listed inputs are present.
+
+Listing Task 2 in a plan does not authorize Task 2 to start. A card can make the next dependent task understandable; this beta does not provide a full Progress Ledger, automated pause/resume, or cross-session scheduler.
 
 ## Trivial Fast Path
 
@@ -82,6 +127,16 @@ Use only when the change is small, reversible, low-risk, and well-specified. Exa
 **Upgrade condition**: If the same kind of small change appears 3+ times, upgrade to full Brief path.
 
 Skip full Project Anchor, task profile, full Agent Brief, external report file, and SOP feedback for this path. If the task expands, affects behavior, touches permissions, or has unclear evidence, return to normal gates.
+
+## Lifecycle Traceability (conditional)
+
+This protocol is experimental in this public beta. It supports manual traceability and recovery checks, not verified autonomous project management.
+
+For dependent tasks, requirements changes, a versioned delivery, or recovery after a session break, read [references/lifecycle-traceability.md](references/lifecycle-traceability.md) before Gate 4/5. Skip this reference on the trivial fast path.
+
+Keep the existing Decision Brief and Agent Brief; link the accepted need, applicable SPEC, task, tested source, and evidence instead of creating a second management system. The Card still describes only the current work.
+
+Unknown implementation history stays unknown even when a new activity is blocked by a predecessor gate. Changes invalidate only the evidence no longer sufficient for the affected behavior/version. Check actual saved files before advancing; a failed required state write is not a completed update.
 
 ## Discovery: Facilitated Exploration (before Gate 1)
 
@@ -370,15 +425,17 @@ Anchor、Technical Translation、MVP 邊界的內容目前散落在對話中。�
 - 使用者做出方向決定後（或明確選擇「先不做」）
 - **一律產出**，除非使用者明確說「不用給我檔案」
 
+For standard and large paths, include the Next-Step Card below as the first content block after the brief metadata. Omit it only for the trivial fast path.
+
 ### 產出位置
 
-寫在 repository 外，由使用者指定或預設到：
+優先沿用使用者指定或項目既有的位置；未指定時預設在 repository 外：
 
 ```
 ~/<專案名>-decision-brief.md
 ```
 
-不要在 repo 內建立此檔案（沿用 Non-Negotiables 的既有規則）。
+長期維護的 Brief／SPEC／任務索引，只有在符合項目規範且使用者批准時才可放入 repo。原始 logs、敏感證據與暫存產物仍留在外部受控位置；不自行搬動既有文件。詳見 [Storage Policy](references/lifecycle-traceability.md#storage-policy)。
 
 ### 格式
 
@@ -387,7 +444,23 @@ Anchor、Technical Translation、MVP 邊界的內容目前散落在對話中。�
 
 **日期**: YYYY-MM-DD
 **狀態**: [決定要做 / 先驗證需求 / 暫緩 / 不做]
-**決策狀態**: [proposed / user-approved / deferred / rejected]
+**決策狀態**: [proposed / user-approved / simulation-approved / controller-authorized / deferred / rejected]
+**決策來源**: [誰對什麼範圍作出決定及可追溯來源；user-approved 僅限真人明確決定，不代表產品已驗收]
+
+---
+
+## Next-Step Card
+
+**目前工作項目**: [用日常語言寫的當前工作]；進度：[待開始 / 進行中 / 受阻 / 待驗收 / 已驗收]（`Task ID`: [可選]）
+**開始條件**: [本項需要的輸入；若有前置任務，寫出其已驗收的輸出／證據]
+**這一輪要交付**: [本輪唯一主要產物或可觀察結果]
+**這一輪不做**: [明確不包含的工作]
+**使用者需要決定**: [需要使用者批准的事項；沒有就寫「無」]
+**Agent 現在可以做**: [在上述條件下允許的動作]
+**完成時要看見的證據**: [使用者或檢查者可以核對的具體證據]
+**若遇阻或證據不符**: [停止條件，以及下一個安全動作]
+
+`待驗收` 不是 `已驗收`。如果 `開始條件` 的前置證據尚未被核對，下一個依賴任務必須停在 `待開始` 或 `受阻`。
 
 ---
 
@@ -501,7 +574,10 @@ Anchor、Technical Translation、MVP 邊界的內容目前散落在對話中。�
 - [ ] 每一刀失去什麼說清楚了
 - [ ] 下一步是可執行的，不是「再想想」
 - [ ] 把 Agent 的推薦與使用者已確認的決策分開
-- [ ] 檔案寫在 repo 外
+- [ ] standard／large 路徑有一張當前工作項 Next-Step Card；trivial fast path 沒有硬塞卡片
+- [ ] 若有依賴任務，開始條件引用前置任務的實際 `已驗收` 證據
+- [ ] 沒有把 `待驗收` 寫成 `已驗收`，也沒有在前置證據不足時開始下一項
+- [ ] 保存位置符合使用者指定與項目規範；repo 內長期文件已獲批准，原始／敏感／暫存證據分開保存
 
 ### 最小版本
 
@@ -518,6 +594,8 @@ Anchor、Technical Translation、MVP 邊界的內容目前散落在對話中。�
 
 **不要為了填滿模板而填。空欄位比假內容好。**
 
+如果這份最小 Brief 屬於 standard／large 路徑，仍須在 metadata 後加入上面的 Next-Step Card；只有 trivial fast path 可以省略。
+
 See [references/decision-brief-template.md](references/decision-brief-template.md) for the template, checklist, and anti-patterns.
 
 ## Gate 4: Delivery Contract
@@ -533,10 +611,14 @@ Before implementation, produce an Agent Brief containing:
 - Required behavior and failure behavior
 - Validation commands and expected results
 - Acceptance criteria
-- Reporting path outside the repository
+- Reporting path following the approved storage policy; keep raw/sensitive/temporary evidence outside the repository
 - A `Follow-up discoveries` section for useful but out-of-scope findings
 
 For risky or ambiguous work, list an explicit file allowlist. Do not let a follow-up discovery silently become implementation scope.
+
+When the lifecycle reference applies, place its minimum SPEC and trace links in this existing Brief's engineering appendix. Do not require a separate file per requirement, task, or evidence item.
+
+When Agent Briefs form a dependency chain, each Brief must identify its predecessor evidence in the current Next-Step Card. Do not start a dependent Brief while that predecessor is merely `待驗收`; the predecessor must be independently checked and marked `已驗收` first.
 
 Use lightweight Brief for bounded task; full Brief only when task has multiple files, multiple evidence tiers, live access, material risk, or uncertain scope.
 
@@ -571,7 +653,7 @@ If any item is missing, remain in planning mode and report the blocking gap.
 The orchestrator independently checks the result:
 
 1. Read actual version-control diff and changed-file list.
-2. Confirm no report, log, cache, or generated artifact landed in repo.
+2. Confirm changed files follow the allowlist and approved storage policy; no raw/sensitive logs, caches, or unexpected generated artifacts landed in repo.
 3. Re-run narrowest relevant checks, then broader checks when required.
 4. Separate code, build/release, field, and long-running evidence.
 5. For UI/documentation work, check state-to-wording parity and run static syntax checks. If a claim depends on runtime rendering, interaction, or responsive layout, use real browser or mark `Not verified`.
@@ -606,7 +688,7 @@ Only promote a workflow change when a repeated failure or meaningful experiment 
 - Smallest viable slice before generalization
 - Scope and non-goals before implementation
 - Evidence before completion claims
-- Reports and temporary outputs outside the repository
+- Durable project documents follow the user-approved storage policy; raw/sensitive evidence and temporary outputs stay outside the repository
 - No live deployment, external publication, credential use, or destructive action without explicit authorization
 - `no local warning` ≠ `runtime success`; local success ≠ field acceptance
 - **Product-visible consequences require user decision; implementation details require disclosure and allow veto**

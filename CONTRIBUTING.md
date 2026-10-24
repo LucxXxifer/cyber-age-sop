@@ -15,6 +15,7 @@ Run:
 
 ```bash
 python3 scripts/validate_public_package.py
+python3 scripts/validate_implementation_readiness.py
 ```
 
 The GitHub Actions workflow runs the same validation and creates a source
@@ -34,3 +35,14 @@ Describe:
 
 Do not describe local tests as field acceptance or a release artifact as
 deployment success.
+
+## Beta Feedback / 測試版回饋
+
+For real-use feedback, use the [bilingual guide](docs/beta-feedback.md) or the
+beta feedback issue template. A useful report identifies the Skill version,
+Agent/IDE, model/effort, intended outcome, confusing or incorrect excerpt,
+and observed result. Redact private data before posting. Feedback is voluntary;
+the Skill does not collect or upload transcripts automatically.
+
+實際試用請記錄版本、Agent／IDE、模型與推理設定、想完成的事、問題原句及實際結果。
+無需提供技術診斷；回饋前移除個資、憑證與公司資料。沒有自動收集或上傳對話。

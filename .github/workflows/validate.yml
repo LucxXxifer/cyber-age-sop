@@ -25,6 +25,9 @@ jobs:
       - name: Validate package
         run: python scripts/validate_public_package.py
 
+      - name: Validate implementation readiness
+        run: python scripts/validate_implementation_readiness.py
+
       - name: Build source archive
         run: |
           mkdir -p dist
