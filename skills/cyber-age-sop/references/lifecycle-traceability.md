@@ -8,7 +8,7 @@ Keep one decision source and one engineering view, using existing project files 
 
 Record who decided which scope and where that decision is evidenced. An API `user` role is a transport label, not proof of a human decision. Use `user-approved` only for an actual human's explicit approval; label simulation and authorized controller instructions by their real source. Neither grants authority beyond its stated scope. Keep engineering acceptance, implementer self-checks and human product acceptance separate.
 
-Keep the current summary and eight-field Card readable without decoding technical IDs. Preserve the minimum SPEC, dependency gates, affected evidence, source identity and recovery information below in the existing engineering appendix. Cite verified records instead of copying their entire history into each response. Missing or stale evidence stays visible in the summary when it blocks the next action. Do not invent saved documents or remove essential engineering information to meet a length target.
+Keep the current conversational summary and Card readable without decoding technical IDs. Preserve the minimum SPEC, dependency gates, affected evidence, source identity and recovery information below in the existing engineering appendix. Cite verified records instead of copying their entire history into each response. Missing or stale evidence stays visible in the summary when it blocks the next action. Do not invent saved documents or remove essential engineering information to meet a length target.
 
 ## Minimum SPEC
 
@@ -30,7 +30,7 @@ In the engineering appendix, link each accepted need to its SPEC section, task, 
 |---|---|---|---|---|
 | [accepted behavior] | [task; exact accepted input it needs] | [actual known state] | [test and who checks it] | [version and usable record, or not verified] |
 
-Reuse existing task records; do not duplicate full Briefs in the index. Work on one currently authorized task. Start dependent work only when the exact required predecessor output has applicable, independently checked evidence.
+Reuse existing task records; do not duplicate full Briefs in the index. Work on one currently authorized task. Start dependent work only when the exact required predecessor output has applicable evidence checked by the designated checker. A low-risk contract may assign actual deterministic checks to the implementer; label this as self-check. A separate reviewer remains required where the contract or risk specifies one.
 
 Keep implementation facts separate from activity gates: "existing implementation unknown" does not mean "not started." A blocked integration task may have pre-existing code. Say what is unknown and which activity cannot begin; do not overwrite history with a Card's progress label.
 
@@ -59,13 +59,15 @@ Follow existing project versioning conventions. Do not force a branch or commit 
 
 ## Persistence and Recovery
 
-Read the current Brief/engineering appendix and relevant actual source/evidence at session start, task switch, scope change, failed verification and delivery. Do not reread all history on every turn.
+At intentional project re-entry ("revise", "build this", "resume", "check against the plan"), locate the existing project README or entry and follow its pointer to the applicable Brief/SPEC. Read relevant source and recent evidence before choosing the next authorized action. If a pointer is missing, inspect the project entry and named files first; ask only for the location or conflict that actually prevents continuation.
+
+Use the same record, with a compact entry pointer where project conventions and authority permit. At the current slice's start, material change, milestone, failed verification and delivery, compare actual work with the accepted purpose, non-goals and relevant acceptance examples. Identify the affected requirement/task/check if something drifted. Do not reread all history every turn or create an unrelated management document.
 
 Files are an index to facts, not higher authority than actual source/tests. If they disagree, name the conflict and last verified state before advancing.
 
 After a required update, read it back. If saving fails, report what was and was not persisted, preserve already valid evidence, and stop work dependent on that update. Do not claim success in chat, silently choose a second location or change permissions. Ask only for the missing location/authority decision; otherwise recover within the authorized scope.
 
-Recovery must identify current applicable scope, accepted predecessor evidence, invalidated claims and next safe task. Missing context stays unknown. This protocol does not supply a background scheduler or autonomous cross-host synchronization.
+Recovery must identify current applicable scope, accepted predecessor evidence, invalidated claims and next safe task. Missing context stays unknown. This protocol requires the host to load the Skill or the project entry intentionally. Description keywords can improve discovery but do not guarantee dispatch. It does not install global hooks, watch work continuously, or supply autonomous cross-host synchronization.
 
 ## Storage Policy
 

@@ -2,6 +2,20 @@
 
 All notable changes to this repository are documented here.
 
+## [0.5.2-beta.1] - 2026-11-05
+
+- Require substantive owner confirmation of purpose, shape and first-version scope before the first execution Card. Reuse applicable prior agreement; do not require fixed questioning rounds.
+- Show useful provisional wireframes/flows and current action/checks inline, with engineering detail in the same Brief. Replace conflicting duplicated templates and mandatory empty chat fields.
+- Broaden identifiable-project entry points to clarification, revision, implementation, resumption and alignment review. Description keywords do not guarantee host dispatch.
+- Add intentional re-entry via existing project records and scoped change/evidence checks; no background monitor or global hook.
+- Allow contract-designated implementer checks for low-risk local dependencies without calling them independent or human acceptance.
+- Preserve readiness, authorization, source identity, failure and evidence-tier safeguards.
+
+公開測試版：先與使用者形成共同理解，再生成第一張行動卡；草圖、當前行動與檢查直接在對話呈現。
+有限本機比較涵蓋現版、候選及原生流程：三組程式各通過同組 12 項黑箱檢查，插件資料核心各通過同組 4 項檢查，三次新會話恢復均未增加功能。
+這不證明候選編程品質更高；候選前兩輪回覆較長，真人理解、隱式觸發、飛書原生體驗、真實瀏覽器及大型項目效益仍未驗證。
+發布只提升本地已試跑候選的身分與說明，不再修改行為規則。詳見 [release notes](docs/releases/v0.5.2-beta.1.md)。
+
 ## [0.5.1-beta.1] - 2026-10-24
 
 ### Public beta / 公開測試版

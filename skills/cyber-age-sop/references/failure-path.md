@@ -2,12 +2,12 @@
 
 ## Purpose
 
-Handle situations where the user cannot articulate their needs after facilitated exploration, while preserving the facilitation principles from guided-thinking.
+Handle situations where the user cannot articulate their needs after facilitated exploration, using concrete project situations and readback; a second Skill is not required.
 
 ## When to Apply
 
 This protocol applies when:
-- After 2 rounds of open exploration, the user still cannot describe their situation clearly
+- The current open question is not helping the user describe their situation clearly (no fixed round threshold)
 - User repeatedly responds with "I don't know" or "You decide for me"
 - User asks for preset options instead of describing their own needs
 - Different angles (time/problem-goal/self-others) don't help clarify
@@ -42,7 +42,7 @@ Before offering structured options, reframe the question to help them see it fro
 
 ### Step 2: Offer Candidate Anchors
 
-If different angles don't help, offer **3-5 candidate anchors** as exploration aids.
+If different angles don't help, offer a few concrete candidate anchors as exploration aids.
 
 #### What Makes a Good Candidate Anchor
 
@@ -83,7 +83,7 @@ C) **个人 GTD 工具**：只有你自己用，重点是快速记录和提醒
 
 ### Step 3: Generate Blocked Report
 
-If none of the candidate anchors fit, **do not guess further**. Generate a Blocked Report and hand off.
+If none of the candidate anchors fit, **do not guess further**. Summarize the actual unresolved blocker and a useful next route; do not force a handoff or mark the idea infeasible just because discovery is incomplete.
 
 #### Blocked Report Template
 
@@ -102,8 +102,8 @@ If none of the candidate anchors fit, **do not guess further**. Generate a Block
 - [说明为什么这些信息对判断可行性/方向至关重要]
 
 **Suggested next steps:**
-1. **Use `guided-thinking` for deeper intent exploration**
-   - 进行更深入的意图澄清和假设检验
+1. **Continue with a concrete situation or provisional sketch**
+   - 记下仍不清楚的问题；若使用者想暂停，保留回到此处的入口
    
 2. **Try existing tools first**
    - 先用 [具体建议的现成工具]，在实际使用中明确真正需要什么
@@ -117,7 +117,7 @@ If none of the candidate anchors fit, **do not guess further**. Generate a Block
 #### When to Use Blocked Report
 
 ✅ **Use when:**
-- Tried 2+ rounds of open exploration
+- Tried useful exploration appropriate to the actual uncertainty; no fixed round count
 - Tried different angles
 - Offered candidate anchors (if applicable)
 - User still cannot describe their needs or situation
@@ -248,7 +248,7 @@ Assistant: "你是想做 A) XX 还是 B) YY？"
 ```
 User: "我想做个工具"
 Assistant: "我想先了解一下：你现在怎么做这件事的？"
-[2 rounds of open exploration]
+[Open exploration; no fixed round count]
 [Try different angles if still unclear]
 [Only then offer candidate anchors if needed]
 ```
@@ -320,7 +320,7 @@ This protocol adapts guided-thinking's "when stuck" mechanism:
    - Never hide uncertainty with vague language
 
 5. **Provide exit ramps**
-   - Hand off to `guided-thinking` if intent is still unclear
+   - Continue concrete project exploration here; use another named Skill only when requested
    - Suggest trying existing tools first
    - Recommend domain expert consultation when needed
 

@@ -6,16 +6,20 @@ Cyber-Age SOP 是一套用來深度挖掘設計者／項目負責人需求、釐
 再輔佐 Agent 交付的流程框架。它可以處理 software、hardware、UI、
 documentation、Skill、Docker、automation、藝術、AI 媒體或遊戲想法。
 
-**公開測試版：[v0.5.1-beta.1](https://github.com/LucxXxifer/cyber-age-sop/releases/tag/v0.5.1-beta.1)（2026-10-24）。**
-加入一頁式 Next-Step Card、白話現況說明，以及按需連結需求、SPEC、任務、版本和證據的規則。
-本版用於收集實際回饋；跨模型穩定性、小白可用性與大型專案效益尚未驗證。
-詳見[變更與已知限制](docs/releases/v0.5.1-beta.1.md)。
+**公開測試版：[v0.5.2-beta.1](https://github.com/LucxXxifer/cyber-age-sop/releases/tag/v0.5.2-beta.1)（2026-11-05）。**
+Agent 先探索、回述用途與第一版範圍，等使用者實質確認共同理解後才生成第一張行動卡。
+必要的暫定草圖和當前行動直接在對話顯示，修改與主動續做沿用同一份項目記錄。
+本版用於收集實際回饋；不提供宿主 UI、保證自動觸發或背景監督。
+詳見[變更、本機比較與已知限制](docs/releases/v0.5.2-beta.1.md)。
+
+上一測試版 [v0.5.1-beta.1](https://github.com/LucxXxifer/cyber-age-sop/releases/tag/v0.5.1-beta.1) 仍可下載。
+跨模型穩定性、小白可用性與大型專案效益尚未驗證。
 
 **穩定版仍為 [v0.4.5](https://github.com/LucxXxifer/cyber-age-sop/releases/tag/v0.4.5)。** 測試版不取代穩定版。
 
 ## 試用測試版
 
-1. 在測試版 Release 下載 **`cyber-age-sop-v0.5.1-beta.1.zip`**，不要混用 GitHub 整庫源碼 ZIP。安裝包內只有一個 `cyber-age-sop/` 目錄，包含 `SKILL.md`、references 和授權聲明。
+1. 在測試版 Release 下載 **`cyber-age-sop-v0.5.2-beta.1.zip`**，不要混用 GitHub 整庫源碼 ZIP。安裝包內只有一個 `cyber-age-sop/` 目錄，包含 `SKILL.md`、references 和授權聲明。
 2. 按所用 Agent／IDE 的 Skill 安裝方式放入該目錄。本機 Codex 可放在 `~/.codex/skills/cyber-age-sop/`。升級前備份舊版，以整個目錄替換，避免版本混雜；安裝後開啟新 session。
 3. 呼叫 `$cyber-age-sop`，描述一個真的想做的小工具、程式、插件或 Skill。不必先懂技術棧；執行、搜尋和繪圖能力由所用 Agent／IDE、工具與模型提供。
 4. 記下有幫助或看不懂的位置，使用[雙語回饋指南](docs/beta-feedback.md)或 [GitHub 回饋表](https://github.com/LucxXxifer/cyber-age-sop/issues/new?template=beta-feedback.md)。
@@ -238,13 +242,21 @@ repository checks 通過，只能證明指定 commit 的公開包結構有效，
 
 ## 版本
 
-目前公開測試版為 `0.5.1-beta.1`（2026-10-24），最新穩定版仍為 `0.4.5`：
+目前公開測試版為 `0.5.2-beta.1`（2026-11-05），最新穩定版仍為 `0.4.5`：
 
-- 此分支 Runtime Skill version：`0.5.1-beta.1`
+- Runtime Skill version：`0.5.2-beta.1`（公開測試版）
 - Project SOP document version：`0.1`
-- Repository prerelease version：`0.5.1-beta.1`
+- Repository prerelease version：`0.5.2-beta.1`
 
-### v0.5.1-beta.1 的變更
+### v0.5.2-beta.1 的變更
+
+- 探索 → 暫定草圖／回述 → 使用者實質確認 → 第一張對話內行動卡；不規定提問輪數。
+- 已確認需求可直接接續實作、修改與恢復，實際檢查及來源身分保存在同一記錄。
+- 已授權低風險工作可使用指定的確定性自測，仍分開獨立查核與真人驗收。
+- 有限本機比較中，三組均通過同組 12 項程式與 4 項插件核心檢查；三組續做均未增加功能。這不證明編程品質較高或真人更容易理解。
+- 詳見[本版說明](docs/releases/v0.5.2-beta.1.md)及 [CHANGELOG](CHANGELOG.md)；以下保留歷史版本內容。
+
+### v0.5.1-beta.1 的變更（歷史版本）
 
 - 項目範圍釐清後，顯示一張固定八欄的 Next-Step Card；瑣碎修改跳過。
 - 用日常工作名稱說明現況，分開實作、測試、驗收與未知狀態。
@@ -254,7 +266,7 @@ repository checks 通過，只能證明指定 commit 的公開包結構有效，
 - 補充雙語安裝、回饋和已知限制。
 
 本地 `0.5.0` 與後續候選快照屬開發基線，沒有補稱為已公開的穩定版本。
-結構檢查通過不代表真人理解或端到端可靠度已驗證，詳見[測試版說明](docs/releases/v0.5.1-beta.1.md)及 [CHANGELOG](CHANGELOG.md)。
+結構檢查通過不代表真人理解或端到端可靠度已驗證，詳見[測試版說明](docs/releases/v0.5.2-beta.1.md)及 [CHANGELOG](CHANGELOG.md)。
 
 ### v0.4.5 的新特徵（2026-10-15）
 

@@ -1,119 +1,80 @@
 # Decision Brief Template
 
-A standalone file a non-technical user can save, share, and reread months later to see why a decision was made.
+Use one durable record for the agreed project. Show the important understanding and current action in the conversation too; an attachment alone is not the explanation.
 
-Produce it after Discovery, Technical Translation, and MVP Framing, once the user picks a direction (including "not now"). Skip it only if the user says they don't want a file. Preserve the user-specified or existing location; otherwise default outside the repository. Durable project documents may live in the repository only under its conventions and user approval; see [Storage Policy](lifecycle-traceability.md#storage-policy).
+## Before creating the first Card
 
-## Minimal version
+Read back the purpose, first-version shape, scope and relevant unknowns. Obtain the owner's substantive confirmation that this is what they mean. Added facts, silence, a detailed feature list or the Agent's confidence do not establish agreement. A provisional sketch helps discovery; it is not an execution Card. Reuse an applicable earlier confirmed Brief/SPEC rather than asking again.
 
-Use for short conversations or small projects.
+Save the agreed decision unless the user opts out. Preserve the existing or user-specified location; otherwise default outside the repository. In-project durable records require compatible conventions and authorization. See [Storage Policy](lifecycle-traceability.md#storage-policy). Do not create a separate Card file or a new Brief for each turn.
 
-```markdown
-# Decision Brief — [Project]
+## Minimal record
 
-**Problem**: [one sentence, user's words]
-**Recommended**: [option] because [reason]
-**Not doing**: [non-goals]
-**Next step**: [one concrete action]
-```
-
-Leave a field empty rather than filling it with boilerplate.
-
-For a standard or large project, add the full Next-Step Card from the template below after the metadata. Omit it for the trivial fast path.
-
-## Full version
+Use for a bounded project; include only information that changes its meaning or safe execution.
 
 ```markdown
 # Decision Brief — [Project]
 
-Date: YYYY-MM-DD
-Status: build / validate first / postponed / not doing
-Decision state: proposed / user-approved / simulation-approved / controller-authorized / deferred / rejected
-Decision source: who decided which scope and where it is recorded. user-approved requires an actual human's explicit decision, not an API role, controller message or simulation; it does not mean product acceptance.
+Date / revision: [actual date and applicable revision]
+Decision state / source: [who confirmed which readback and scope, with a usable source]
+Purpose: [user's words and use situation]
+In / out: [agreed first version and important exclusions]
+Unknowns: [only unresolved facts that matter]
 
-## Next-Step Card
+## Current work
+[Everyday task name and actual progress]
+Action / result: [what is authorized now and the observable output]
+Check: [how success will be observed and who checks]
+Decision / blocker: [only when one matters]
 
-**目前工作項目**: [用日常語言寫的當前工作]；進度：[待開始 / 進行中 / 受阻 / 待驗收 / 已驗收]（`Task ID`: [可選]）
-**開始條件**: [本項需要的輸入；若有前置任務，寫出其已驗收的輸出／證據]
-**這一輪要交付**: [本輪唯一主要產物或可觀察結果]
-**這一輪不做**: [明確不包含的工作]
-**使用者需要決定**: [需要使用者批准的事項；沒有就寫「無」]
-**Agent 現在可以做**: [在上述條件下允許的動作]
-**完成時要看見的證據**: [使用者或檢查者可以核對的具體證據]
-**若遇阻或證據不符**: [停止條件，以及下一個安全動作]
-
-`待驗收` 表示 Agent 已交付但證據尚未核對；只有指定證據被核對後才能標 `已驗收`。依賴任務不得在前置任務仍為 `待驗收`、`待開始` 或 `受阻` 時開始。
-
-在對話中展示卡片時也保留這八個固定欄位；沒有內容的欄位寫「無」，不要用縮寫刪掉欄位。
-
-## 1. What I'm solving
-> [user's own words]
-
-Problem in one sentence:
-Who uses it, and when:
-
-## 2. Facts vs assumptions
-Confirmed:
-- 
-Unverified (check before building):
-- [assumption] — how to check:
-
-## 3. Recommendation
-Recommended:
-Why (in product terms):
-This is the wrong choice if:
-Time: [estimate] — [查证 / 经验估算 / 未查证估算], [date]
-Money: [estimate] — [source label], [date]
-Maintenance: [concrete, e.g. "check logs weekly"]
-Switching later means redoing: [what, roughly how much]
-
-## 4. Version 1 scope
-Core invariant: the user wants to change [X]; this version must not swap it for [Y].
-In:
-- [feature] (user would notice immediately if removed)
-Out:
-- [feature] — lost: [capability], acceptable because [reason]
-Floor: version 1 must touch [the user's problem] in a real situation.
-
-## 5. How we'll know
-| Evidence | Proves | Doesn't prove |
-|---|---|---|
-| | | |
-Success signal:
-Stop condition:
-
-## 6. Next steps
-1. [action] — cost, time, which assumption it tests
-   - if [A] → continue; if [B] → change direction
-2. Hand-off: [developer / Agent / another skill], with Agent Brief below if building
-
-Saved at:
-Review on:
-
-## Appendix: Agent Brief
-[only if the decision is to build]
+## Engineering detail
+[Applicable start condition, allowed actions, stop/recovery behavior and evidence links]
 ```
 
-For dependent work, changed requirements, versioned delivery, or session recovery, the engineering appendix carries the [minimum SPEC and trace links](lifecycle-traceability.md). Keep the user-facing Brief and Card short; do not duplicate the engineering record in every field.
+Decision states include `proposed`, `user-approved`, `simulation-approved`, `controller-authorized`, `deferred`, and `rejected`. A `user` API role is not evidence of a human decision. State the real source and confirmed scope. Product agreement, operation authority, engineering self-check and human acceptance are different facts.
 
-`Recommended` is the Agent's proposal, not evidence of user approval. Use `proposed` until the user accepts, rejects, or defers the direction.
+## Conversational Card
+
+After shared understanding is confirmed, show the current task directly, using the host's readable layout. Include the action, this round's outcome, how to check it, and any decision or blocker that matters now. Do not print eight empty fields or force an attachment open. Put a changed boundary or missing start condition where the user will see it.
+
+Example for already-agreed work:
+
+> **現在先做：檢查筆記能否正確讀入（進行中）。** 這輪會交付讀取功能和錯誤行號測試；通過後才接匯出。由 Agent 在本機自測，不代表真人已驗收。現在不需要你再決定；若輸入格式與確認稿衝突，我會停下指出差異。
+
+The stored engineering record must preserve these meanings, without requiring these exact field names:
+
+| Information | Record only applicable facts |
+|---|---|
+| Current work / progress | Everyday name; `待開始`, `進行中`, `受阻`, `待驗收`, or `已驗收` |
+| Start condition | Required input and exact checked predecessor output/evidence |
+| Deliverable | This round's main observable result |
+| Exclusions | Boundaries that affect this work |
+| User decision | Unresolved decision and its consequence, if any |
+| Allowed action | Authority actually given for this round |
+| Evidence / checker | Concrete checks, source identity and actual checker |
+| Stop / recovery | What prevents continuation and the next safe action |
+
+`待驗收` means the required evidence has not yet been checked by the designated checker. Use `已驗收` only when that check occurred. A contract may designate the implementing Agent for deterministic checks on low-risk local work; label self-check honestly. Use a separate checker where required. Already-authorized dependent work may continue after its exact start conditions pass; no new approval is needed solely to change the Card.
+
+## Full record when needed
+
+Expand the same record for consequential choices or multi-part delivery:
+
+1. **Purpose and context:** preserve key user wording, who uses it and when.
+2. **Facts and assumptions:** distinguish confirmed situation from unknowns and how to check them.
+3. **Recommendation:** explain product consequences, when it would be wrong, concrete maintenance and switching cost. Label estimates with source quality and date; do not invent numbers.
+4. **First version:** scope, non-goals, core invariant and what each material cut loses. The version must address the actual problem.
+5. **Evidence boundary:** observable success, what local/build/field evidence can and cannot prove, and stop conditions.
+6. **Current work and engineering appendix:** use the Card meanings above and the applicable Agent Brief/SPEC, dependency and source/evidence links from [lifecycle-traceability.md](lifecycle-traceability.md).
+
+Do not create empty sections to satisfy this outline. A deferred or rejected direction needs its reason and revisit condition, not a manufactured execution Card.
 
 ## Checklist
 
-- User's wording kept, not rewritten into product jargon
-- Facts and assumptions separated
-- One recommendation, plus when it's wrong
-- Every estimate has a source label and date
-- Core invariant and the cost of each cut written down
-- Next step is something the user can do this week
-- Standard／large projects have one current-work Next-Step Card; trivial fast path does not
-- Dependent work names a checked predecessor output or evidence as its start condition
-- `待驗收` and `已驗收` are not conflated
-- Saved location follows user intent, project conventions, and approval; raw or sensitive evidence is separate
-
-## Anti-patterns
-
-- Rewriting "I want to know if I ate too much today" as "caloric intake monitoring"
-- Presenting a menu instead of a recommendation
-- Next steps like "consider a prototype" instead of "use MyFitnessPal for 3 days to see if you keep logging"
-- Leaving the decision only in the chat
+- First Card follows shared-understanding confirmation; existing applicable agreement is reused.
+- User wording, facts/assumptions and material boundaries remain visible.
+- Chat is understandable without opening a file or decoding task IDs.
+- Provisional sketches are distinguished from approved design and working implementation.
+- Dependent tasks rely on actual designated checks; self-check is not independent or human acceptance.
+- Revise or resume updates the same record and preserves earlier evidence for its original scope.
+- The location and links exist and follow the storage policy.

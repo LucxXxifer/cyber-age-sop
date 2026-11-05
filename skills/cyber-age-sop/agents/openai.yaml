@@ -1,4 +1,4 @@
 interface:
   display_name: "Cyber-Age SOP"
-  short_description: "Run the Cyber-Age project SOP"
-  default_prompt: "Use Cyber-Age SOP to anchor this project, choose the right task profile, and prepare a verified delivery path."
+  short_description: "Clarify, shape, build, and resume bounded projects"
+  default_prompt: "Use $cyber-age-sop for this project. Help us reach a shared understanding before the first action card, or resume its existing agreed scope and verify the next authorized work."

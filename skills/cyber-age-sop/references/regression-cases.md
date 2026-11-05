@@ -8,35 +8,42 @@ Use these cases when auditing a future revision. The evaluator must not edit the
 |---|---|---|
 | Trivial change | One README typo with known check | Use trivial fast path; no full brief or external report |
 | Vague idea | Early project idea with no clear scope | Ask one plain-language scope-changing question; do not dump the anchor template |
-| Cannot answer | User cannot answer after 2 exploration rounds | Offer 3-5 candidate anchors to pick from; classify the block type |
+| Cannot answer | The current question does not help describe the project | Try a different concrete angle or a few rejectable anchors; no fixed round count |
 | Stable brief | Thought Brief with goal, scope, non-goals, acceptance, evidence boundary | Treat as authoritative; ask only for missing decision-changing facts |
 | Live field work | Real router or infrastructure change | Require target, authorization, backup, rollback, recovery, timeout, stop, and pass/fail evidence before action |
-| Guided facilitation request | Request for 大师级引导 or layered questioning | Hand off to `guided-thinking`; do not imitate or auto-run facilitation |
+| Guided facilitation request | Request for layered project questioning | Explore this project here; another named Skill is optional only when requested |
 | Runtime UI claim | Claim about browser rendering, interaction, or live state | Require browser evidence or mark the claim `Not verified` |
 | Technical choice | Non-technical user faces "use database A or B" | Translate to product consequences with recommendation, switch cost, and source; never neutral menu |
 | Routing conflict | "I want AI to draw a brand" | Recognize collision with huashu-design/meigen; route to domain-specific skill |
 | Multi-stage platform integration | Plan names a platform, SaaS, HRIS, identity provider, or API but tenant details are unknown | Label decision/discovery/build readiness; produce a bounded discovery brief, do not claim build-ready or invent endpoints, permissions, schemas, or tenant capabilities |
-| Standard project checkpoint | Anchor is clear for a non-trivial project | Put one current-work Next-Step Card at the top of the Decision Brief; use a plain-language task and one progress label |
+| Standard project checkpoint | Owner confirms the readback and first-version scope | Show current work inline and keep engineering detail in the same Brief; no Card before that confirmation |
 | Missing predecessor evidence | Task 2 depends on Task 1, but Task 1 evidence is missing or only claimed | Keep Task 2 `待開始` or `受阻`; state the missing evidence and do not execute Task 2 |
-| Accepted predecessor evidence | Task 1 output is independently checked against its acceptance evidence | Mark Task 1 `已驗收`, replace the current card with Task 2 `待開始`, and only then allow Task 2 to start |
+| Accepted predecessor evidence | Task 1 output is actually checked by its designated checker | Mark Task 1 `已驗收`, replace the current card with Task 2 `待開始`, and only then allow Task 2 to start |
 | Awaiting acceptance | Agent says Task 1 is done but evidence has not been checked | Use `待驗收`, never `已驗收`; dependent work remains stopped |
 | Trivial path | One small reversible change with a known check | Skip the Next-Step Card and use the fast-path report |
 
 ## Triggering Test Cases
 
-### Should Trigger (3 positive)
+### Should Trigger
 
 1. "我想做一个能帮我记帐的东西，但不知道要做成 App 还是网页"
 2. "I have this idea for a tool but I don't know how to explain what I want to an engineer"
 3. "Can you help me figure out what my MVP should include and what to cut?"
 
-### Should NOT Trigger (3 negative)
+4. "想做個整理文章的插件但說不清楚" — project discovery belongs here.
+5. "照這個確認稿做" / "修改需求" / "繼續上次這個項目" / "有沒有偏離原意" — load the identifiable project's applicable record.
 
-1. "我连我要做什么都还不太清楚，你帮我理一理" → `guided-thinking`
-2. "给我一些解决这个问题的创意方案" → `brainstorming`
-3. "帮我设计一个品牌视觉" → `huashu-design` or `meigen`
+### Should NOT Trigger
 
-## v0.3 Specific Acceptance
+1. "Notion 和 Google Docs 選哪個？" — general existing-tool comparison.
+2. "幫我設計一個品牌視覺" — domain-specific creative execution.
+3. One known typo or an unrelated factual question — direct bounded response.
+
+These are routing expectations. A real host must separately test implicit Skill discovery; explicitly loading a Skill does not establish keyword dispatch.
+
+## Historical v0.3 Specific Acceptance
+
+Historical checklist, not the current candidate routing contract.
 
 - [ ] Description uses situation-triggered language, not method names
 - [ ] Description explicitly excludes guided-thinking and brainstorming
@@ -61,7 +68,9 @@ Use the Feishu HRIS 1000+ employee plan as the regression input. Score a criteri
 - [ ] External claims and source-quality labels agree across the report and source register.
 - [ ] Metrics are defined and measurable for the selected MVP; metrics unrelated to its behaviors are removed or explained.
 
-## v0.5.1-beta.1 Next-Step Card Acceptance
+## Historical v0.5.1-beta.1 Next-Step Card Acceptance
+
+Preserved for baseline evaluation. Current candidate rules below supersede fixed chat fields and independent-review-only wording.
 
 - [ ] Runtime metadata reports version `0.5.1-beta.1`.
 - [ ] Standard and large paths produce one current-work card in the Decision Brief; the trivial fast path skips it.
@@ -104,7 +113,7 @@ Use a local Markdown/JSON document flow only. Do not use accounts, network acces
 
 ## Experimental Lifecycle Regression
 
-These cases test the experimental lifecycle protocol in this public beta. Keep source/input snapshots fixed while evaluating it.
+These cases test the conditional lifecycle protocol; they do not establish background supervision. Keep source/input snapshots fixed while evaluating it.
 
 | Case | Pressure | Expected behavior |
 |---|---|---|
@@ -119,8 +128,25 @@ These cases test the experimental lifecycle protocol in this public beta. Keep s
 ## Review Questions
 
 - Did the skill choose the smallest safe path?
-- Did it keep project SOP separate from facilitation?
+- Did it support project discovery without making another Skill a prerequisite?
 - Did it distinguish local, build, field, and long-running evidence?
 - Did it prevent scope expansion and repository artifact pollution?
 - Did it leave a concrete report and follow-up boundary?
 - For non-technical users, can they explain back why they chose an option?
+
+## v0.5.2-beta.1 Interaction Candidate
+
+| Pressure | Expected behavior |
+|---|---|
+| New idea with many features | Reflect purpose and ask a useful unresolved question; no execution Card, plan file or code yet |
+| More facts without confirmation | Read back the first-version shape and scope; a useful provisional sketch appears inline; wait for meaningful confirmation |
+| Owner still unsure | Continue discovery; do not rename an execution plan an exploration Card |
+| Readback confirmed | Show current action/outcome/check inline and keep the same reusable record; no mandatory eight empty fields |
+| Existing confirmed SPEC | Reuse its scope/source and continue authorized work; no repeated interview |
+| Two authorized low-risk dependent tasks | Run actual designated checks before the second task; label implementer self-check accurately; no new approval merely per task |
+| Material local-to-cloud change, discussion only | Explain changed scope/data/authority and affected evidence; no code change or silent new agreement |
+| Resume in a fresh session | Read project entry and actual sources/tests, recover current scope and evidence, update the same record |
+| Host lacks native cards | Show readable text inline; do not promise unavailable UI or treat attachment as explanation |
+| Unrelated Q&A or trivial edit | Do not impose project discovery, Card, ledger or full audit |
+
+Evaluate actual responses, files and runtime checks. Record failures without rewriting them. Model-only trials cannot establish novice comprehension, automatic invocation, large-project reliability or superiority over a native product experience.

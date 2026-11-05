@@ -1,56 +1,50 @@
 ---
 name: cyber-age-sop
 description: >
-  Use when someone wants to BUILD/DEVELOP a custom solution (tool, plugin, internal system) 
-  and needs help scoping it into a deliverable MVP. 
-  
-  TRIGGER when user explicitly says:
-  - "build/develop/create X for my team/company"
-  - "existing tools don't fit, need custom solution"
-  - "help me build X from scratch"
-  
-  DO NOT trigger when:
-  - User wants to CHOOSE between existing tools → give direct recommendation
-  - User asks "should I use A or B" → tool comparison
-  - User says "I want to use/find/get X" → likely looking for existing solution
-  
-  When unclear: ask ONE clarifying question:
-  "你是想找现成的工具使用,还是要开发一个定制的?"
+  Use when someone wants to design or build a custom program, plugin, tool,
+  system, or agent skill but cannot yet explain the need or scope; or wants
+  to revise, implement, resume, or check an existing project's agreed plan.
+  Applies to project requests such as "想做個工具但說不清楚", "照這個做",
+  "修改需求", "繼續上次項目", or "有沒有偏離原意" when the project is identifiable.
+  Exclude unrelated Q&A, choosing existing tools, and trivial edits.
 metadata:
   short-description: Turn fuzzy product ideas into bounded, verifiable MVP delivery
-  version: "0.5.1-beta.1"
+  version: "0.5.2-beta.1"
   status: public-beta
-  updated: "2026-10-24"
+  updated: "2026-11-05"
 ---
 
 # Cyber-Age SOP
 
-`cyber-age-sop.skill` helps you turn a product idea into a bounded delivery task with clear evidence criteria, then verifies what was actually delivered.
+Help a project owner and Agent reach a shared understanding, make its shape visible, then build and check bounded work against that understanding. The conversation is the reading interface; one durable project record carries agreed scope and evidence forward. This skill is not a background project manager.
 
 ## Routing
 
 This skill is for someone who:
+
 - Wants to build/develop a custom solution ("我要做一个 X 给团队用")
 - Has a product-shaped goal but cannot scope it
 - Doesn't know how to explain requirements to an agent or engineer
 - Faces technical choices but lacks the context to evaluate them
 - Needs to verify what "done" actually means
 
+Exploring what a custom project should do, or comparing its design options, belongs here.
+
 **Not for:**
+
 - Tool selection or comparison ("该用 Notion 还是 Google Docs?") → give recommendation directly
-- Exploring what you want → use `guided-thinking`
-- Generating options to compare → use `brainstorming`
+- General self-reflection without a project intent → use an appropriate facilitation workflow if requested
 - Visual/brand creative execution → use `huashu-design` or `meigen`
 - Facilitation, coaching, or relationship work → use `guided-thinking`
 
 ## Hard Boundaries
 
-This skill is independent from `guided-thinking`.
+Project discovery is included here; no second Skill is required to clarify a project.
 
 - Do not invoke `guided-thinking` automatically.
 - Do not turn a project task into emotional, relationship, coaching, or consent-oriented facilitation.
 - Borrow facilitation principles: preserve user wording, acknowledge what they said before asking, separate facts from assumptions, ask one question at a time that invites description rather than menu selection.
-- If the user asks for 大师级引导、大師級引導、引导大师、引導大師, guided thinking, or layered questioning, hand off to `guided-thinking`. Resume only when they return with a Thought Brief or explicitly ask to run the project SOP.
+- Layered questions about this project remain here. If the user explicitly requests another named Skill, respect that choice when available; do not make returning with another artifact a prerequisite for project work.
 
 `prompt-refiner` is an optional packaging tool, not a mandatory stage.
 
@@ -61,27 +55,44 @@ Choose the smallest path that safely produces the requested result:
 | Situation | Path |
 |---|---|
 | One-file typo, formatting fix, or trivial low-risk change with known check | Trivial fast path below |
-| Clear bounded task, more than trivial | Create short Agent Brief and execute |
-| Unclear project intent or scope | Discovery exploration → Project Anchor → Technical Translation → **Decision Brief** |
-| Standard or large project after the anchor is clear | Add one current-work Next-Step Card to the Decision Brief |
+| Existing, applicable confirmed task | Reuse its agreement and short Agent Brief; execute within the existing authority |
+| New project idea, even with a detailed feature list | Discovery and shape readback → shared-understanding confirmation → Decision Brief |
+| Standard or large project with shared understanding confirmed | Show one current-work Next-Step Card in conversation and maintain it in the existing Brief |
+| Revise, start, resume, or check an identifiable project | Read its entry and applicable agreement; use Lifecycle Traceability below |
 | Architecture, UI, or delivery choice unsettled | Add Shape/Decision checkpoint |
 | Code, UI/documentation, or field work with different evidence needs | Load matching task profile |
 | Existing brief needs conversion to executable prompt | Use `prompt-refiner` |
 
 Do not force every project through every artifact.
 
-**The Decision Brief (Gate 3.5) is the main artifact for non-technical users.** For a build-from-scratch project, the conversation is not the deliverable — the saved Brief is. Produce it unless the user explicitly opts out.
+Show the important understanding, shape and current action directly in the conversation. Save agreed decisions in the Decision Brief unless the user opts out; a file link alone is not the explanation. Do not save a new plan or Card merely because the user supplied a long description.
+
+## Shared Understanding: Before the First Card
+
+For a new project, let the owner finish explaining and correcting the direction before producing an execution plan, Next-Step Card, or implementation. A draft sketch or exploration summary may help them think; label it as provisional and keep it separate from execution commitments.
+
+1. Reflect the user's purpose, who uses it and when, and the outcome they want in everyday language. Ask the most useful unresolved question, then wait; do not ask a fixed number of questions or repeat facts already given.
+2. When seeing the structure would resolve ambiguity, show a small provisional wireframe or flow directly in the conversation, without a separate permission question for ordinary local text. Invite correction before treating it as the design.
+3. Surface differences or unknowns that could change the first version. Technical unknowns can remain explicit bounded discovery work; they must not be filled with invented interfaces, permissions or product choices.
+4. Use the owner's substantive confirmation that the readback and first-version scope match what they mean. Natural wording is enough; silence, an extra fact, the Agent's confidence, or a detailed initial feature list is not confirmation.
+
+Only then produce the first Card for an agreed action. A still-uncertain owner stays in discovery; do not rename an unconfirmed implementation plan an "exploration Card". If the owner wants only discussion, respect that. If they defer or reject the project, record that decision without manufacturing an execution Card.
+
+An applicable previously confirmed Brief/SPEC satisfies the same condition. Identify its scope and decision source, ask only about material conflicts, and continue without asking again for unchanged decisions. Product agreement and implementation permission are separate: the first does not grant access to accounts, deployment, publication, or a wider task.
+
+For a material goal, user-scenario or scope change, confirm the affected readback before replacing the execution Card. Ordinary progress updates and already-authorized implementation details reuse the existing agreement; they do not restart the interview.
 
 ## Next-Step Card (standard / large paths)
 
-Once the Project Anchor is clear, standard and large paths must show one Next-Step Card at the top of the Decision Brief. It is the current work-item summary a non-technical user can read and correct. It is not a second plan, a complete task ledger, or permission to execute every task listed elsewhere.
+After shared understanding is confirmed, standard and large paths show one current-work Card directly in the conversation and maintain the same work item in the Decision Brief. It is a readable summary, not a second plan, complete task ledger, or permission to execute every listed task.
 
 - Skip the card on the trivial fast path.
 - Keep one current card. Update that same block when the current work item, decision, evidence, or stop condition changes; do not create a separate card file.
 - Name the work in everyday language. `Task ID` may be included for the Agent or an experienced user, but it is optional and must not be required for understanding.
 - Put one of these progress labels in the `目前工作項目` field: `待開始`, `進行中`, `受阻`, `待驗收`, or `已驗收`.
-- `待驗收` means the Agent delivered something but the specified evidence has not been independently checked. Only mark `已驗收` after the evidence is actually checked.
-- Whenever the card is shown in conversation or saved in the Decision Brief, keep all eight fixed fields from the template. Do not replace fields with shorthand; write `無` when a field has no content.
+- `待驗收` means the Agent delivered something but the specified evidence has not been checked by the designated checker. Only mark `已驗收` after the evidence is actually checked.
+- Use the [Brief template](references/decision-brief-template.md) for the durable engineering information. In conversation, show the current action, this round's outcome, how to check it, and any decision or blocker that matters now. Field names and layout may follow the host; do not repeat empty fields or require opening an attachment to understand the action.
+- Keep start conditions, excluded scope, allowed actions, evidence and stop behavior in the same record. Surface any of these that changes what the owner can decide or what can safely start. Information layering must not hide a boundary.
 
 ### Reader-facing status explanation
 
@@ -90,7 +101,7 @@ When a non-technical owner asks where an existing project stands, explain rather
 - Start with one plain-language sentence about the tool's purpose and confirmed operating boundary. Use everyday work names first; technical IDs are optional secondary labels.
 - Give a short factual status list before the current-work card. Distinguish implementation, historical tests and independent acceptance. Missing records mean unknown, not not-started; an existing prototype does not establish integration or acceptance.
 - For each dependent item, name its predecessor acceptance and the specific activity it blocks. Explain each link once. A missing prerequisite does not erase existing code or prove work never started; a vague "proceed in order" is insufficient.
-- Keep exactly one card with all eight existing field names, nonempty values and a progress label. It summarizes the current item, not a second project plan. Check the actual answer for omitted or duplicated fields.
+- For an already-agreed project, keep one current-work summary with its actual progress; do not require a fixed eight-field display. Before agreement, explain current facts and unresolved direction without an execution Card.
 - Separate this round's deliverable and allowed actions from later demonstration or acceptance. When asked only to explain, say so in both fields; do not run tests, edit files or implement. Later expected evidence has not already been produced.
 - In the decision field, directly say whether any decision is needed now. For explanation-only work, say no new decision is needed, then identify the later decision and evidence the owner must first see. Do not reopen settled decisions or treat expected behavior as acceptance of an unperformed demonstration.
 - State observable acceptance results. Keep the stop-condition field for missing or incorrect evidence. Do not repeat the full status list after the card; accuracy and completeness take priority over brevity.
@@ -110,10 +121,12 @@ When source evidence corrects an earlier summary's attribution, use the correcte
 For dependent work, the card is also the start gate:
 
 1. The dependent task's `開始條件` must name the exact predecessor output or evidence it needs and require the predecessor to be `已驗收`.
-2. If that evidence is missing, stale, or only claimed by the Agent, keep the dependent task `待開始` or `受阻` and state the missing evidence. Do not execute it, generate its supposedly final output, or claim it is complete.
+2. If the required evidence is missing, stale, or only asserted rather than checked, keep the dependent task `待開始` or `受阻` and state the missing evidence. Do not execute it, generate its supposedly final output, or claim it is complete.
 3. After the predecessor evidence is checked, update the same Decision Brief with the dependent task as the current card, initially `待開始`. Start it only after its listed inputs are present.
 
 Listing Task 2 in a plan does not authorize Task 2 to start. A card can make the next dependent task understandable; this beta does not provide a full Progress Ledger, automated pause/resume, or cross-session scheduler.
+
+Use the checker specified for the task. On a low-risk local task the contract may assign actual deterministic checks to the implementing Agent; record that as self-check, never independent review or human acceptance. Require a separate checker when the contract or risk calls for it. Continue already-authorized dependent work once its required checks pass; do not add a new approval per task.
 
 ## Trivial Fast Path
 
@@ -130,7 +143,7 @@ Skip full Project Anchor, task profile, full Agent Brief, external report file, 
 
 ## Lifecycle Traceability (conditional)
 
-This protocol is experimental in this public beta. It supports manual traceability and recovery checks, not verified autonomous project management.
+This candidate supports intentional project re-entry and checks at important moments; it is not verified autonomous project management or a background scheduler.
 
 For dependent tasks, requirements changes, a versioned delivery, or recovery after a session break, read [references/lifecycle-traceability.md](references/lifecycle-traceability.md) before Gate 4/5. Skip this reference on the trivial fast path.
 
@@ -140,7 +153,7 @@ Unknown implementation history stays unknown even when a new activity is blocked
 
 ## Discovery: Facilitated Exploration (before Gate 1)
 
-When project intent or scope is unclear, create space for the user to describe their situation before filling any anchor template.
+For a new project without applicable shared-understanding confirmation, create space for the owner to describe and correct the intent before filling an anchor template. A long feature list can still leave the real use unclear.
 
 ### Guiding Principles
 
@@ -174,20 +187,20 @@ When project intent or scope is unclear, create space for the user to describe t
 
 ### When the User Cannot Describe Clearly
 
-After **two rounds** of open exploration, if the project anchor is still unclear:
+When the current angle is not helping the owner describe the project:
 
 1. **First, try a different angle**
    - "我想从另一个方向了解：你平时在什么情况下会需要用到它？"
    - "或者这样问：设想一下，如果这个工具做好了，你会在什么时候打开它？"
 
 2. **If still unclear, offer candidate anchors**
-   - Present 3-5 possible problem anchors based on what they've said
+   - Present a few concrete possible problem anchors based on what they've said
    - Let them pick one or clarify which is closest
    - Example: "根据你说的，可能是这几个方向中的一个：1) ... 2) ... 3) ... 哪个更接近你的想法？或者都不是？"
 
 3. **If none fit, classify and hand off**
-   - "I don't know what I want yet" → hand off to `guided-thinking`
-   - "I want to compare options first" → hand off to `brainstorming`
+   - Project intent still unclear → stay with concrete situations, or record the unresolved question if the owner wants to pause; another Skill is optional when requested
+   - Project design options need comparison → explain their product consequences here
    - "Definitely not feasible at MVP stage" → state this with reasoning, suggest closer alternative
    - "I cannot determine feasibility" → mark with source and date, state what info is missing
 
@@ -204,33 +217,15 @@ As the conversation progresses, start filling the anchor **progressively** (not 
 - Unverified assumptions: [还需要验证的假设]
 ```
 
-Stop discovery when you have enough to proceed to MVP Framing. Don't keep asking if the next question won't change the direction.
+When the next question would not change the direction, read back the emerging goal, structure and scope and invite the owner's confirmation or correction. Do not advance to an execution Card on the Agent's own judgment. Reuse an applicable existing confirmation instead of asking again.
 
-## Visual Aids (Optional)
+## Shape Readback
 
-Visual aids help non-technical users **see** their product structure through simple ASCII diagrams.
+Show a small provisional shape when it helps the owner see and correct the product: a wireframe for a UI, input → processing → output for a program, or trigger → guidance → result for a Skill/plugin. Do not require technical vocabulary or an explicit drawing request.
 
-### When User Asks Directly
+Use a host-native preview when available; plain text/ASCII is a sufficient fallback. A local text sketch does not need a separate permission round. Respect a request to skip visuals and omit diagrams that add no clarity. A sketch is not an approved design, proof of implementation, or permission to send data to an external service.
 
-If user says "画个图" / "帮我画流程图" / "能用图说明吗", generate visual aid immediately with ASCII art.
-
-### When to Suggest (Requires User Confirmation)
-
-Suggest visual aids when complexity justifies it:
-
-| Scenario | Signal | Suggestion Template |
-|---|---|---|
-| Complex flow | 3+ steps or "如果...那么..." branches | "听起来流程有几个分支，我可以画个简单流程图帮你看清楚，要吗？" |
-| Multi-role | Mentions "管理员"/"用户"/"访客" etc. | "涉及不同角色的权限，我可以画个图说明谁能做什么，需要吗？" |
-| Multi-module | Mentions "前端"/"后端"/"数据库" or "分几个部分" | "系统有几个模块，我可以画个架构图展示它们的关系，要不要？" |
-| Layout | "页面分成..."/"左边...右边..." | "可以用简单布局图展示页面结构，需要吗？" |
-
-**Important:**
-- Wait for user confirmation ("好"/"要"/"画吧") before generating
-- If user says "不用"/"先不要" or changes topic → skip silently
-- Don't force visuals if user already understands
-
-See `references/visual-aids.md` for diagram templates (flow/architecture/layout).
+Read [references/visual-aids.md](references/visual-aids.md) for examples when shaping a project. Show the sketch in the conversation, then use it to resolve differences before the first execution Card.
 
 ## Web Research (Optional)
 
@@ -265,9 +260,9 @@ Suggest web research when it would improve decision quality:
 
 See `references/web-research.md` for Tavily usage and citation format.
 
-## When User Cannot Answer (After 2 Rounds)
+## When User Cannot Answer
 
-If after 2 rounds of open exploration the user still cannot describe their situation or needs clearly:
+If the current question is not helping the user describe their situation, change the angle. Do not wait for or enforce a fixed round count:
 
 ### Step 1: Try a Different Angle
 
@@ -284,7 +279,7 @@ Shift the frame to help them see it differently:
 
 ### Step 2: Offer Candidate Anchors (If Still Unclear)
 
-If the different angle doesn't help, offer **3-5 candidate anchors** based on common patterns:
+If the different angle doesn't help, offer a few concrete candidate anchors based on common patterns:
 
 > "听起来可能是以下几种情况之一，看看哪个更接近你的需求：
 > 
@@ -316,7 +311,7 @@ If none of the candidate anchors fit, generate a **Blocked Report**:
 - [仍不清楚的关键点 - 具体说明]
 
 **Suggested next steps:**
-1. 使用 `guided-thinking` 进行更深入的意图探索
+1. 用一个真实例子或草图继续厘清；若使用者想暂停，记下仍不清楚的问题
 2. 先尝试现成工具（[具体建议]），在使用中明确真正需要什么
 3. 咨询 [具体领域] 的领域专家
 
@@ -411,192 +406,17 @@ Read [references/technical-translation.md](references/technical-translation.md) 
 
 All agent implementation choices must be disclosed and allow veto.
 
-## Gate 3.5: Decision Brief (可帶走的產出)
+## Gate 3.5: Decision Brief
 
-**這是本 skill 對非技術使用者的核心交付物。**
+**建議不等於使用者已決定。** First obtain the shared-understanding confirmation above. Save the agreed purpose, first-version scope, non-goals, decision source and next action in one reusable Brief, unless the user opts out of a file. Deferred or rejected directions can be recorded without an execution Card. During discovery, keep provisional understanding in the conversation; do not manufacture a plan to fill the template.
 
-Anchor、Technical Translation、MVP 邊界的內容目前散落在對話中。對話關掉就沒有了。決策一旦形成，就必須落成一個使用者可以保存、可以給別人看、三個月後可以回頭查的檔案。
+Use [references/decision-brief-template.md](references/decision-brief-template.md) for the minimum or full record. For standard/large agreed work, show the current Card inline and maintain its engineering details in this same Brief. A link alone is insufficient. Omit irrelevant or empty template sections instead of filling them with boilerplate.
 
-**建議不等於使用者已決定。** 若使用者尚未接受、拒絕或暫緩推薦，Brief 狀態必須標為 `proposed`，把下一個會改變方向的問題留給使用者；不可把 Agent 的推薦寫成已決定要做。
+Record **決策狀態** and source accurately: `proposed`, `user-approved`, `simulation-approved`, `controller-authorized`, `deferred`, or `rejected`. A recommendation, sketch or technical feasibility check is not user approval. Preserve the user's words, facts versus assumptions, core invariant, important trade-offs and the evidence boundary.
 
-### 何時產出
+Preserve the existing or user-specified location; otherwise default outside the repository. A durable Brief/SPEC/task index may live in the project when authorized and consistent with its conventions. Raw logs, sensitive evidence and temporary outputs stay in an approved external location. Do not create a separate Card file or move existing records. See [Storage Policy](references/lifecycle-traceability.md#storage-policy).
 
-- Discovery + Technical Translation + MVP Framing 完成後
-- 使用者做出方向決定後（或明確選擇「先不做」）
-- **一律產出**，除非使用者明確說「不用給我檔案」
-
-For standard and large paths, include the Next-Step Card below as the first content block after the brief metadata. Omit it only for the trivial fast path.
-
-### 產出位置
-
-優先沿用使用者指定或項目既有的位置；未指定時預設在 repository 外：
-
-```
-~/<專案名>-decision-brief.md
-```
-
-長期維護的 Brief／SPEC／任務索引，只有在符合項目規範且使用者批准時才可放入 repo。原始 logs、敏感證據與暫存產物仍留在外部受控位置；不自行搬動既有文件。詳見 [Storage Policy](references/lifecycle-traceability.md#storage-policy)。
-
-### 格式
-
-```markdown
-# Decision Brief — [專案名]
-
-**日期**: YYYY-MM-DD
-**狀態**: [決定要做 / 先驗證需求 / 暫緩 / 不做]
-**決策狀態**: [proposed / user-approved / simulation-approved / controller-authorized / deferred / rejected]
-**決策來源**: [誰對什麼範圍作出決定及可追溯來源；user-approved 僅限真人明確決定，不代表產品已驗收]
-
----
-
-## Next-Step Card
-
-**目前工作項目**: [用日常語言寫的當前工作]；進度：[待開始 / 進行中 / 受阻 / 待驗收 / 已驗收]（`Task ID`: [可選]）
-**開始條件**: [本項需要的輸入；若有前置任務，寫出其已驗收的輸出／證據]
-**這一輪要交付**: [本輪唯一主要產物或可觀察結果]
-**這一輪不做**: [明確不包含的工作]
-**使用者需要決定**: [需要使用者批准的事項；沒有就寫「無」]
-**Agent 現在可以做**: [在上述條件下允許的動作]
-**完成時要看見的證據**: [使用者或檢查者可以核對的具體證據]
-**若遇阻或證據不符**: [停止條件，以及下一個安全動作]
-
-`待驗收` 不是 `已驗收`。如果 `開始條件` 的前置證據尚未被核對，下一個依賴任務必須停在 `待開始` 或 `受阻`。
-
----
-
-## 1. 我要解決什麼（使用者原話優先）
-
-> [直接引用使用者的關鍵原話]
-
-**一句話問題**: [用一句話總結]
-
-**誰會用、什麼時候用**: [使用者 + 場景]
-
----
-
-## 2. 已確認的事實 vs 還沒驗證的假設
-
-**已確認**:
-- [使用者明確說過的現況]
-
-**未驗證（做之前應該確認）**:
-- [假設 1] — 驗證方式: [怎麼確認]
-- [假設 2] — 驗證方式: [怎麼確認]
-
----
-
-## 3. 建議方案
-
-**推薦**: [方案名]
-
-**為什麼**:
-- [理由 1，用產品後果描述，不用技術術語]
-- [理由 2]
-
-**什麼情況下這個推薦是錯的**:
-- [具體可判斷的條件]
-
-**帶價（time / cost / maintenance）**:
-- 時間: [估算] — 來源: [查證/經驗估算/未查證估算]，[日期]
-- 成本: [估算] — 來源: [同上]
-- 維護: [具體描述，不是「中等」]
-
-**如果之後要換方案**:
-- 需要重做: [什麼]
-- 估算工作量: [多少]
-
----
-
-## 4. 第一版做什麼、不做什麼
-
-**核心不變量**（這一版不可以換掉的東西）:
-> [使用者真正想改變的是 X，這一版不可以換成 Y]
-
-**第一版包含**:
-- [功能 1]（拿掉它使用者會立刻發現）
-- [功能 2]
-
-**第一版不包含**（明確的非目標）:
-- [功能 3] — 拿掉不會被發現
-- [功能 4]
-
-**每一刀失去了什麼**:
-- 少了 [功能 3] → 失去 [能力] → 可接受因為 [理由]
-
-**底線條件**: 第一版必須讓使用者在真實場景碰過 [那個問題]，不是任何一個可示範的切片。
-
----
-
-## 5. 我自己可以驗證的證據
-
-| 這一層 | 能證明 | 不能證明 |
-|---|---|---|
-| [本地測試 / 實際使用 / 現場] | [什麼] | [什麼] |
-
-**驗收訊號**: [什麼情況算成功]
-**停止條件**: [什麼情況該放棄或換方向]
-
----
-
-## 6. 下一步
-
-**你現在可以做的事**（按建議順序）:
-
-1. **[立即可做]** — 成本 [X]，時間 [Y]
-   - 目的: 驗證 [哪個假設]
-   - 如果結果是 [A] → 繼續
-   - 如果結果是 [B] → 換方向
-
-2. **[需要決定後做]** — 交給:
-   - `cli-creator`（如果決定是做 CLI 工具）
-   - `agents-sdk`（如果決定是做 Agent app）
-   - 或其他開發者／Agent
-
-**這個 Brief 的保存位置**: [路徑]
-**建議回顧時間**: [X 週後]
-
----
-
-## 附錄：Agent Brief（如果決定要做）
-
-[若已進入實作決策，附上完整 Agent Brief]
-```
-
-### 品質檢查
-
-產出前確認：
-
-- [ ] 使用者原話被保留（不是被改寫成產品術語）
-- [ ] 已確認事實與未驗證假設分開
-- [ ] 有明確推薦，不是選單
-- [ ] 每個估算都有來源標記
-- [ ] 核心不變量寫下來了
-- [ ] 每一刀失去什麼說清楚了
-- [ ] 下一步是可執行的，不是「再想想」
-- [ ] 把 Agent 的推薦與使用者已確認的決策分開
-- [ ] standard／large 路徑有一張當前工作項 Next-Step Card；trivial fast path 沒有硬塞卡片
-- [ ] 若有依賴任務，開始條件引用前置任務的實際 `已驗收` 證據
-- [ ] 沒有把 `待驗收` 寫成 `已驗收`，也沒有在前置證據不足時開始下一項
-- [ ] 保存位置符合使用者指定與項目規範；repo 內長期文件已獲批准，原始／敏感／暫存證據分開保存
-
-### 最小版本
-
-如果對話很短、專案很小，Decision Brief 可以只有：
-
-```markdown
-# Decision Brief — [專案名]
-
-**問題**: [一句話]
-**推薦**: [方案] 因為 [理由]
-**不做**: [非目標]
-**下一步**: [一個可執行的動作]
-```
-
-**不要為了填滿模板而填。空欄位比假內容好。**
-
-如果這份最小 Brief 屬於 standard／large 路徑，仍須在 metadata 後加入上面的 Next-Step Card；只有 trivial fast path 可以省略。
-
-See [references/decision-brief-template.md](references/decision-brief-template.md) for the template, checklist, and anti-patterns.
+Before delivery, check that the record was actually saved and can be read, the conversational summary states the current action and any material blocker, and the next dependent task has the required checked predecessor evidence. Keep decision, implementation permission, implementer self-check and human acceptance distinct.
 
 ## Gate 4: Delivery Contract
 
@@ -618,7 +438,7 @@ For risky or ambiguous work, list an explicit file allowlist. Do not let a follo
 
 When the lifecycle reference applies, place its minimum SPEC and trace links in this existing Brief's engineering appendix. Do not require a separate file per requirement, task, or evidence item.
 
-When Agent Briefs form a dependency chain, each Brief must identify its predecessor evidence in the current Next-Step Card. Do not start a dependent Brief while that predecessor is merely `待驗收`; the predecessor must be independently checked and marked `已驗收` first.
+When Agent Briefs form a dependency chain, each Brief must identify its predecessor evidence in the current Next-Step Card. Do not start a dependent Brief while that predecessor is merely `待驗收`; the predecessor must be checked by the designated checker and marked `已驗收` first, with self-check or independent review stated accurately.
 
 Use lightweight Brief for bounded task; full Brief only when task has multiple files, multiple evidence tiers, live access, material risk, or uncertain scope.
 
@@ -650,7 +470,7 @@ For live field or infrastructure work, do not execute until these are explicit:
 
 If any item is missing, remain in planning mode and report the blocking gap.
 
-The orchestrator independently checks the result:
+The designated checker checks the result (an orchestrator performs independent review when present; a permitted implementer self-check stays labelled as such):
 
 1. Read actual version-control diff and changed-file list.
 2. Confirm changed files follow the allowlist and approved storage policy; no raw/sensitive logs, caches, or unexpected generated artifacts landed in repo.
@@ -662,16 +482,7 @@ Use [references/acceptance-and-evidence.md](references/acceptance-and-evidence.m
 
 ## Gate 6: Review and Improve
 
-For normal or full tasks, end with:
-
-```markdown
-## Changed
-## Verified
-## Not verified
-## Remaining risk
-## Follow-up discoveries
-## SOP feedback
-```
+Report the result directly in the conversation: what changed, what was actually checked, and any limitation or next decision that matters. Maintain applicable source/evidence details in the existing record. Use the full audit structure from [acceptance-and-evidence.md](references/acceptance-and-evidence.md) when risk or delivery needs it; do not require six headings and empty sections for every response.
 
 Only promote a workflow change when a repeated failure or meaningful experiment supports it. Do not add a permanent rule for one-off preference.
 
@@ -692,9 +503,5 @@ Only promote a workflow change when a repeated failure or meaningful experiment 
 - No live deployment, external publication, credential use, or destructive action without explicit authorization
 - `no local warning` ≠ `runtime success`; local success ≠ field acceptance
 - **Product-visible consequences require user decision; implementation details require disclosure and allow veto**
-- **Round-trip commitment (phased)**:
-  - Discovery phase: +2~3 rounds to establish direction (necessary for unclear intent)
-  - After anchor clear: ≤ +1 round for Technical Translation and decision
-  - Trivial tasks: skip Discovery, direct execution
-  - Quality trade-off: baseline gives instant output but user cannot evaluate; this skill adds exploration rounds but user can make informed decisions
+- **Dialogue follows unresolved understanding, not a fixed number of rounds.** Confirm the readback before the first Card; reuse unchanged agreements. Already-authorized low-risk tasks continue after their designated checks, without a new approval at each step.
 - **Acknowledge what the user said before asking; invite description, not menu selection**
