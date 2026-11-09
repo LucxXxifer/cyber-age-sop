@@ -133,6 +133,8 @@ If none of the candidate anchors fit, **do not guess further**. Summarize the ac
 
 When you need to state feasibility, use one of these three labels explicitly:
 
+Examples below illustrate wording only. They are not researched prices, quotas or product facts; replace any placeholders or illustrative amounts with evidence for the actual project before making a factual claim.
+
 ### 1. `确定不可行`
 
 **Meaning:** Clear, verified blocker exists (technical, cost, legal, or other constraint).
@@ -144,9 +146,9 @@ When you need to state feasibility, use one of these three labels explicitly:
 
 **Example:**
 ```
-确定不可行：根据 Chrome Extension Manifest V3 规范 [链接]，
-后台脚本无法持续运行超过 5 分钟（2026-10-12 验证）。
-如果需要持续监控，需要改用原生应用或 Web 应用方案。
+确定不可行：根据 [本次实际核对的官方来源](URL)，
+[明确要求] 被 [具体限制] 阻挡（YYYY-MM-DD 验证）。
+已检查的替代路径也不满足该要求：[原因]；可讨论的较近方案：[不同取舍]。
 ```
 
 **When NOT to use:**
@@ -168,7 +170,7 @@ When you need to state feasibility, use one of these three labels explicitly:
 **Example:**
 ```
 我不知道：需要确认以下信息才能判断：
-- 你的预算范围（决定是用现成服务 $20/月，还是自建服务器）
+- 你的预算范围（用于比较实际服务报价与自建维护费用，当前尚未核价）
 - 团队技术背景（决定能否自己维护，还是需要托管服务）
 
 可以先说说这两点，我再给具体方案建议。
@@ -193,12 +195,12 @@ When you need to state feasibility, use one of these three labels explicitly:
 **Example:**
 ```
 有条件可行：如果你能接受以下条件：
-- 每月 $20 云服务费用（Firebase Hosting + Firestore）
-- 每周 1 小时维护时间（处理用户反馈、更新内容）
-- 用户数超过 1000 人后需要升级方案（额外 $50/月）
+- 每月 [已核价的服务与方案费用，附来源及日期]
+- 每周 [按实际维护范围估算的时间，附依据；未知则保留未知]
+- 达到 [已核对的用量条件] 后需要 [实际升级方案及增量费用]
 
 可以用这个方案。如果后续想迁移到自建服务器，
-需要重写后端代码（约 2-3 周工作量）。
+需要检查后端、资料迁移与接口的重做范围，再估算工作量；目前未知。
 ```
 
 **When to use:**

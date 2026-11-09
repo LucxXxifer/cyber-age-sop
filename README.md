@@ -4,20 +4,22 @@
 
 Cyber-Age SOP is a deep discovery and boundary-clarification framework for designers, project owners, and Agents. It helps turn a software, hardware, UI, documentation, Skill, Docker, automation, creative, media, or game idea into clear decisions, a bounded task, and explicit evidence boundaries.
 
-**Public beta: [v0.5.2-beta.1](https://github.com/LucxXxifer/cyber-age-sop/releases/tag/v0.5.2-beta.1) (2026-11-05).** The Agent explores the idea, reads back its purpose and first-version scope, and obtains the owner's substantive confirmation before the first action Card. Useful provisional sketches and current actions appear in the conversation; revisions and intentional resumption reuse the same project record. This is a feedback release, with no host UI, guaranteed automatic dispatch or background supervision. [Changes, local comparison and known limitations](docs/releases/v0.5.2-beta.1.md).
+**Public beta: [v0.5.3-beta.1](https://github.com/LucxXxifer/cyber-age-sop/releases/tag/v0.5.3-beta.1) (2026-11-09).** The Skill instructs the Agent to make project-prompt enhancement reversible: show the original, an editable proposal and concrete reasons, support partial adoption, and keep rewrite-only work separate from execution. Consequential questions explain what the answer changes. Choose sketches, tables or SVG/HTML for the reading task, keeping essentials in chat and using the same Brief/SPEC revision. Shared understanding still comes before the first action Card. Actual behavior depends on the host loading these instructions and the model following them. [Changes, verification and limits](docs/releases/v0.5.3-beta.1.md).
 
-The previous beta, [v0.5.1-beta.1](https://github.com/LucxXxifer/cyber-age-sop/releases/tag/v0.5.1-beta.1), remains available. Cross-model reliability, novice usability and large-project effectiveness remain unverified.
+The previous beta, [v0.5.2-beta.1](https://github.com/LucxXxifer/cyber-age-sop/releases/tag/v0.5.2-beta.1), remains available. Cross-model reliability, novice usability and large-project effectiveness remain unverified. This is a feedback release, with no native prompt-enhancement button, guaranteed model switching, automatic dispatch or background supervision.
 
 **Stable release: [v0.4.5](https://github.com/LucxXxifer/cyber-age-sop/releases/tag/v0.4.5).** The beta does not replace the stable release.
 
 ## Try the Beta
 
-1. Download the **`cyber-age-sop-v0.5.2-beta.1.zip`** asset from the beta release, rather than GitHub's full source ZIP. The asset contains one `cyber-age-sop/` folder, including `SKILL.md`, references and license notices.
+1. Download the **`cyber-age-sop-v0.5.3-beta.1.zip`** asset from the beta release, rather than GitHub's full source ZIP. The asset contains one `cyber-age-sop/` folder, including `SKILL.md`, references and license notices.
 2. Install that folder using your Agent/IDE's Skill instructions. For a local Codex setup, place it in `~/.codex/skills/cyber-age-sop/`. Back up an existing installation and replace the whole folder to avoid mixing versions. Start a new session after installation.
-3. Invoke `$cyber-age-sop` and describe a small, real tool, program, plugin or Skill you want to build. You can start without knowing the technical stack. The Skill adds guidance; execution, search and drawing depend on your host's tools and selected model.
+3. Invoke `$cyber-age-sop` in Codex, or explicitly load it using your host's Skill mechanism, and describe a small, real tool, program, plugin or Skill you want to build. You can start without knowing the technical stack. The Skill adds guidance; execution, search and drawing depend on your host's tools and selected model.
 4. Tell us where it helped or confused you using the [bilingual feedback guide](docs/beta-feedback.md) or [GitHub feedback form](https://github.com/LucxXxifer/cyber-age-sop/issues/new?template=beta-feedback.md).
 
 Example: "Use cyber-age-sop to help me build a local Markdown link checker. I don't know how to describe the technical requirements. Help me clarify the first version, confirm the structure, then implement and test within the agreed scope."
+
+To revise wording only: "Enhance this project prompt, but do not execute it. Keep my original, show the important changes and reasons, and leave unknowns open." You can then ask to accept only one change or use the original. If you want to start the project afterward, say so; scope and operation permissions still apply.
 
 Start with local, reversible work. A beta install grants no access to real accounts or production services. You can return to the stable release by replacing the entire Skill folder with its stable version.
 
@@ -52,7 +54,7 @@ real situation or existing material
 → optional research / shape / decision gate
 → Agent Brief
 → implementation / build / deployment / release
-→ independent verification
+→ designated verification (label low-risk self-checks; use independent review when required)
 → project record and evidence appendix
 → project review and SOP feedback
 ```
@@ -87,7 +89,7 @@ Examples include:
 | AI image / animation / audio | Prompt or production versions, assets, review gates, output checks, and rights boundaries |
 | AI game | Game design, core loop, playable vertical slice, playtest, platform matrix, and release evidence |
 
-Large work can be decomposed instead of being forced into one oversized brief:
+These are conceptual applications. The runtime provides Brief/Task/Evidence records and dependency gates, not a Program/Workstream manager; large-project effectiveness remains unverified. Large work may be decomposed as appropriate instead of being forced into one oversized brief:
 
 ```text
 Program
@@ -175,6 +177,7 @@ skills/cyber-age-sop/
     ├── decision-brief-template.md
     ├── failure-path.md
     ├── lifecycle-traceability.md
+    ├── prompt-enhancement.md
     ├── regression-cases.md
     ├── task-profiles.md
     ├── technical-translation.md
@@ -193,6 +196,7 @@ project-sop/
 └── release.yml
 
 scripts/
+├── validate_public_package.py
 └── validate_implementation_readiness.py
 ```
 
@@ -262,11 +266,19 @@ Use the evidence labels in `acceptance-and-evidence.md` when reporting results.
 
 ## Versioning
 
-The current public beta is `0.5.2-beta.1` (2026-11-05); the latest stable release remains `0.4.5`.
+The current public beta is `0.5.3-beta.1` (2026-11-09); the latest stable release remains `0.4.5`.
 
-- Runtime Skill version: `0.5.2-beta.1` (public beta)
+- Runtime Skill version: `0.5.3-beta.1` (public beta)
 - Project SOP document version: `0.1`
-- Repository prerelease version: `0.5.2-beta.1`
+- Repository prerelease version: `0.5.3-beta.1`
+
+### v0.5.3-beta.1 Changes
+
+- Built-in reversible prompt enhancement; `prompt-refiner` remains optional. Original, proposal, meaningful changes, unknowns and suggestions stay distinguishable.
+- Partial adoption and original restoration affect subsequent work; accepting a prompt-only rewrite does not run it or settle unresolved product choices.
+- One concrete reason for a useful question/capability choice, without repeated invocation receipts.
+- Purpose-led sketches, comparisons and self-contained SVG/HTML views, with one source revision, inline essentials and actual rendering checks.
+- No new runtime dependency, server, hook, automatic scheduler or model-routing service. See [release notes](docs/releases/v0.5.3-beta.1.md).
 
 ### v0.5.2-beta.1 Changes
 
@@ -285,7 +297,7 @@ The current public beta is `0.5.2-beta.1` (2026-11-05); the latest stable releas
 - Durable project documents may be versioned when the user and repository rules permit; private/raw evidence stays separate.
 - Public-beta installation, feedback instructions and known limitations in both languages.
 
-Local `0.5.0` and later candidate snapshots were development baselines, not intervening public stable releases. Structural checks do not establish user comprehension or end-to-end reliability. See the [beta release notes](docs/releases/v0.5.2-beta.1.md) and [CHANGELOG](CHANGELOG.md) for the evidence boundary.
+Local `0.5.0` and later candidate snapshots were development baselines, not intervening public stable releases. Structural checks do not establish user comprehension or end-to-end reliability. See the [beta release notes](docs/releases/v0.5.3-beta.1.md) and [CHANGELOG](CHANGELOG.md) for the evidence boundary.
 
 ### v0.4.5 Changes (from v0.4.4)
 
@@ -308,7 +320,7 @@ This release clarifies handoff maturity. It does not select a platform, authoriz
 - Minimal version (problem, recommendation, non-goals, next step) or full version (user's words, facts vs assumptions, sourced estimates, switch cost, version 1 scope, evidence, next steps)
 - New `references/decision-brief-template.md`
 
-### v0.4.3 Changes (from v0.4.2)
+### v0.4.3 Changes (from v0.4.2; historical)
 
 **Simplified: Minimal Web Research with Model Knowledge Fallback**
 
@@ -319,17 +331,17 @@ Core principle: **Skill defines process flow, model provides knowledge.**
 - Removed all static knowledge database concepts (no URL lists, no experience answer database)
 - Defined 3-tier fallback strategy:
   1. Try available tools (tavily-search, WebSearch, WebFetch)
-  2. Use model knowledge with clear timestamp: "基於模型知識（截至 2026-06），[答案]。建議查閱: [URL]"
+  2. Use model knowledge with its actual known cutoff, or explicitly state the cutoff is unknown; unread documentation links are not verified evidence
   3. Graceful failure with research directions
 
 **Key insight from agent/IDE research:**
-- All platforms have model's built-in knowledge (training data up to 2026-06)
-- Model already knows common service docs, API limits, typical timelines
+- The historical design assumed useful built-in model knowledge; actual cutoffs and accuracy vary by model and are not established by this Skill
+- Current service documentation, API limits, pricing and timelines still need source checks when precision matters
 - **No need for skill to duplicate this knowledge**
 
 **Design philosophy:**
 - ✅ Skill responsibility: define trigger conditions, tool detection, fallback order, citation format
-- ✅ Model responsibility: provide knowledge, generate doc URLs, estimate timelines
+- ✅ Model responsibility: state knowledge limits, offer identifiable documentation or search directions, and label estimates
 - ❌ Skill does NOT maintain static knowledge databases
 
 **Files changed:**
@@ -365,13 +377,13 @@ Two optional capabilities to help non-technical users see product structure and 
 
 **Context cost:** v0.4.1 (1,040 lines, ~20K tokens) → v0.4.2 (1,887 lines, ~27K tokens), +81%
 
-### v0.4.1 Changes (from v0.4.0)
+### v0.4.1 Changes (from v0.4.0; historical)
 
 **Added: Failure Path Protocol**
 
 Addresses red-team B4 blocking issue — v0.4.0 only had positive path (user can answer questions).
 
-**When User Cannot Answer (After 2 Rounds):**
+**Historical escalation (the current beta has no fixed round threshold):**
 1. Try Different Angle: time perspective / problem vs goal / self vs others
 2. Offer Candidate Anchors: 3-5 specific scenarios user can pick or reject
 3. Generate Blocked Report: markdown template with certainty labels
@@ -404,7 +416,7 @@ Addresses red-team B4 blocking issue — v0.4.0 only had positive path (user can
 - **Anti-patterns added**: menu-driven questioning, skipping acknowledgment
 - **Example language**: More natural phrasing throughout
 
-**Testing**: v0.4 passed 100% of routing, direction correctness, scope-drift, and evidence-tier tests. Red-team review: 7/7 blocking issues resolved.
+**Historical testing report:** v0.4 recorded all cases in its then-scoped routing, direction, drift and evidence checks as passing, with 7/7 blocking review issues resolved. This is not a current-beta test result or a claim of general reliability.
 
 Changes that alter routing, evidence boundaries, or safety gates should include updated regression cases and a changelog entry.
 

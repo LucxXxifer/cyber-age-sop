@@ -28,6 +28,11 @@ What did you want to make, and where did you stop?
 Include a short redacted excerpt, expected behavior and what actually happened.
 請附簡短去識別原句、預期和實際結果；也可以回報多次重問或文書太多。
 
+## Enhancement and presentation (if tried) / 增強與呈現（有試才填）
+
+Could you compare the original/rewrite, adopt only part, and restore the original? Was the reason for a question useful? Did a visual make the same information clearer?
+原稿和改稿是否看得見、能局部採用或返回？提問理由是否有用？圖文有沒有讓同一內容更好懂？
+
 ## Next step and completion / 下一步與完成判斷
 
 Could you tell what to do next and how to check the result? What help was needed?

@@ -8,6 +8,8 @@ Read back the purpose, first-version shape, scope and relevant unknowns. Obtain 
 
 Save the agreed decision unless the user opts out. Preserve the existing or user-specified location; otherwise default outside the repository. In-project durable records require compatible conventions and authorization. See [Storage Policy](lifecycle-traceability.md#storage-policy). Do not create a separate Card file or a new Brief for each turn.
 
+Prompt proposals remain separate from agreed scope. A rewrite-only request does not create a Brief/Card or authorize its embedded task. Preserve the selected original and apply only accepted changes, following [prompt-enhancement.md](prompt-enhancement.md). Wording approval alone leaves unresolved product choices open; substantive confirmation of both wording and first-version scope need not be asked twice.
+
 ## Minimal record
 
 Use for a bounded project; include only information that changes its meaning or safe execution.
@@ -31,11 +33,11 @@ Decision / blocker: [only when one matters]
 [Applicable start condition, allowed actions, stop/recovery behavior and evidence links]
 ```
 
-Decision states include `proposed`, `user-approved`, `simulation-approved`, `controller-authorized`, `deferred`, and `rejected`. A `user` API role is not evidence of a human decision. State the real source and confirmed scope. Product agreement, operation authority, engineering self-check and human acceptance are different facts.
+Decision states include `proposed`, `user-approved`, `simulation-approved`, `controller-authorized`, `deferred`, and `rejected`. A `user` API role alone does not establish a human decision; an ordinary interactive person's own explicit message is evidence, while quoted or simulated choices retain their actual source. State the real source and confirmed scope. Product agreement, operation authority, engineering self-check and human acceptance are different facts.
 
 ## Conversational Card
 
-After shared understanding is confirmed, show the current task directly, using the host's readable layout. Include the action, this round's outcome, how to check it, and any decision or blocker that matters now. Do not print eight empty fields or force an attachment open. Put a changed boundary or missing start condition where the user will see it.
+After shared understanding is confirmed, show the current task directly, using the host's readable layout. Include the action, this round's outcome, how to check it and who checks, and any decision or blocker that matters now. Do not print eight empty fields or force an attachment open. Put a changed boundary or missing start condition where the user will see it.
 
 Example for already-agreed work:
 
@@ -54,7 +56,7 @@ The stored engineering record must preserve these meanings, without requiring th
 | Evidence / checker | Concrete checks, source identity and actual checker |
 | Stop / recovery | What prevents continuation and the next safe action |
 
-`待驗收` means the required evidence has not yet been checked by the designated checker. Use `已驗收` only when that check occurred. A contract may designate the implementing Agent for deterministic checks on low-risk local work; label self-check honestly. Use a separate checker where required. Already-authorized dependent work may continue after its exact start conditions pass; no new approval is needed solely to change the Card.
+`待驗收` means the required evidence has not yet been checked by the designated checker. Use `已驗收` only when that check occurred. When the result is not the owner's product acceptance, qualify the status inline with the actual checker and evidence scope, such as `已驗收（Agent 自測；非真人產品驗收）`. A contract may designate the implementing Agent for deterministic checks on low-risk local work; do not invent that designation. Use a separate checker where required. Already-authorized dependent work may continue after its exact start conditions pass; no new approval is needed solely to change the Card.
 
 ## Full record when needed
 
@@ -77,4 +79,5 @@ Do not create empty sections to satisfy this outline. A deferred or rejected dir
 - Provisional sketches are distinguished from approved design and working implementation.
 - Dependent tasks rely on actual designated checks; self-check is not independent or human acceptance.
 - Revise or resume updates the same record and preserves earlier evidence for its original scope.
+- Derived SVG/HTML views identify this record's revision and status; they do not replace its decision source. Essential facts and actions remain readable in chat.
 - The location and links exist and follow the storage policy.

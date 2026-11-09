@@ -34,7 +34,7 @@ Follow the [storage policy](lifecycle-traceability.md#storage-policy): preserve 
 - `git status --short --untracked-files=all` has no unexpected artifacts
 - Required validation commands have fresh output and exit status
 
-For versioned or changed work, each completion claim must identify the applicable SPEC, the exact tested source snapshot, and the relevant evidence. An unchanged filename or base HEAD does not identify dirty/untracked contents. Keep historical results; mark affected evidence insufficient for the new revision and rerun the relevant checks before dependent work. Record who actually checked the result; the implementer's self-report is not independent acceptance. A low-risk contract may authorize deterministic implementer self-checks; preserve their identity and do not label them human product acceptance.
+For versioned delivery, material requirement changes or dependency handoffs, each completion claim must identify the applicable SPEC, the exact tested source snapshot, and the relevant evidence. An unchanged filename or base HEAD does not identify dirty/untracked contents. A trivial fast-path edit needs its relevant check, not a full snapshot manifest. Keep historical results; mark affected evidence insufficient for the new revision and rerun the relevant checks before dependent work. Record who actually checked the result; the implementer's self-report is not independent acceptance. A low-risk contract may authorize deterministic implementer self-checks; preserve their identity and do not label them human product acceptance.
 
 ## Completion Language
 

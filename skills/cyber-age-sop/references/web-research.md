@@ -46,10 +46,9 @@ Suggest research when you encounter:
 
 ```yaml
 Priority order:
-  1. tavily-search skill (best for general queries)
-  2. tavily-extract skill (for specific URLs)
-  3. WebSearch tool (Claude Code, US-only)
-  4. WebFetch tool (for known URLs)
+  1. Available search capability for general queries (for example tavily-search)
+  2. Available fetch/extraction capability for known URLs (for example tavily-extract)
+  3. Host search/fetch tools when exposed and usable; verify availability rather than assuming names or regional access
   
 Check availability:
   - Look for installed skills: /tavily-search
@@ -66,12 +65,12 @@ When to use:
   - Research returned no useful results
 
 Format:
-  "基於模型知識（截至 2026-06），[答案]。
-   建議查閱最新資訊: [URL]"
+  "未即時查證：基於模型知識（截至[實際已知截止日；不確定則寫『截止日未知』]），[有條件的答案]。
+   可再核對：[官方文件名稱或搜尋方向]。"
 
 Key points:
-  ✅ State knowledge cutoff date
-  ✅ Provide likely documentation URL (model knows common doc sites)
+  ✅ State the actual known model cutoff, or explicitly say it is unknown; never infer it from today's date
+  ✅ Offer an identifiable documentation entry only if known; label an unread link as unverified and potentially changed, otherwise give search terms instead of inventing a URL
   ✅ Suggest user verify if precision matters
   ❌ Don't maintain static URL lists in this skill
   ❌ Don't maintain experience answer database
@@ -87,7 +86,7 @@ When nothing works:
 
 Format:
   "我無法確認 [問題]，建議：
-   1. 查閱 [官方文檔 URL]
+   1. 查閱 [可辨識的官方文件入口（未讀取，可能已變）或搜尋方向]
    2. 或基於一般限制做保守估計
    
    你想怎麼處理？"
@@ -149,7 +148,7 @@ Must include:
 
 **After research (if user agrees):**
 ```
-查證：根據 [來源](URL) (2026-10-12 驗證)，[具體答案]
+查證：根據 [本次實際讀取的來源](URL) (YYYY-MM-DD 驗證)，[具體答案]
 ```
 
 ---
@@ -168,28 +167,28 @@ Must include:
 
 ## Example: Complete Flow
 
-```
-User: "Chrome 插件能在後台一直運行嗎？"
+Format example only; this is not a performed search or a claim about any platform's current limits.
 
-Agent: "我不確定 Chrome Extension Manifest V3 是否支持持續後台運行，
-        我可以查一下官方文檔，要嗎？"
+```
+User: "這個平台能一直在後台處理嗎？"
+
+Agent: "我不確定目標版本的生命週期限制，我可以查官方文件，要嗎？"
 
 [User: "查吧"]
-→ Use tavily-search or WebSearch
+→ Use an available search/fetch capability
 
 [Research succeeds]
-查證：根據 Chrome Extension 官方文檔 
-(https://developer.chrome.com/docs/extensions/develop/migrate/to-service-workers)
-(2026-10-13 驗證)，Manifest V3 的 service worker 最多運行 5 分鐘後會被終止。
+查證：根據 [本次實際讀取的官方來源](URL)
+(YYYY-MM-DD 驗證)，[適用版本、限制與例外]。
+對你的要求而言：[能支持的結論與仍未知的部分]。
 
 [User: "不用"]
-→ 基於模型知識（截至 2026-06），Chrome Extension Manifest V3 將 background 
-   scripts 改為 service workers，通常有運行時間限制。
-   建議查閱官方文檔確認: https://developer.chrome.com/docs/extensions/mv3/
+→ 未查證：可能有生命週期限制；不能據此斷言持續處理不可能。
+   保留未知，按已知限制討論有條件的替代方案。
 
 [Research fails or tool unavailable]
-→ 我無法確認最新的限制，建議查閱 Chrome Extension 官方文檔
-   (https://developer.chrome.com/docs/extensions/mv3/)。
+→ 我無法確認最新限制；提供可辨識的官方文件入口（若已知），
+   但不將未讀取的連結當成已查證證據。
    
    或者我可以基於一般限制給個保守估計，你想怎麼處理？
 ```

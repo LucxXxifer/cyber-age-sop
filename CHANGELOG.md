@@ -2,6 +2,19 @@
 
 All notable changes to this repository are documented here.
 
+## [0.5.3-beta.1] - 2026-11-09
+
+- Add self-contained, explicitly requested project-prompt enhancement: preserve the original, show one editable proposal and important reasons, distinguish facts/unknowns/suggestions, and apply only adopted changes.
+- Keep rewrite-only tasks separate from execution and product-scope confirmation; reuse substantive combined confirmation without repeated approval. Returning to wording is not rollback of completed actions.
+- Explain consequential question/capability choices briefly; preserve normal implicit Skill discovery and make `prompt-refiner` genuinely optional.
+- Extend purpose-led presentation to tables and self-contained SVG/HTML views of the same Brief/SPEC revision. Require inline essentials, source-text escaping and actual rendering checks before visual claims.
+- Add behavioral regression cases for original restoration, partial rejection, named-model failure, quote boundaries, view consistency and resumption. No new runtime dependencies or global settings.
+- Resolve red-team ambiguities in traceable authorization, ordinary human decisions, adopted Briefs and trivial changes; mark feasibility/pricing examples as illustrative and qualify conceptual large-project claims.
+- Qualify conversational acceptance with its actual checker, distinguish snapshot-specific from delegated iterative authority, and remove fixed model-cutoff and unsourced estimate examples.
+
+公開測試版：原話、改稿與理由可見且可修改；重要提問說明用途，圖文按需要產出。既有共同理解、權限、證據及單一 Brief 邊界保留。
+本輪模型回放與紅隊審計只作有限預檢；真人理解、學習轉移、自然觸發、跨模型與大型項目效益仍待驗證。詳見 [release notes](docs/releases/v0.5.3-beta.1.md)。
+
 ## [0.5.2-beta.1] - 2026-11-05
 
 - Require substantive owner confirmation of purpose, shape and first-version scope before the first execution Card. Reuse applicable prior agreement; do not require fixed questioning rounds.

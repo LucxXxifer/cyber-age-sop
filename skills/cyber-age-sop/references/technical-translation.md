@@ -56,7 +56,7 @@ Always provide:
 | Type | Who Decides | Agent's Role |
 |---|---|---|
 | Product-visible consequence (user experience, cost, maintenance, data ownership) | **User decides** | Recommend with reasoning, user can veto |
-| Implementation detail (library choice, file structure, algorithm) | **Agent proposes** | Must disclose choice, user can veto |
+| Implementation detail (library choice, file structure, algorithm) | **Agent resolves within delegated scope** | Keep material choices traceable in the existing Brief and open to correction; explain product consequences in conversation |
 
 ## Estimate Quality Markers
 
@@ -69,6 +69,8 @@ Never present unverified estimates as facts. Non-technical users will treat them
 
 ## Example (Good)
 
+Illustrative layout only, not a researched recommendation, quote, product quota or verified schedule. Replace assumptions and placeholders with project-specific evidence; do not copy the example's estimates as facts.
+
 ```markdown
 ## Technical Translation
 
@@ -77,9 +79,9 @@ Never present unverified estimates as facts. Non-technical users will treat them
 
 ### Recommended Approach
 **Option: Shared spreadsheet (Google Sheets or Airtable)**
-**Why:** Changes appear instantly on all devices, no server to maintain, can share view-only links
-**Don't choose this if:** You need more than 10,000 rows, or the data is highly sensitive
-**Switch cost:** If you need custom app later, export to CSV takes ~1 hour, data structure stays the same
+**Why:** Can provide mobile access and sharing without maintaining a custom server; verify the chosen service's actual access and data rules
+**Don't choose this if:** The actual data volume exceeds the checked plan limits, or its handling does not meet the project's sensitivity requirements
+**Switch cost:** A later custom app needs export, data-shape and integration checks; migration effort remains unknown until that work is scoped
 
 ---
 
@@ -87,16 +89,16 @@ Never present unverified estimates as facts. Non-technical users will treat them
 
 #### Option B: Custom mobile app
 - **Form:** App on iPhone/Android
-- **Estimated time:** 4-6 weeks for MVP — 经验估算, based on similar 2-screen apps, 2026-10-12
-- **Monthly cost:** $0-25/month (hosting) — 查证: Firebase free tier → Blaze plan, https://firebase.google.com/pricing, 2026-10-12
+- **Estimated time:** [range] — 经验估算; record actual comparable work and assumptions, or mark unknown
+- **Monthly cost:** [amount or unknown] — cite the actual service/plan, usage assumption and verification date only after checking
 - **Maintenance burden:** Weekly: check crash reports; Monthly: OS update testing
-- **Main risk:** App store review can take 1-7 days; if rejected, public launch delays
-- **Switch cost:** Complete rebuild if changing platform (iOS → Android or vice versa); ~50% of original dev time
-- **Breakage point:** Free tier ends at 10GB stored + 50K reads/day
+- **Main risk:** The target store's review and rejection handling can delay launch; check its actual current requirements rather than promise a duration
+- **Switch cost:** Changing platforms can require replacing platform-specific code; estimate only after checking which modules are reusable
+- **Breakage point:** [verified quota or cost threshold for the specific service and billing item; unknown until checked]
 
 ### Not Recommended Now
-**Native phone app with offline mode:** Adds 3-4 weeks for sync logic, overkill if WiFi always available
-**Closer alternative:** Start with spreadsheet; if offline becomes blocking, revisit in 3 months
+**Native phone app with offline mode:** Adds synchronization and conflict handling that may be unnecessary if offline use is outside the confirmed scope
+**Closer alternative:** Start with the scoped online option; revisit if actual offline use becomes a blocker
 
 ### Decision Point
 How often will you check the data when you have no internet connection?

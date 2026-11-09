@@ -6,25 +6,26 @@ Cyber-Age SOP 是一套用來深度挖掘設計者／項目負責人需求、釐
 再輔佐 Agent 交付的流程框架。它可以處理 software、hardware、UI、
 documentation、Skill、Docker、automation、藝術、AI 媒體或遊戲想法。
 
-**公開測試版：[v0.5.2-beta.1](https://github.com/LucxXxifer/cyber-age-sop/releases/tag/v0.5.2-beta.1)（2026-11-05）。**
-Agent 先探索、回述用途與第一版範圍，等使用者實質確認共同理解後才生成第一張行動卡。
-必要的暫定草圖和當前行動直接在對話顯示，修改與主動續做沿用同一份項目記錄。
-本版用於收集實際回饋；不提供宿主 UI、保證自動觸發或背景監督。
-詳見[變更、本機比較與已知限制](docs/releases/v0.5.2-beta.1.md)。
+**公開測試版：[v0.5.3-beta.1](https://github.com/LucxXxifer/cyber-age-sop/releases/tag/v0.5.3-beta.1)（2026-11-09）。**
+本 Skill 指示 Agent 在明確要求增強項目提示詞時，展示原話、可修改的改稿與重要理由，支援局部採用或返回原文，並將只改提示詞與執行任務分開。
+重要提問會簡述答案影響什麼，呈現依用途選草圖、表格或 SVG／HTML，重點仍在對話，視圖沿用同一 Brief／SPEC 修訂。
+使用者實質確認共同理解後才有第一張行動卡。實際表現仍取決於宿主有否載入及模型遵循程度。詳見[變更、驗證與限制](docs/releases/v0.5.3-beta.1.md)。
 
-上一測試版 [v0.5.1-beta.1](https://github.com/LucxXxifer/cyber-age-sop/releases/tag/v0.5.1-beta.1) 仍可下載。
-跨模型穩定性、小白可用性與大型專案效益尚未驗證。
+上一測試版 [v0.5.2-beta.1](https://github.com/LucxXxifer/cyber-age-sop/releases/tag/v0.5.2-beta.1) 仍可下載。
+跨模型穩定性、小白可用性與大型專案效益尚未驗證；本版不提供原生增強按鈕、保證模型切換、自動觸發或背景監督。
 
 **穩定版仍為 [v0.4.5](https://github.com/LucxXxifer/cyber-age-sop/releases/tag/v0.4.5)。** 測試版不取代穩定版。
 
 ## 試用測試版
 
-1. 在測試版 Release 下載 **`cyber-age-sop-v0.5.2-beta.1.zip`**，不要混用 GitHub 整庫源碼 ZIP。安裝包內只有一個 `cyber-age-sop/` 目錄，包含 `SKILL.md`、references 和授權聲明。
+1. 在測試版 Release 下載 **`cyber-age-sop-v0.5.3-beta.1.zip`**，不要混用 GitHub 整庫源碼 ZIP。安裝包內只有一個 `cyber-age-sop/` 目錄，包含 `SKILL.md`、references 和授權聲明。
 2. 按所用 Agent／IDE 的 Skill 安裝方式放入該目錄。本機 Codex 可放在 `~/.codex/skills/cyber-age-sop/`。升級前備份舊版，以整個目錄替換，避免版本混雜；安裝後開啟新 session。
-3. 呼叫 `$cyber-age-sop`，描述一個真的想做的小工具、程式、插件或 Skill。不必先懂技術棧；執行、搜尋和繪圖能力由所用 Agent／IDE、工具與模型提供。
+3. 在 Codex 呼叫 `$cyber-age-sop`，或按宿主的 Skill 機制明確載入，描述一個真的想做的小工具、程式、插件或 Skill。不必先懂技術棧；執行、搜尋和繪圖能力由所用 Agent／IDE、工具與模型提供。
 4. 記下有幫助或看不懂的位置，使用[雙語回饋指南](docs/beta-feedback.md)或 [GitHub 回饋表](https://github.com/LucxXxifer/cyber-age-sop/issues/new?template=beta-feedback.md)。
 
 例如：「用 cyber-age-sop 幫我做一個本機 Markdown 連結檢查工具。我不懂技術需求怎麼寫，請先釐清第一版範圍，確認大致結構，再在同意範圍內實作和測試。」
+
+只改文字可說：「幫我增強這段項目提示詞，先不要執行。保留原話，展示重要差異與理由，未知保持未知。」可以只採用一處或用回原文；之後要開始項目再說明，仍按已確認範圍與實際權限執行。
 
 先選本機、可恢復的工作。安裝測試版不代表授權存取真實帳號或正式服務；如需退回穩定版，以穩定版的整個 Skill 目錄替換即可。
 
@@ -60,7 +61,7 @@ Agent 先探索、回述用途與第一版範圍，等使用者實質確認共�
 → 必要時加入 Research／Shape／Decision
 → Agent Brief
 → 實現／構建／部署／發布
-→ 獨立驗證
+→ 指定查核（低風險自測須標明；需要時獨立查核）
 → 項目記錄與證據附錄
 → Project Review 與 SOP 反饋
 ```
@@ -97,7 +98,7 @@ Cyber-Age SOP 不只適合小型 coding 任務。大型系統、藝術設計、A
 | AI 生圖／動畫／音訊 | Prompt 或製作版本、資產、審核閘門、輸出檢查和權利邊界 |
 | AI 遊戲 | Game Design、核心循環、可玩 Vertical Slice、Playtest、平台矩陣和發布證據 |
 
-大型項目不會被壓成一張超大的 Brief，而是拆成：
+以上是概念套用方式。Runtime 提供 Brief／Task／Evidence 記錄與依賴閘門，沒有 Program／Workstream 管理器，大型項目效益仍未驗證。大型工作可按需要拆成：
 
 ```text
 Program
@@ -161,6 +162,7 @@ skills/cyber-age-sop/
     ├── failure-path.md
     ├── implementation-readiness.md
     ├── lifecycle-traceability.md
+    ├── prompt-enhancement.md
     ├── regression-cases.md
     ├── task-profiles.md
     ├── technical-translation.md
@@ -176,6 +178,10 @@ project-sop/
 .github/workflows/
 ├── validate.yml
 └── release.yml
+
+scripts/
+├── validate_public_package.py
+└── validate_implementation_readiness.py
 ```
 
 參考項目文件只作「結構參考」。公開包沒有加入任何項目的設備、拓撲、實現細節、
@@ -193,7 +199,7 @@ skills/cyber-age-sop/
 支援的格式調整。
 
 **網路依賴：** 不強制需要。runtime 有搜尋或網頁讀取工具時，Skill 可用來查證可行性
-和價格；沒有時就用模型知識回答，並標明知識截止日期。
+和價格；沒有時按模型知識作有條件回答，標明實際已知截止日，未知則如實說明。
 
 **引導原則：** Skill 在 Discovery 階段內建了引導式探索（先承接、邀請描述、逐層區分），
 借鑒自引導與 coaching 實務，但不取代專門的引導或 coaching skill，也不會自動轉介到
@@ -242,11 +248,19 @@ repository checks 通過，只能證明指定 commit 的公開包結構有效，
 
 ## 版本
 
-目前公開測試版為 `0.5.2-beta.1`（2026-11-05），最新穩定版仍為 `0.4.5`：
+目前公開測試版為 `0.5.3-beta.1`（2026-11-09），最新穩定版仍為 `0.4.5`：
 
-- Runtime Skill version：`0.5.2-beta.1`（公開測試版）
+- Runtime Skill version：`0.5.3-beta.1`（公開測試版）
 - Project SOP document version：`0.1`
-- Repository prerelease version：`0.5.2-beta.1`
+- Repository prerelease version：`0.5.3-beta.1`
+
+### v0.5.3-beta.1 的變更
+
+- 內建可逆提示詞增強，無須先安裝 `prompt-refiner`；原話、改稿、差異、未知與新增建議分清。
+- 局部採納或返回原文會影響後續內容；只認可改稿不會自動執行，也不等於未定範圍已獲確認。
+- 有用的提問／能力選擇附一句具體理由，不反覆列調用回執。
+- 按用途選草圖、比較表與自包含 SVG／HTML；同一來源修訂、對話內重點及實際畫面查核。
+- 不增加 runtime dependency、server、hook、排程器或模型路由服務。詳見[本版說明](docs/releases/v0.5.3-beta.1.md)。
 
 ### v0.5.2-beta.1 的變更
 
@@ -266,7 +280,7 @@ repository checks 通過，只能證明指定 commit 的公開包結構有效，
 - 補充雙語安裝、回饋和已知限制。
 
 本地 `0.5.0` 與後續候選快照屬開發基線，沒有補稱為已公開的穩定版本。
-結構檢查通過不代表真人理解或端到端可靠度已驗證，詳見[測試版說明](docs/releases/v0.5.2-beta.1.md)及 [CHANGELOG](CHANGELOG.md)。
+結構檢查通過不代表真人理解或端到端可靠度已驗證，詳見[測試版說明](docs/releases/v0.5.3-beta.1.md)及 [CHANGELOG](CHANGELOG.md)。
 
 ### v0.4.5 的新特徵（2026-10-15）
 

@@ -1,6 +1,6 @@
 # Beta feedback / 測試版回饋
 
-Current beta / 目前測試版：`v0.5.2-beta.1`（2026-11-05）。Record the exact installed version and host. / 請記下實際安裝版本與宿主。
+Current beta / 目前測試版：`v0.5.3-beta.1`（2026-11-09）。Record the exact installed version and host. / 請記下實際安裝版本與宿主。
 
 We want to learn whether Cyber-Age SOP helps you turn an idea into a clear,
 bounded project and a usable result. You do not need to diagnose technical causes.
@@ -43,6 +43,9 @@ Did a useful sketch appear without a separate request? / 必要草圖是否主�
 When did the first Card appear? / 第一張卡出現時，我是否已確認共同理解：
 Was the action visible inline? / 不開附件能否明白現在做什麼：
 Could a revision or new session reuse the agreed record? / 修改或新會話能否沿用確認稿：
+Could I compare the original and rewrite, reject a suggestion, or restore the original? / 能否比較原稿、拒絕建議或用回原話：
+Did the reason for a question or capability help me correct direction? / 提問或能力的理由能否幫我糾正方向：
+Did a visual help without hiding facts or requiring an attachment? / 圖文是否有幫助，且不隱藏事實或只剩附件：
 Could I identify the next step? / 我能否知道下一步：
 Could I check completion? / 我能否確認做完了：
 Extra explanations, repeated questions or paperwork / 額外解釋、重問或文書負擔：
