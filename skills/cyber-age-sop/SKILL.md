@@ -10,9 +10,9 @@ description: >
   Exclude unrelated Q&A, choosing existing tools, and trivial edits.
 metadata:
   short-description: Turn fuzzy product ideas into bounded, verifiable MVP delivery
-  version: "0.5.3-beta.1"
+  version: "0.5.4-beta.1"
   status: public-beta
-  updated: "2026-11-09"
+  updated: "2026-11-10"
 ---
 
 # Cyber-Age SOP
@@ -237,6 +237,10 @@ As the conversation progresses, start filling the anchor **progressively** (not 
 
 When the next question would not change the direction, read back the emerging goal, structure and scope and invite the owner's confirmation or correction. Do not advance to an execution Card on the Agent's own judgment. Reuse an applicable existing confirmation instead of asking again.
 
+### When the Goal Is Clear but the Approach Is Open
+
+For project brainstorming or a meaningful choice between ways of meeting the goal, read [references/exploring-approaches.md](references/exploring-approaches.md). Separate generating possibilities from choosing among them; show genuinely different, relevant paths and their consequences. Keep suggestions provisional until adopted. A settled approach or a clear small edit does not need another brainstorming round.
+
 ## Shape Readback
 
 Show a small provisional shape when it helps the owner see and correct the product: a wireframe for a UI, input → processing → output for a program, or trigger → guidance → result for a Skill/plugin. Do not require technical vocabulary or an explicit drawing request.
@@ -249,36 +253,13 @@ Choose presentation for the reading task: provisional sketches for exploration, 
 
 ## Web Research (Optional)
 
-Web research verifies technical feasibility, obtains cost estimates, and fact-checks constraints when it would improve decision quality.
+Use research when external evidence can change project scope, design, feasibility, cost or acceptance. Read [references/web-research.md](references/web-research.md) for framing the decision, checking sources and important counterevidence, stopping, and applying the findings.
 
-### When User Asks Directly
+An explicit request or applicable earlier research authorization covers necessary public searches and source reads within that scope; do not ask again for each query. Otherwise, explain the consequential uncertainty and offer to check it. Respect a refusal; research does not itself authorize execution, paid services, account access or publication.
 
-If user says "查一下 XX" / "帮我看看 XX 的文档" / "最新价格是多少", research using available search/fetch tools. Tavily is one option, not a required dependency; report unavailable tools honestly. See [references/web-research.md](references/web-research.md).
+Use available search/fetch tools; Tavily is an option, not a dependency. Match sources to the question and applicable version. Do not treat a snippet, repeated reports of one source, or model agreement as independent verification.
 
-### When to Suggest (Requires User Confirmation)
-
-Suggest web research when it would improve decision quality:
-
-| Scenario | Signal | Suggestion Template |
-|---|---|---|
-| Uncertain feasibility | Need to say `我不知道` but can verify | "我不确定 XX 是否支持这个功能，我可以查一下官方文档，要吗？" |
-| Cost estimation | User asks "要多少钱" + involves 3rd-party service | "成本涉及 XX 服务的最新价格，我可以查一下，需要吗？" |
-| Specific tool mentioned | User says "用 Firebase"/"用 Stripe" etc. | "你提到 XX，我可以查一下它的限制和定价，帮你判断合不合适，要吗？" |
-| Need evidence for `确定不可行` | Believe infeasible but lack source | "这个看起来不可行，但我想查证一下官方文档确认，可以吗？" |
-
-**Important:**
-- State uncertainty first ("我不确定..." / "我不知道...")
-- Then offer to research ("我可以查...")
-- Wait for confirmation ("查吧"/"好"/"要")
-- If user provides answer directly ("我预算是 XX") → use their info, skip research
-- If user says "不用"/"我知道" → continue with existing info
-
-**Citation format:**
-- `查证`：根据 [来源](URL) (YYYY-MM-DD 验证)，...
-- `经验估算`：基于类似项目经验，... (未查证)
-- `未查证估算`：可能...，需要进一步确认
-
-See `references/web-research.md` for tool fallback and citation format.
+Explain which finding changes or supports which recommendation, boundary or check. Preserve unresolved conflicts and uncertainty. Update only the affected parts of the existing Brief/SPEC when authorized, keeping proposed changes distinct from adopted scope. Research alone does not satisfy owner confirmation before the first Card.
 
 ## When User Cannot Answer
 

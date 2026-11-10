@@ -12,6 +12,8 @@ Always provide:
 3. **Source and date** for all estimates
 4. Remove vague "适合什么时候" — use concrete criteria instead
 
+For a material comparison, connect the recommendation to the evidence that supports it and the condition most likely to overturn it. Follow `web-research.md` when checking external claims. If evidence is insufficient or conflicting, give conditional advice and the smallest useful next check; do not invent certainty to fill this template. Keep proposed scope changes separate from adopted requirements.
+
 ## Template
 
 ```markdown

@@ -4,15 +4,15 @@
 
 Cyber-Age SOP is a deep discovery and boundary-clarification framework for designers, project owners, and Agents. It helps turn a software, hardware, UI, documentation, Skill, Docker, automation, creative, media, or game idea into clear decisions, a bounded task, and explicit evidence boundaries.
 
-**Public beta: [v0.5.3-beta.1](https://github.com/LucxXxifer/cyber-age-sop/releases/tag/v0.5.3-beta.1) (2026-11-09).** The Skill instructs the Agent to make project-prompt enhancement reversible: show the original, an editable proposal and concrete reasons, support partial adoption, and keep rewrite-only work separate from execution. Consequential questions explain what the answer changes. Choose sketches, tables or SVG/HTML for the reading task, keeping essentials in chat and using the same Brief/SPEC revision. Shared understanding still comes before the first action Card. Actual behavior depends on the host loading these instructions and the model following them. [Changes, verification and limits](docs/releases/v0.5.3-beta.1.md).
+**Public beta: [v0.5.4-beta.1](https://github.com/LucxXxifer/cyber-age-sop/releases/tag/v0.5.4-beta.1) (2026-11-10).** Project research now connects evidence and important counterevidence to a concrete decision, explaining what changes in scope, approach or acceptance. When the goal is clear but the approach is open, the Skill guides exploration of meaningfully different workflows with provisional shapes and practical tradeoffs. It retains reversible prompt enhancement, purpose-led views and owner confirmation before the first action Card. Actual behavior depends on the host loading these instructions and the model following them. [Changes, verification and limits](docs/releases/v0.5.4-beta.1.md).
 
-The previous beta, [v0.5.2-beta.1](https://github.com/LucxXxifer/cyber-age-sop/releases/tag/v0.5.2-beta.1), remains available. Cross-model reliability, novice usability and large-project effectiveness remain unverified. This is a feedback release, with no native prompt-enhancement button, guaranteed model switching, automatic dispatch or background supervision.
+The previous beta, [v0.5.3-beta.1](https://github.com/LucxXxifer/cyber-age-sop/releases/tag/v0.5.3-beta.1), remains available. Cross-model reliability, novice usability, live-search quality and large-project effectiveness remain unverified. This is a feedback release, with no native prompt-enhancement button, guaranteed model switching, automatic dispatch or background supervision.
 
 **Stable release: [v0.4.5](https://github.com/LucxXxifer/cyber-age-sop/releases/tag/v0.4.5).** The beta does not replace the stable release.
 
 ## Try the Beta
 
-1. Download the **`cyber-age-sop-v0.5.3-beta.1.zip`** asset from the beta release, rather than GitHub's full source ZIP. The asset contains one `cyber-age-sop/` folder, including `SKILL.md`, references and license notices.
+1. Download the **`cyber-age-sop-v0.5.4-beta.1.zip`** asset from the beta release, rather than GitHub's full source ZIP. The asset contains one `cyber-age-sop/` folder, including `SKILL.md`, references and license notices.
 2. Install that folder using your Agent/IDE's Skill instructions. For a local Codex setup, place it in `~/.codex/skills/cyber-age-sop/`. Back up an existing installation and replace the whole folder to avoid mixing versions. Start a new session after installation.
 3. Invoke `$cyber-age-sop` in Codex, or explicitly load it using your host's Skill mechanism, and describe a small, real tool, program, plugin or Skill you want to build. You can start without knowing the technical stack. The Skill adds guidance; execution, search and drawing depend on your host's tools and selected model.
 4. Tell us where it helped or confused you using the [bilingual feedback guide](docs/beta-feedback.md) or [GitHub feedback form](https://github.com/LucxXxifer/cyber-age-sop/issues/new?template=beta-feedback.md).
@@ -266,11 +266,18 @@ Use the evidence labels in `acceptance-and-evidence.md` when reporting results.
 
 ## Versioning
 
-The current public beta is `0.5.3-beta.1` (2026-11-09); the latest stable release remains `0.4.5`.
+The current public beta is `0.5.4-beta.1` (2026-11-10); the latest stable release remains `0.4.5`.
 
-- Runtime Skill version: `0.5.3-beta.1` (public beta)
+- Runtime Skill version: `0.5.4-beta.1` (public beta)
 - Project SOP document version: `0.1`
-- Repository prerelease version: `0.5.3-beta.1`
+- Repository prerelease version: `0.5.4-beta.1`
+
+### v0.5.4-beta.1 Changes
+
+- Decision-oriented research: identify consequential unknowns, match sources to claims, inspect important counterevidence and explain its impact on the project.
+- On-demand approach exploration: compare meaningfully different workflows or structures with provisional shapes; settled work and clear small edits skip another discovery round.
+- Preserve the owner's goal, rejected suggestions, prompt-only boundaries and confirmation before the first execution Card; reuse applicable research authorization.
+- Two simulated cases and four turns provide limited behavioral evidence. No live-search, human or cross-model validation is claimed. See [release notes](docs/releases/v0.5.4-beta.1.md).
 
 ### v0.5.3-beta.1 Changes
 
@@ -297,7 +304,7 @@ The current public beta is `0.5.3-beta.1` (2026-11-09); the latest stable releas
 - Durable project documents may be versioned when the user and repository rules permit; private/raw evidence stays separate.
 - Public-beta installation, feedback instructions and known limitations in both languages.
 
-Local `0.5.0` and later candidate snapshots were development baselines, not intervening public stable releases. Structural checks do not establish user comprehension or end-to-end reliability. See the [beta release notes](docs/releases/v0.5.3-beta.1.md) and [CHANGELOG](CHANGELOG.md) for the evidence boundary.
+Local `0.5.0` and later candidate snapshots were development baselines, not intervening public stable releases. Structural checks do not establish user comprehension or end-to-end reliability. See the [beta release notes](docs/releases/v0.5.4-beta.1.md) and [CHANGELOG](CHANGELOG.md) for the evidence boundary.
 
 ### v0.4.5 Changes (from v0.4.4)
 

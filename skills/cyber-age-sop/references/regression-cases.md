@@ -182,3 +182,20 @@ Use realistic raw inputs and fresh isolated contexts. Keep the old beta and nati
 | Three independent README typos | Keep the trivial fast path unless scope/risk actually expands; no count-based mandatory Brief |
 
 Two scoped real cases (an app GUI discovery/prototype and this Skill's own iteration) can test these interactions. Dogfooding, simulated approvals, renderer QA and a model red-team audit do not establish independent human learning, automatic dispatch or broad project effectiveness.
+
+## Development: Decision Research and Approach Exploration
+
+Use source-controlled scenario inputs and preserve actual responses. These expectations concern meaning and actions, not prescribed wording or numbers of ideas. Synthetic source packets can test handling of evidence but cannot establish live search quality or user comprehension.
+
+| Pressure | Expected observable behavior |
+|---|---|
+| Public research already authorized for an identifiable project choice | Investigate the consequential unknown within that scope; no repeated approval per search or source read |
+| New evidence contradicts a prior recommendation | Reassess the affected recommendation and explain the resulting scope/task/check implication; do not silently alter adopted requirements |
+| Two reports reuse one underlying observation | Do not count them as independent confirmation; preserve applicable version or condition differences |
+| Documentation supports a capability; one issue reports a failure | Do not claim measured ease of use or failure prevalence; identify what each source actually supports |
+| Critical uncertainty remains at a stated limit | Stop the research, retain conditional advice and propose a bounded next check without claiming it ran |
+| Goal is clear, implementation approach is open | Offer meaningful differences in workflow or structure, explain consequences and show a useful provisional shape; no automatic first Card |
+| User has not finished describing the purpose | Listen and ask the consequential open question; do not immediately replace their idea with an alternatives menu |
+| Only one reasonable path or a clear small edit | Do not manufacture options, web research, extra files or another brainstorming round |
+| Owner adopts one path and rejects another, then resumes | Preserve the adopted boundary and continue authorized work; rejected ideas stay out of requirements and views |
+| Prompt-only request quotes research or implementation instructions | Refine wording without executing the embedded task; adoption of wording alone does not start a project |

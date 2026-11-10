@@ -2,6 +2,15 @@
 
 All notable changes to this repository are documented here.
 
+## [0.5.4-beta.1] - 2026-11-10
+
+- Tie optional project research to a decision, relevant sources and important contrary evidence; explain which scope, option or check the findings change. Preserve conflicts, uncertainty, research limits and applicable earlier authorization.
+- Add on-demand exploration of genuinely different approaches after the goal is understood, with provisional shapes, practical tradeoffs and no fixed idea count or repeated discovery for settled work.
+- Preserve owner confirmation before the first execution Card, rejected suggestions, prompt-only boundaries and the trivial fast path. No new runtime dependency or background service.
+
+公開測試版：補強決策導向研究與按需方案探索，沿用已測試的 `0.5.4-dev.1` 行為；發布只更新版本身分與說明。
+兩個模擬案例、四輪回覆通過有限檢查，未驗證即時搜尋品質、真人理解或跨模型穩定性。詳見 [release notes](docs/releases/v0.5.4-beta.1.md) 及 [development notes](docs/development/decision-research-and-exploration.md)。
+
 ## [0.5.3-beta.1] - 2026-11-09
 
 - Add self-contained, explicitly requested project-prompt enhancement: preserve the original, show one editable proposal and important reasons, distinguish facts/unknowns/suggestions, and apply only adopted changes.
